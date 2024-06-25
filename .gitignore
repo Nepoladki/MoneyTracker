@@ -1,0 +1,10 @@
+FoodDelivery.Api/bin/
+FoodDelivery.Api/obj/
+FoodDelivery.Application/bin/
+FoodDelivery.Application/obj/
+FoodDelivery.Infrastructure/bin/
+FoodDelivery.Infrastructure/obj/
+FoodDelivery.Domain/bin/
+FoodDelivery.Domain/obj/
+FoodDelivery.Contracts/bin/
+FoodDelivery.Contracts/obj/
