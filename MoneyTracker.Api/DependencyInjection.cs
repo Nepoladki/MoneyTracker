@@ -1,8 +1,8 @@
-using FoodDelivery.Api.Common.Errors;
-using FoodDelivery.Api.Common.Mapping;
+using MoneyTracker.Api.Common.Errors;
+using MoneyTracker.Api.Common.Mapping;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
-namespace FoodDelivery.Api;
+namespace MoneyTracker.Api;
 
 public static class DependencyInjection
 {
@@ -12,7 +12,7 @@ public static class DependencyInjection
 
         services.AddControllers();
 
-        services.AddSingleton<ProblemDetailsFactory, FoodDeliveryProblemDetailsFactory>();
+        services.AddSingleton<ProblemDetailsFactory, MoneyTrackerProblemDetailsFactory>();
 
         return services;
     }

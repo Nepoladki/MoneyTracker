@@ -23,6 +23,8 @@ public static class DependencyInjectioin
 
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
+        services.AddSingleton<IPasswordHasher, PasswordHasher>();
+
         services.AddScoped<IUserRepository, UserRepository>();
 
         services.AddDbContext<EFCoreDBContext>(options => 

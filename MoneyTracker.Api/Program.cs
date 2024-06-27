@@ -1,6 +1,6 @@
-using FoodDelivery.Api;
-using FoodDelivery.Application;
-using FoodDelivery.Infrastructure;
+using MoneyTracker.Api;
+using MoneyTracker.Application;
+using MoneyTracker.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

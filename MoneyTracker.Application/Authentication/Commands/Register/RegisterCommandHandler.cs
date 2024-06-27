@@ -16,7 +16,10 @@ public class RegisterCommandHandler :
     private readonly IUserRepository _userRepository;
     private readonly IPasswordHasher _passwordHasher;
 
-    public RegisterCommandHandler(IUserRepository userRepository, IJwtTokenGenerator jwtTokenGenerator, IPasswordHasher passwordHasher)
+    public RegisterCommandHandler(
+        IUserRepository userRepository,
+        IJwtTokenGenerator jwtTokenGenerator,
+        IPasswordHasher passwordHasher)
     {
         _userRepository = userRepository;
         _jwtTokenGenerator = jwtTokenGenerator;
@@ -34,14 +37,17 @@ public class RegisterCommandHandler :
         }
 
         //Hash user's password
-        var hashedPassword = _passwordHasher.HashPassword(command.Password);
+        var hashResult = _passwordHasher.HashPassword(command.Password);
+
+        if (hashResult.IsError)
+            return hashResult.Errors;
 
         //Create user (unique id)
         var user = new User 
         {
             UserName = command.UserName,
             Email = command.Email,
-            PasswordHash = command.Password
+            PasswordHash = hashResult.Value
         };
 
         _userRepository.Add(user);

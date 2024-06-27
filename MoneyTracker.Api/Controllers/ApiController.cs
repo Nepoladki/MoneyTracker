@@ -1,4 +1,3 @@
-using System.Security.Cryptography;
 using ErrorOr;
 using MoneyTracker.Api.Common.Http;
 using Microsoft.AspNetCore.Authorization;

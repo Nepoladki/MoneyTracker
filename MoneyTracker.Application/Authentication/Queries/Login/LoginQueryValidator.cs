@@ -6,8 +6,8 @@ public class LoginQueryValidator : AbstractValidator<LoginQuery>
 {
     public LoginQueryValidator()
     {
-        RuleFor(x => x.Email).NotEmpty();
-        RuleFor(x => x.Password).NotEmpty();
+        RuleFor(x => x.Email).EmailAddress();
+        RuleFor(x => x.Password).NotEmpty().MinimumLength(6).MaximumLength(25);
 
     }
 }

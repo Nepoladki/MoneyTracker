@@ -31,7 +31,12 @@ public class LoginQueryHandler :
             return Errors.Authentication.InvalidCredentials;
 
         //Validate the password is correct
-        if (user.Password != query.Password)
+        var validationResult = _passwordHasher.VerifyPassword(query.Password, user.PasswordHash);
+
+        if (validationResult.IsError)
+            return validationResult.Errors;
+        
+        if (validationResult == false)
             return Errors.Authentication.InvalidCredentials;
 
         //Create JWT token
