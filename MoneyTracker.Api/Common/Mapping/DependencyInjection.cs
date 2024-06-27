@@ -2,7 +2,7 @@ using System.Reflection;
 using Mapster;
 using MapsterMapper;
 
-namespace FoodDelivery.Api.Common.Mapping;
+namespace MoneyTracker.Api.Common.Mapping;
 
 public static class DependencyInjection
 {

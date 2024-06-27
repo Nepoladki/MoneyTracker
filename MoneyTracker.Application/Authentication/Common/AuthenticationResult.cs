@@ -1,6 +1,6 @@
-using FoodDelivery.Domain.Entities;
+using MoneyTracker.Domain.Entities;
 
-namespace FoodDelivery.Application.Authentication.Common;
+namespace MoneyTracker.Application.Authentication.Common;
 
 public record AuthenticationResult(
     User User,

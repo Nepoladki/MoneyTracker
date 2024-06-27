@@ -1,4 +1,4 @@
-namespace FoodDelivery.Application.Common.Interfaces.Services;
+namespace MoneyTracker.Application.Common.Interfaces.Services;
 
 public interface IDateTimeProvider
 {

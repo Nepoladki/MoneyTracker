@@ -7,5 +7,6 @@ Content-Type: application/json
     "firstName": "John",
     "lastName": "Doe",
     "email": "generic@email.ru",
-    "password": "pass123"
+    "password": "pass123",
+    "passwordCopy": "pass123"
 }

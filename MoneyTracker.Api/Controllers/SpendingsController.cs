@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace FoodDelivery.Api.Controllers;
+namespace MoneyTracker.Api.Controllers;
 
 [Route("[controller]")]
 public class DinnersController : ApiController

@@ -1,4 +1,4 @@
-namespace FoodDelivery.Infrastructure.Authentication;
+namespace MoneyTracker.Infrastructure.Authentication;
 
 public class JwtSettings
 {

@@ -2,13 +2,13 @@
 using System.Reflection;
 using ErrorOr;
 using FluentValidation;
-using FoodDelivery.Application.Authentication.Commands.Register;
-using FoodDelivery.Application.Authentication.Common;
-using FoodDelivery.Application.Authentication.Common.Behaviors;
+using MoneyTracker.Application.Authentication.Commands.Register;
+using MoneyTracker.Application.Authentication.Common;
+using MoneyTracker.Application.Authentication.Common.Behaviors;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FoodDelivery.Application;
+namespace MoneyTracker.Application;
 
 public static class DependencyInjection
 {

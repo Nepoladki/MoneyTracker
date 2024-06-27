@@ -1,11 +1,10 @@
 using ErrorOr;
-using FoodDelivery.Application.Authentication.Common;
+using MoneyTracker.Application.Authentication.Common;
 using MediatR;
 
-namespace FoodDelivery.Application.Authentication.Commands.Register;
+namespace MoneyTracker.Application.Authentication.Commands.Register;
 
 public record RegisterCommand(
-    string FirstName,
-    string LastName,
+    string UserName,
     string Email,
     string Password) : IRequest<ErrorOr<AuthenticationResult>>; 

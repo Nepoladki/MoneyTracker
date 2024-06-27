@@ -1,4 +1,4 @@
 @host=http://localhost:5181
 
-GET {{host}}/dinners
+GET {{host}}/spendings
 Content-Type: application/json

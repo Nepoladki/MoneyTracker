@@ -1,12 +1,12 @@
 using ErrorOr;
-using FoodDelivery.Application.Common.Interfaces.Authentication;
-using FoodDelivery.Application.Common.Interfaces.Persistence;
-using FoodDelivery.Domain.Common.Errors;
+using MoneyTracker.Application.Common.Interfaces.Persistence;
+using MoneyTracker.Domain.Common.Errors;
 using MediatR;
-using FoodDelivery.Domain.Entities;
-using FoodDelivery.Application.Authentication.Common;
+using MoneyTracker.Domain.Entities;
+using MoneyTracker.Application.Authentication.Common;
+using MoneyTracker.Application.Common.Interfaces.Authentication;
 
-namespace FoodDelivery.Application.Authentication.Commands.Register;
+namespace MoneyTracker.Application.Authentication.Commands.Register;
 
 public class RegisterCommandHandler : 
     IRequestHandler<RegisterCommand, ErrorOr<AuthenticationResult>>
@@ -14,11 +14,13 @@ public class RegisterCommandHandler :
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IUserRepository _userRepository;
+    private readonly IPasswordHasher _passwordHasher;
 
-    public RegisterCommandHandler(IUserRepository userRepository, IJwtTokenGenerator jwtTokenGenerator)
+    public RegisterCommandHandler(IUserRepository userRepository, IJwtTokenGenerator jwtTokenGenerator, IPasswordHasher passwordHasher)
     {
         _userRepository = userRepository;
         _jwtTokenGenerator = jwtTokenGenerator;
+        _passwordHasher = passwordHasher;
     }
 
     public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
@@ -31,13 +33,15 @@ public class RegisterCommandHandler :
             return Errors.User.DuplicateEmail;
         }
 
+        //Hash user's password
+        var hashedPassword = _passwordHasher.HashPassword(command.Password);
+
         //Create user (unique id)
         var user = new User 
         {
-            FirstName = command.FirstName,
-            LastName = command.LastName,
+            UserName = command.UserName,
             Email = command.Email,
-            Password = command.Password
+            PasswordHash = command.Password
         };
 
         _userRepository.Add(user);

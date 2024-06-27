@@ -1,13 +1,13 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using FoodDelivery.Application.Common.Interfaces.Authentication;
+using MoneyTracker.Application.Common.Interfaces.Authentication;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using FoodDelivery.Application.Common.Interfaces.Services;
+using MoneyTracker.Application.Common.Interfaces.Services;
 using Microsoft.Extensions.Options;
-using FoodDelivery.Domain.Entities;
+using MoneyTracker.Domain.Entities;
 
-namespace FoodDelivery.Infrastructure.Authentication;
+namespace MoneyTracker.Infrastructure.Authentication;
 
 public class JwtTokenGenerator : IJwtTokenGenerator
 {

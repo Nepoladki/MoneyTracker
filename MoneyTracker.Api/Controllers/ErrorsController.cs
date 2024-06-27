@@ -1,8 +1,8 @@
-using FoodDelivery.Application.Common.Errors;
+using MoneyTracker.Application.Common.Errors;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FoodDelivery.Api.Controllers;
+namespace MoneyTracker.Api.Controllers;
 public class ErrorsController : ApiController
 {
     [Route("/error")]

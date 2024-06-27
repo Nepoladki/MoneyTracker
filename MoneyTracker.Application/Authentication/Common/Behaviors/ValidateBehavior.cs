@@ -3,7 +3,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
 
-namespace FoodDelivery.Application.Authentication.Common.Behaviors;
+namespace MoneyTracker.Application.Authentication.Common.Behaviors;
 
 public class ValidationBehavior<TRequest, TResponse> : 
     IPipelineBehavior<TRequest, TResponse> 

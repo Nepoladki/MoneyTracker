@@ -1,18 +1,29 @@
-using FoodDelivery.Application.Common.Interfaces.Persistence;
-using FoodDelivery.Domain.Entities;
+using MoneyTracker.Application.Common.Interfaces.Persistence;
+using MoneyTracker.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using MoneyTracker.Infrastructure.Persistence;
+using System.Linq;
 
-namespace FoodDelivery.Infrastructure.Persistence;
+namespace MoneyTracker.Infrastructure.Persistence;
 
 public class UserRepository : IUserRepository
 {
-    private static readonly List<User> _users = new();
+    private readonly EFCoreDBContext _context;
+
+    public UserRepository(EFCoreDBContext dbContext)
+    {
+        _context = dbContext;
+    }
+
     public void Add(User user)
     {
-        _users.Add(user);
+        _context.Users.Add(user);
     }
 
     public User? GetUserByEmail(string email)
     {
-        return _users.SingleOrDefault(u => u.Email == email);
+        return _context.Users.FirstOrDefault(u => u.Email == email);
     }
+
+    public bool Save() => _context.SaveChanges() > 0;
 }

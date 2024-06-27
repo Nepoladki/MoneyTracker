@@ -1,23 +1,25 @@
 using ErrorOr;
-using FoodDelivery.Application.Common.Interfaces.Authentication;
-using FoodDelivery.Application.Common.Interfaces.Persistence;
-using FoodDelivery.Domain.Common.Errors;
+using MoneyTracker.Application.Common.Interfaces.Authentication;
+using MoneyTracker.Application.Common.Interfaces.Persistence;
+using MoneyTracker.Domain.Common.Errors;
 using MediatR;
-using FoodDelivery.Domain.Entities;
-using FoodDelivery.Application.Authentication.Common;
+using MoneyTracker.Domain.Entities;
+using MoneyTracker.Application.Authentication.Common;
 
-namespace FoodDelivery.Application.Authentication.Queries.Login;
+namespace MoneyTracker.Application.Authentication.Queries.Login;
 public class LoginQueryHandler : 
     IRequestHandler<LoginQuery, ErrorOr<AuthenticationResult>>
     
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IUserRepository _userRepository;
+    private readonly IPasswordHasher _passwordHasher;
 
-    public LoginQueryHandler(IUserRepository userRepository, IJwtTokenGenerator jwtTokenGenerator)
+    public LoginQueryHandler(IUserRepository userRepository, IJwtTokenGenerator jwtTokenGenerator, IPasswordHasher passwordHasher)
     {
         _userRepository = userRepository;
         _jwtTokenGenerator = jwtTokenGenerator;
+        _passwordHasher = passwordHasher;
     }
 
     public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)

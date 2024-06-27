@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.Net;
 
-namespace FoodDelivery.Application.Common.Errors;
+namespace MoneyTracker.Application.Common.Errors;
 
 public interface IServiceException
 {

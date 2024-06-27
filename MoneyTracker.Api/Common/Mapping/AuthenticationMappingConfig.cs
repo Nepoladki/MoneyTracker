@@ -1,10 +1,10 @@
-using FoodDelivery.Application.Authentication.Commands.Register;
-using FoodDelivery.Application.Authentication.Common;
-using FoodDelivery.Application.Authentication.Queries.Login;
-using FoodDelivery.Contracts.Authentication;
+using MoneyTracker.Application.Authentication.Commands.Register;
+using MoneyTracker.Application.Authentication.Common;
+using MoneyTracker.Application.Authentication.Queries.Login;
+using MoneyTracker.Contracts.Authentication;
 using Mapster;
 
-namespace FoodDelivery.Api.Common.Mapping;
+namespace MoneyTracker.Api.Common.Mapping;
 
 public class AuthenticationMappingConfig : IRegister
 {

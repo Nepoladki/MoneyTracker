@@ -1,8 +1,8 @@
 using ErrorOr;
-using FoodDelivery.Application.Authentication.Common;
+using MoneyTracker.Application.Authentication.Common;
 using MediatR;
 
-namespace FoodDelivery.Application.Authentication.Queries.Login;
+namespace MoneyTracker.Application.Authentication.Queries.Login;
 
 public record LoginQuery(
     string Email,

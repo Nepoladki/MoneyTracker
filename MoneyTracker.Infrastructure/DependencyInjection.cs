@@ -1,17 +1,18 @@
 using System.Text;
-using FoodDelivery.Application.Common.Interfaces.Authentication;
-using FoodDelivery.Application.Common.Interfaces.Persistence;
-using FoodDelivery.Application.Common.Interfaces.Services;
-using FoodDelivery.Infrastructure.Authentication;
-using FoodDelivery.Infrastructure.Persistence;
-using FoodDelivery.Infrastructure.Services;
+using MoneyTracker.Application.Common.Interfaces.Authentication;
+using MoneyTracker.Application.Common.Interfaces.Persistence;
+using MoneyTracker.Application.Common.Interfaces.Services;
+using MoneyTracker.Infrastructure.Authentication;
+using MoneyTracker.Infrastructure.Persistence;
+using MoneyTracker.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace FoodDelivery.Infrastructure;
+namespace MoneyTracker.Infrastructure;
 
 public static class DependencyInjectioin
 {
@@ -23,6 +24,13 @@ public static class DependencyInjectioin
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
         services.AddScoped<IUserRepository, UserRepository>();
+
+        services.AddDbContext<EFCoreDBContext>(options => 
+        {
+            options.UseNpgsql(configuration.GetConnectionString("PostgresConnection"));
+            options.EnableSensitiveDataLogging(true);
+            options.UseSnakeCaseNamingConvention();
+        });
         
         return services;
     }

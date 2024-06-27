@@ -1,6 +1,6 @@
-using FoodDelivery.Application.Common.Interfaces.Services;
+using MoneyTracker.Application.Common.Interfaces.Services;
 
-namespace FoodDelivery.Infrastructure.Services;
+namespace MoneyTracker.Infrastructure.Services;
 
 public class DateTimeProvider : IDateTimeProvider
 {

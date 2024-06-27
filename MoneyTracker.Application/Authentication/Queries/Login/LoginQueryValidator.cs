@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace FoodDelivery.Application.Authentication.Queries.Login;
+namespace MoneyTracker.Application.Authentication.Queries.Login;
 
 public class LoginQueryValidator : AbstractValidator<LoginQuery>
 {

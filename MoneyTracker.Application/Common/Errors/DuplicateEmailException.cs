@@ -1,6 +1,6 @@
 using System.Net;
 
-namespace FoodDelivery.Application.Common.Errors;
+namespace MoneyTracker.Application.Common.Errors;
 
 public class DuplicateEmailException : Exception, IServiceException
 {

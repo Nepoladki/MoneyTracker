@@ -1,4 +1,4 @@
-namespace FoodDelivery.Api.Common.Http;
+namespace MoneyTracker.Api.Common.Http;
 
 public static class HttpContextItemKeys
 {

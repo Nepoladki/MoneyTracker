@@ -1,4 +1,4 @@
-namespace FoodDelivery.Contracts.Authentication;
+namespace MoneyTracker.Contracts.Authentication;
 
 public record LoginRequest
 (

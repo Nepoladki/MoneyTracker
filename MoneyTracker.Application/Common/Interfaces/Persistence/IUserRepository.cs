@@ -1,6 +1,6 @@
-using FoodDelivery.Domain.Entities;
+using MoneyTracker.Domain.Entities;
 
-namespace FoodDelivery.Application.Common.Interfaces.Persistence;
+namespace MoneyTracker.Application.Common.Interfaces.Persistence;
 
 public interface IUserRepository
 {

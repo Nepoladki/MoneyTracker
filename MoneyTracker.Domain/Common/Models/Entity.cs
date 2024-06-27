@@ -1,4 +1,4 @@
-namespace FoodDelivery.Domain.Common.Models;
+namespace MoneyTracker.Domain.Common.Models;
 
 public abstract class Entity<TId> : IEquatable<Entity<TId>>
     where TId : notnull

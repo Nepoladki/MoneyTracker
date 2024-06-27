@@ -1,4 +1,4 @@
-namespace FoodDelivery.Domain.Common.Models;
+namespace MoneyTracker.Domain.Common.Models;
 
 public abstract class ValueObject : IEquatable<ValueObject>
 {

@@ -1,6 +1,6 @@
-using FoodDelivery.Domain.Entities;
+using MoneyTracker.Domain.Entities;
 
-namespace FoodDelivery.Application.Common.Interfaces.Authentication;
+namespace MoneyTracker.Application.Common.Interfaces.Authentication;
 
 public interface IJwtTokenGenerator
 {

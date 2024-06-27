@@ -1,6 +1,6 @@
 using ErrorOr;
 
-namespace FoodDelivery.Domain.Common.Errors;
+namespace MoneyTracker.Domain.Common.Errors;
 
 public static partial class Errors
 {

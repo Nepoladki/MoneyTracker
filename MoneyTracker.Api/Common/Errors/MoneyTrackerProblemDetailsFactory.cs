@@ -1,7 +1,7 @@
-namespace FoodDelivery.Api.Common.Errors;
+namespace MoneyTracker.Api.Common.Errors;
 using System.Diagnostics;
 using ErrorOr;
-using FoodDelivery.Api.Common.Http;
+using MoneyTracker.Api.Common.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -13,7 +13,7 @@ using Microsoft.Extensions.Options;
 /// It provides methods to create instances of `ProblemDetails` and `ValidationProblemDetails` with default settings.
 /// This class uses the provided `ApiBehaviorOptions` for client error mapping and an optional custom configuration action to further customize the problem details.
 /// </summary>
-public class FoodDeliveryProblemDetailsFactory : ProblemDetailsFactory
+public class MoneyTrackerProblemDetailsFactory : ProblemDetailsFactory
 {
     private readonly ApiBehaviorOptions _options;
     private readonly Action<ProblemDetailsContext>? _configure;
@@ -23,7 +23,7 @@ public class FoodDeliveryProblemDetailsFactory : ProblemDetailsFactory
     /// </summary>
     /// <param name="options">The options for API behavior.</param>
     /// <param name="problemDetailsOptions">The options for customizing problem details.</param>
-    public FoodDeliveryProblemDetailsFactory(
+    public MoneyTrackerProblemDetailsFactory(
         IOptions<ApiBehaviorOptions> options,
         IOptions<ProblemDetailsOptions>? problemDetailsOptions = null)
     {
