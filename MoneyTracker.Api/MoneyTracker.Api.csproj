@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FoodDelivery.Contracts\FoodDelivery.Contracts.csproj" />
-    <ProjectReference Include="..\FoodDelivery.Application\FoodDelivery.Application.csproj" />
-    <ProjectReference Include="..\FoodDelivery.Infrastructure\FoodDelivery.Infrastructure.csproj" />
+    <ProjectReference Include="..\MoneyTracker.Contracts\MoneyTracker.Contracts.csproj" />
+    <ProjectReference Include="..\MoneyTracker.Application\MoneyTracker.Application.csproj" />
+    <ProjectReference Include="..\MoneyTracker.Infrastructure\MoneyTracker.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

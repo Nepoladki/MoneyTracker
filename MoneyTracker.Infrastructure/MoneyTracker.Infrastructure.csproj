@@ -7,7 +7,7 @@
   </PropertyGroup>
 
     <ItemGroup>
-    <ProjectReference Include="..\FoodDelivery.Application\FoodDelivery.Application.csproj" />
+    <ProjectReference Include="..\MoneyTracker.Application\MoneyTracker.Application.csproj" />
   </ItemGroup>
 
     <ItemGroup>

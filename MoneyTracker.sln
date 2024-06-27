@@ -1,25 +1,21 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDelivery.Domain", "FoodDelivery.Domain\FoodDelivery.Domain.csproj", "{C88E8F96-F6FC-4A8D-8993-1E2DB9A75130}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyTracker.Domain", "MoneyTracker.Domain\MoneyTracker.Domain.csproj", "{C88E8F96-F6FC-4A8D-8993-1E2DB9A75130}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDelivery.Application", "FoodDelivery.Application\FoodDelivery.Application.csproj", "{D0D294F0-86F6-4938-893E-F8B223328725}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyTracker.Application", "MoneyTracker.Application\MoneyTracker.Application.csproj", "{D0D294F0-86F6-4938-893E-F8B223328725}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDelivery.Infrastructure", "FoodDelivery.Infrastructure\FoodDelivery.Infrastructure.csproj", "{2A178DE1-9462-4B9E-B972-01CF750AD36B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyTracker.Infrastructure", "MoneyTracker.Infrastructure\MoneyTracker.Infrastructure.csproj", "{2A178DE1-9462-4B9E-B972-01CF750AD36B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDelivery.Contracts", "FoodDelivery.Contracts\FoodDelivery.Contracts.csproj", "{7E4C2226-E356-4F66-9803-F6D32CAC0314}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyTracker.Contracts", "MoneyTracker.Contracts\MoneyTracker.Contracts.csproj", "{7E4C2226-E356-4F66-9803-F6D32CAC0314}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDelivery.Api", "FoodDelivery.Api\FoodDelivery.Api.csproj", "{3E0F1F06-56E1-4D7E-9CCA-FDAFE5766570}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyTracker.Api", "MoneyTracker.Api\MoneyTracker.Api.csproj", "{3E0F1F06-56E1-4D7E-9CCA-FDAFE5766570}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C88E8F96-F6FC-4A8D-8993-1E2DB9A75130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -42,5 +38,11 @@ Global
 		{3E0F1F06-56E1-4D7E-9CCA-FDAFE5766570}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E0F1F06-56E1-4D7E-9CCA-FDAFE5766570}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E0F1F06-56E1-4D7E-9CCA-FDAFE5766570}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {993287E0-FABE-4310-8B28-8B0C37DC7546}
 	EndGlobalSection
 EndGlobal
