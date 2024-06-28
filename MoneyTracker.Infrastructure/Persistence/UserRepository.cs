@@ -14,9 +14,10 @@ public class UserRepository : IUserRepository
         _context = dbContext;
     }
 
-    public void Add(User user)
+    public bool Add(User user)
     {
         _context.Users.Add(user);
+        return Save();
     }
 
     public User? GetUserByEmail(string email)

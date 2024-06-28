@@ -50,7 +50,11 @@ public class RegisterCommandHandler :
             PasswordHash = hashResult.Value
         };
 
-        _userRepository.Add(user);
+        //Saving user in database
+        var saveResult = _userRepository.Add(user);
+
+        if (saveResult == false)
+            return Errors.Authentication.SavingError;
         
         //Create JWT token
         var token = _jwtTokenGenerator.GenerateToken(user);

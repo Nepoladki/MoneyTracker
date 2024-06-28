@@ -38,7 +38,7 @@ public static class DependencyInjectioin
 
         services.AddDbContext<DataContext>(options => 
         {
-            options.UseNpgsql("Host=localhost;Port=5432;Database=MoneyTracker;Username=postgres;Password=123"); //configuration.GetConnectionString("PostgresConnection");
+            options.UseNpgsql(configuration.GetConnectionString("PostgresConnection")); //"Host=localhost;Port=5432;Database=MoneyTracker;Username=postgres;Password=123"
             options.EnableSensitiveDataLogging(true);
             options.UseSnakeCaseNamingConvention();
         });

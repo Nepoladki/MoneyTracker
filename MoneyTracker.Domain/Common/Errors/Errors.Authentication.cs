@@ -17,5 +17,9 @@ public static partial class Errors
         public static Error VeryfingPasswordHashError => Error.Unexpected(
             code: "Auth.VerifyPasswordHashError",
             description: "Exeption occured while trying to verify user's password");
+        
+        public static Error SavingError => Error.Unexpected(
+            code: "Auth.DatabaseSavingError",
+            description: "Error occured while saving new user in database");
     }
 }
