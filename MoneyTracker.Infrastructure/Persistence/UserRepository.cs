@@ -1,16 +1,15 @@
 using MoneyTracker.Application.Common.Interfaces.Persistence;
 using MoneyTracker.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using MoneyTracker.Infrastructure.Persistence;
-using System.Linq;
+
+
 
 namespace MoneyTracker.Infrastructure.Persistence;
 
 public class UserRepository : IUserRepository
 {
-    private readonly EFCoreDBContext _context;
+    private readonly DataContext _context;
 
-    public UserRepository(EFCoreDBContext dbContext)
+    public UserRepository(DataContext dbContext)
     {
         _context = dbContext;
     }

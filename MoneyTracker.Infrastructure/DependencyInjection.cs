@@ -19,21 +19,30 @@ public static class DependencyInjectioin
     public static IServiceCollection AddInfrastructure(this IServiceCollection services,
     ConfigurationManager configuration)
     {
-        services.AddAuth(configuration);
-
+        
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
         services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
+        services.AddAuth(configuration);
+
+        services.AddPersistance(configuration);
+        
+        return services;
+    }
+    public static IServiceCollection AddPersistance(
+        this IServiceCollection services,
+        ConfigurationManager configuration)
+    {
         services.AddScoped<IUserRepository, UserRepository>();
 
-        services.AddDbContext<EFCoreDBContext>(options => 
+        services.AddDbContext<DataContext>(options => 
         {
-            options.UseNpgsql(configuration.GetConnectionString("PostgresConnection"));
+            options.UseNpgsql("Host=localhost;Port=5432;Database=MoneyTracker;Username=postgres;Password=123"); //configuration.GetConnectionString("PostgresConnection");
             options.EnableSensitiveDataLogging(true);
             options.UseSnakeCaseNamingConvention();
         });
-        
+
         return services;
     }
 
