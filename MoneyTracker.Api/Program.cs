@@ -4,10 +4,12 @@ using MoneyTracker.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var config = builder.Configuration;
+
 builder.Services.
     AddPresentation().
     AddApplication().
-    AddInfrastructure(builder.Configuration);
+    AddInfrastructure(config);
 
 var app = builder.Build();
 

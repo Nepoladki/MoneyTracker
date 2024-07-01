@@ -2,9 +2,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MoneyTracker.Api.Controllers;
-
+[Route("/spendings")]
 [Authorize]
-[Route("[controller]")]
 public class SpendingsController : ApiController
 {
     [HttpGet]

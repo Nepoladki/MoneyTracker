@@ -1,16 +1,16 @@
 using System.Text;
-using MoneyTracker.Application.Common.Interfaces.Authentication;
-using MoneyTracker.Application.Common.Interfaces.Persistence;
-using MoneyTracker.Application.Common.Interfaces.Services;
-using MoneyTracker.Infrastructure.Authentication;
-using MoneyTracker.Infrastructure.Persistence;
-using MoneyTracker.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using MoneyTracker.Application.Common.Interfaces.Authentication;
+using MoneyTracker.Application.Common.Interfaces.Persistence;
+using MoneyTracker.Application.Common.Interfaces.Services;
+using MoneyTracker.Infrastructure.Authentication;
+using MoneyTracker.Infrastructure.Persistence;
+using MoneyTracker.Infrastructure.Services;
 
 namespace MoneyTracker.Infrastructure;
 
@@ -38,7 +38,7 @@ public static class DependencyInjectioin
 
         services.AddDbContext<DataContext>(options => 
         {
-            options.UseNpgsql(configuration.GetConnectionString("PostgresConnection")); //"Host=localhost;Port=5432;Database=MoneyTracker;Username=postgres;Password=123"
+            options.UseNpgsql("Host=localhost;Port=5432;Database=MoneyTracker;Username=postgres;Password=123"); //configuration.GetConnectionString("PostgresConnection")"Host=localhost;Port=5432;Database=MoneyTracker;Username=postgres;Password=123"
             options.EnableSensitiveDataLogging(true);
             options.UseSnakeCaseNamingConvention();
         });
