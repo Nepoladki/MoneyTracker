@@ -14,7 +14,8 @@ public class TransactionRepository : ITransactionRepository
 
     public bool Add(Transaction transaction)
     {
-        throw new NotImplementedException();
+        _transactionContext.Transactions.Add(transaction);
+        return Save();
     }
 
     public ICollection<Transaction> GetAllTransactionsByUserId(Guid id)
@@ -22,8 +23,10 @@ public class TransactionRepository : ITransactionRepository
         throw new NotImplementedException();
     }
 
-    public Transaction? GetTransactionById(string email)
+    public Transaction? GetTransactionById(Guid id)
     {
-        throw new NotImplementedException();
+        return _transactionContext.Transactions.FirstOrDefault(t => t.Id == id); //надо решить как обрабатывать случаи когда такой транзакции нет
     }
+
+    public bool Save() => _transactionContext.SaveChanges() > 0;
 }
