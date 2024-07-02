@@ -2,12 +2,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MoneyTracker.Api.Controllers;
-[Route("/spendings")]
+[Route("/transactions")]
 [Authorize]
-public class SpendingsController : ApiController
+public class TransactionsController : ApiController
 {
     [HttpGet]
-    public IActionResult ListSpendings()
+    public IActionResult ListTransactions()
     {
         return Ok(Array.Empty<string>());
     }

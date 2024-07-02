@@ -1,4 +1,4 @@
 @host=http://localhost:5181
 
-GET {{host}}/spendings
+GET {{host}}/transactions
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0Njk1ODA1OS03YjRmLTRkMTEtOGNhYy1iNzc0OGMyZTA0ZjAiLCJuYW1lIjoiSm9obiIsImp0aSI6IjIxMWYzNGNlLWQxOWEtNDQ4Ny1hNzYxLWM1ZGRlOTA5ZmZhMiIsImV4cCI6MTcxOTg0MzE4NSwiaXNzIjoiTW9uZXlUcmFja2VyIiwiYXVkIjoiTW9uZXlUcmFja2VyIn0.U4AmNSK-pQ-PffTc74zyl0zniE6OzamRF6pvXERp6SE
