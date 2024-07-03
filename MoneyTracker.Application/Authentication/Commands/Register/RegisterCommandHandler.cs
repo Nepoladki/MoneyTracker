@@ -29,12 +29,14 @@ public class RegisterCommandHandler :
     public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
     {
         await Task.CompletedTask;
+
+        //Validate that password equals password copy
+        if (command.Password != command.PasswordCopy)
+            return Errors.User.DifferentPasswords;
         
         //Validate the user doen't exists
         if (_userRepository.GetUserByEmail(command.Email) is not null)
-        {
             return Errors.User.DuplicateEmail;
-        }
 
         //Hash user's password
         var hashResult = _passwordHasher.HashPassword(command.Password);

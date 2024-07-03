@@ -13,6 +13,11 @@ public class UserRepository : IUserRepository
     {
         _context = dbContext;
     }
+    
+    public bool UserExistsById(Guid userId)
+    {
+        return _context.Users.Any(u => u.Id == userId);
+    }
 
     public bool Add(User user)
     {

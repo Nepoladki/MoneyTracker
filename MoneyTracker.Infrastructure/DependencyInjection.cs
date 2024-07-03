@@ -35,6 +35,7 @@ public static class DependencyInjectioin
         ConfigurationManager configuration)
     {
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ITransactionRepository, TransactionRepository>();
 
         services.AddDbContext<DataContext>(options => 
         {

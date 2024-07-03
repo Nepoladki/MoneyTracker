@@ -20,7 +20,7 @@ public class TransactionRepository : ITransactionRepository
 
     public ICollection<Transaction> GetAllTransactionsByUserId(Guid id)
     {
-        throw new NotImplementedException();
+        return _transactionContext.Transactions.OrderBy(x => x.DateTime).ToList();
     }
 
     public Transaction? GetTransactionById(Guid id)

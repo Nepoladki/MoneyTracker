@@ -52,9 +52,8 @@ public class AuthenticationController : ApiController
 
         var response = authResult.Match(
             authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
-            errors => Problem(errors)
-        );
+            errors => Problem(errors));
 
-        return Ok(response);
+        return response;
     }
 }

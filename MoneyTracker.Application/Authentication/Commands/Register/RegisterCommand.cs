@@ -7,4 +7,5 @@ namespace MoneyTracker.Application.Authentication.Commands.Register;
 public record RegisterCommand(
     string UserName,
     string Email,
-    string Password) : IRequest<ErrorOr<AuthenticationResult>>; 
+    string Password,
+    string PasswordCopy) : IRequest<ErrorOr<AuthenticationResult>>; 

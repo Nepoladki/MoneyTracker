@@ -1,7 +1,6 @@
 using MoneyTracker.Api.Common.Errors;
 using MoneyTracker.Api.Common.Mapping;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using MoneyTracker.Api.Common.Options;
 
 namespace MoneyTracker.Api;
 
