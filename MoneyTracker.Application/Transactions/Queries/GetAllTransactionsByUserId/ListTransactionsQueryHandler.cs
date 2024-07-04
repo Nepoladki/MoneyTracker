@@ -6,19 +6,21 @@ using MoneyTracker.Domain.Entities;
 
 namespace MoneyTracker.Application.Transactions.Queries.GetAllTransactionsByUserId;
 
-public class ListTransactionQueryHandler : 
-IRequestHandler<ListTransactionQuery, ErrorOr<ICollection<Transaction>>>
+public class ListTransactionsQueryHandler : 
+IRequestHandler<ListTransactionsQuery, ErrorOr<ICollection<Transaction>>>
 {
     private readonly ITransactionRepository _transactionRepository;
     private readonly IUserRepository _userRepository;
 
-    public ListTransactionQueryHandler(ITransactionRepository transactionRepository, IUserRepository userRepository)
+    public ListTransactionsQueryHandler(
+        ITransactionRepository transactionRepository,
+        IUserRepository userRepository)
     {
         _transactionRepository = transactionRepository;
         _userRepository = userRepository;
     }
 
-    public async Task<ErrorOr<ICollection<Transaction>>> Handle(ListTransactionQuery query, CancellationToken cancellationToken)
+    public async Task<ErrorOr<ICollection<Transaction>>> Handle(ListTransactionsQuery query, CancellationToken cancellationToken)
     {
         await Task.CompletedTask;
 

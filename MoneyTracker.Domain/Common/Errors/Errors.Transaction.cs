@@ -23,6 +23,10 @@ public static partial class Errors
             code: "Transaction.RepositoryError",
             description: "Error occured while calling repository method");
 
+        public static Error TransactionNotFound => Error.NotFound(
+            code: "Transaction.NotFound",
+            description: "Transaction was not found in database");
+
 
     }
 }

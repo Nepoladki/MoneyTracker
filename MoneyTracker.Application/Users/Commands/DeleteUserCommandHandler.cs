@@ -1,0 +1,1 @@
+namespace MoneyTracker.Application.Users.Commands;

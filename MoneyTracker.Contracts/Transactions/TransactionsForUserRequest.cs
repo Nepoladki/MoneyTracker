@@ -1,3 +1,3 @@
 namespace MoneyTracker.Contracts.Transactions;
 
-public record TransactionsForUserRequest(Guid userId);
+public record ListTransactionsRequest(Guid userId);

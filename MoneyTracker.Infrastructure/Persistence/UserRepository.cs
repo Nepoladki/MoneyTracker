@@ -30,5 +30,10 @@ public class UserRepository : IUserRepository
         return _context.Users.FirstOrDefault(u => u.Email == email);
     }
 
+    public ICollection<User> GetAllUsers()
+    {
+        return [.. _context.Users];
+    }
+
     public bool Save() => _context.SaveChanges() > 0;
 }

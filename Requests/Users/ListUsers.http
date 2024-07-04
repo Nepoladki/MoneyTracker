@@ -1,0 +1,3 @@
+GET {{baseUrl}}/users
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}

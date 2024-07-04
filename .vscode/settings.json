@@ -1,4 +1,10 @@
 {
     "editor.accessibilityPageSize": 50,
-    "editor.fontSize": 13
+    "editor.fontSize": 13,
+    "rest-client.environmentVariables": {
+        "local": {
+            "baseUrl": "http://localhost:5181",
+            "jwtToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0YWE2YjVjMi1kMGY3LTRhNDAtYjFjMi05NjM5NmQ3MTIzYWIiLCJuYW1lIjoiSm9obiIsImp0aSI6IjMzNjBlNmRiLTgyOGEtNDBjYy04NTU5LWEzNjZmMjZkMGUwMiIsImV4cCI6MTcyMDEwNjc5NiwiaXNzIjoiTW9uZXlUcmFja2VyIiwiYXVkIjoiTW9uZXlUcmFja2VyIn0.s_YoXuBHs_cnyesGh_Z0KDkg3F3aauX7ABPNCjh1oeE"
+        }
+        }
 }

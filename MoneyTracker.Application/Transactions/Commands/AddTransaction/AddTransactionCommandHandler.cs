@@ -2,6 +2,7 @@ using System.Data;
 using ErrorOr;
 using MediatR;
 using MoneyTracker.Application.Common.Interfaces.Persistence;
+using MoneyTracker.Application.Transactions.Commands.AddTransaction;
 using MoneyTracker.Domain.Common.Errors;
 using MoneyTracker.Domain.Entities;
 

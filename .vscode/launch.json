@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/FoodDelivery.Api/bin/Debug/net8.0/FoodDelivery.Api.dll",
+            "program": "${workspaceFolder}/MoneyTracker.Api/bin/Debug/net8.0/MoneyTracker.Api.dll",
             "args": [],
-            "cwd":"${workspaceFolder}/FoodDelivery.Api",
+            "cwd":"${workspaceFolder}/MoneyTracker.Api",
             "stopAtEntry": false,
             "serverReadyAction":{
                 "action": "openExternally",

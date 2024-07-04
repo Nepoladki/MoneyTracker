@@ -1,7 +1,7 @@
 using ErrorOr;
 using MediatR;
 
-namespace MoneyTracker.Application.Transactions;
+namespace MoneyTracker.Application.Transactions.Commands.AddTransaction;
 
 public class AddTransactionCommand : IRequest<ErrorOr<Guid>>
 {
