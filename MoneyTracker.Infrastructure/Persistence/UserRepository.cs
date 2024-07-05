@@ -19,6 +19,11 @@ public class UserRepository : IUserRepository
         return _context.Users.Any(u => u.Id == userId);
     }
 
+    public User? GetUserById(Guid id)
+    {
+        return _context.Users.FirstOrDefault(u => u.Id == id);
+    }
+
     public bool Add(User user)
     {
         _context.Users.Add(user);
@@ -36,4 +41,10 @@ public class UserRepository : IUserRepository
     }
 
     public bool Save() => _context.SaveChanges() > 0;
+
+    public bool Delete(User user)
+    {
+        _context.Users.Remove(user);
+        return Save();
+    }
 }
