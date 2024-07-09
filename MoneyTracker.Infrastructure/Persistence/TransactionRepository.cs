@@ -26,7 +26,7 @@ public class TransactionRepository : ITransactionRepository
 
     public ICollection<Transaction> GetAllTransactionsByUserId(Guid id)
     {
-        return _context.Transactions.OrderBy(x => x.DateTime).ToList();
+        return [.. _context.Transactions.OrderBy(x => x.DateTime)];
     }
 
     public Transaction? GetTransactionById(Guid id)

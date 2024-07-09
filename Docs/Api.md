@@ -1,4 +1,4 @@
-# FoodDelivery API
+# MoneyTracker API
 
 
 ## Auth
@@ -6,7 +6,7 @@
 
 ### Register
 
-#### Register Request
+#### Register request
 ```js
 POST {{host}}/auth/register
 ```
@@ -14,10 +14,11 @@ POST {{host}}/auth/register
 {
     "userName": "John",
     "email": "generic@email.ru",
-    "password": "pass123"
+    "password": "pass123", 
+    "passwordCopy" : "pass123"
 }
 ```
-#### Register Response
+#### Register response
 
 ```js
 200 OK
@@ -26,7 +27,8 @@ POST {{host}}/auth/register
 {
     "id": "09431d92-0ce7-46a4-80da-c0f509b1bd7e",
     "userName": "John",
-    "email": "generic@email.ru"
+    "email": "generic@email.ru",
+    "token": "sdaf..z1sadf"
 }
 ```
 
@@ -34,7 +36,7 @@ POST {{host}}/auth/register
 
 ### Login
 
-#### Login Request
+#### Login request
 
 ```js
 POST {{host}}/auth/login
@@ -47,7 +49,7 @@ POST {{host}}/auth/login
     "password": "pass123"
 }
 ```
-#### Login Response
+#### Login response
 
 ```js
 200 OK
@@ -55,9 +57,65 @@ POST {{host}}/auth/login
 ```json
 {
     "id": "09431d92-0ce7-46a4-80da-c0f509b1bd7e",
-    "firstName": "John",
-    "lastName": "Doe",
+    "userName": "John",
     "email": "generic@email.ru",
     "token": "sdaf..z1sadf"
+}
+```
+
+### Users
+
+#### Create user request
+```js
+POST {{host}}/users/
+```
+```json
+{
+    "userName": "John",
+    "email": "generic@email.ru",
+    "password": "pass123", 
+    "passwordCopy" : "pass123"
+}
+```
+#### Create User Response
+```js
+200 OK
+```
+```json
+{
+    "creadedId": "09431d92-0ce7-46a4-80da-c0f509b1bd7e"
+}
+```
+
+#### Get all users request
+```js
+GET {{host}}/users/
+```
+
+#### Get all users response
+```js
+200 OK
+```
+```json
+{
+    "userId" : "09431d92-0ce7-46a4-80da-c0f509b1bd7e",
+    "userName" : "John",
+    "email" : "generic@email.ru",
+    "isActive" : "true",
+}
+```
+
+#### Delete specific user request
+```js 
+DELETE {{host}}/users/{userId}
+```
+
+#### Delete specific user Response
+```js
+200 OK
+```
+```json
+{
+    "deletedId" : "09431d92-0ce7-46a4-80da-c0f509b1bd7e"
 }
 ```
