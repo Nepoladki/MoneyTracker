@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\FoodDelivery.Api"
+    "\\MoneyTracker.Application",
+    "\\MoneyTracker.Application\\Users",
+    "\\MoneyTracker.Application\\Users\\Commands"
   ],
-  "SelectedNode": "\\FoodDelivery.sln",
+  "SelectedNode": "\\MoneyTracker.sln",
   "PreviewInSolutionExplorer": false
 }

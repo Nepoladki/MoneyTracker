@@ -8,3 +8,5 @@ MoneyTracker.Domain/bin/
 MoneyTracker.Domain/obj/
 MoneyTracker.Contracts/bin/
 MoneyTracker.Contracts/obj/
+.vs/
+.vscode/
