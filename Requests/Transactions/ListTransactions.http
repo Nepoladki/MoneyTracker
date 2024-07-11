@@ -1,5 +1,0 @@
-@id = 4aa6b5c2-d0f7-4a40-b1c2-96396d7123ab
-
-GET {{baseUrl}}/transactions/{{id}}
-Content-Type: application/json
-Authorization: Bearer {{jwtToken}}

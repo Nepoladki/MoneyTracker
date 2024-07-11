@@ -4,4 +4,4 @@ using MoneyTracker.Domain.Entities;
 
 namespace MoneyTracker.Application.Transactions.Queries.GetAllTransactionsByUserId;
 
-public record ListTransactionsQuery(Guid userId) : IRequest<ErrorOr<ICollection<Transaction>>>;
+public record GetAllTransactionsByUserId(Guid userId) : IRequest<ErrorOr<ICollection<Transaction>>>;

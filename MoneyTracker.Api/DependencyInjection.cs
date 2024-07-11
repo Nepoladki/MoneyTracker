@@ -1,6 +1,7 @@
 using MoneyTracker.Api.Common.Errors;
 using MoneyTracker.Api.Common.Mapping;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.OpenApi.Models;
 
 namespace MoneyTracker.Api;
 
@@ -9,12 +10,12 @@ public static class DependencyInjection
     public static IServiceCollection AddPresentation(
         this IServiceCollection services)
     {
-        services.AddMappings();
+            services.AddMappings();
 
-        services.AddControllers();
+            services.AddControllers();
 
-        services.AddSingleton<ProblemDetailsFactory, MoneyTrackerProblemDetailsFactory>();
+            services.AddSingleton<ProblemDetailsFactory, MoneyTrackerProblemDetailsFactory>();
 
-        return services;
+            return services;
     }
 }

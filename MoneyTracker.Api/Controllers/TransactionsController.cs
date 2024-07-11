@@ -11,6 +11,7 @@ using MoneyTracker.Application.Transactions.Commands.AddTransaction;
 using MoneyTracker.Application.Transactions.Commands.DeleteTransaction;
 using MoneyTracker.Application.Transactions.Common;
 using MoneyTracker.Application.Transactions.Queries;
+using MoneyTracker.Application.Transactions.Queries.GetAllTransactions;
 using MoneyTracker.Application.Transactions.Queries.GetAllTransactionsByUserId;
 using MoneyTracker.Contracts.Transactions;
 using MoneyTracker.Domain.Entities;
@@ -39,13 +40,13 @@ public class TransactionsController : ApiController
     }
 
     [HttpGet]
-    public async Task<IActionResult> ListTransactions(ListTransactionsRequest request)
+    public async Task<IActionResult> GetAllTransactions()
     {
-        var query = _mapper.Map<ListTransactionsQuery>(request);
+        var query = new GetAllTransactions();
         
         var transactions = await _mediator.Send(query);
 
-        return transactions.Match(t => Ok(t.Adapt<List<TransactionDto>>()), Problem);
+        return Ok(transactions.Adapt<List<TransactionDto>>());
 
     }
 

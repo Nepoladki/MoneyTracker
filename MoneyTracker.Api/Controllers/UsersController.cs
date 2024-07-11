@@ -30,7 +30,7 @@ public class UsersController : ApiController
 
         return usersResult.Match(u => Ok(u.Adapt<IList<UserDto>>()), Problem);
     }
-    [HttpDelete("{id: Guid}")]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteUser(Guid id)
     {
         var command = new DeleteUserCommand(id);
@@ -39,7 +39,7 @@ public class UsersController : ApiController
 
         return deleteResult.Match(guid => Ok(guid), Problem);
     }
-    [HttpGet("{id: Guid}")]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetUser(Guid id)
     {
         var query = new GetUserQuery(id);

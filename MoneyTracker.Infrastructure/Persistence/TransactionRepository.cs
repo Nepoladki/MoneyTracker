@@ -26,12 +26,17 @@ public class TransactionRepository : ITransactionRepository
 
     public ICollection<Transaction> GetAllTransactionsByUserId(Guid id)
     {
-        return _context.Transactions.OrderBy(x => x.DateTime).ToList();
+        return _context.Transactions.Where(t => t.UserId == id).OrderBy(x => x.DateTime).ToList();
     }
 
     public Transaction? GetTransactionById(Guid id)
     {
         return _context.Transactions.FirstOrDefault(t => t.Id == id);
+    }
+
+    public async Task<ICollection<Transaction>> GetAllTransactionsAsync()
+    {
+        return await _context.Transactions.ToListAsync();
     }
 
     public bool Save() => _context.SaveChanges() > 0;
