@@ -1,4 +1,0 @@
-
-GET {{baseUrl}}/transactions/
-Content-Type: application/json
-Authorization: Bearer {{jwtToken}}

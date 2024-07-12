@@ -1,0 +1,5 @@
+@id = 309b598b-3bbf-4cfc-92f9-d1e9c12f9dbe
+
+DELETE {{baseUrl}}/entries/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}

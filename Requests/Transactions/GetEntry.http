@@ -1,0 +1,5 @@
+@id = 41c75b02-89c9-40c0-8b58-6b8ab058376c
+
+GET {{baseUrl}}/entries/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}

@@ -1,0 +1,10 @@
+POST {{baseUrl}}/entries
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}
+
+{
+    "Amount" : 500,
+    "CategoryId": "a808bfc6-b1e5-4ce0-b328-6162b69fff2c", 
+    "Note" : "justSomeNote",
+    "UserId" : "4aa6b5c2-d0f7-4a40-b1c2-96396d7123ab"
+}

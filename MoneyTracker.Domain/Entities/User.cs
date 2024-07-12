@@ -7,5 +7,5 @@ public class User
     public string UserName { get; set; } = null!;
     public string Email { get; set; } = null!;
     public string PasswordHash { get; set; } = null!;
-    public ICollection<Transaction> Transactions { get; set; } = null!;
+    public ICollection<Entry> Entries { get; set; } = null!;
 }

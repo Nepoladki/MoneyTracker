@@ -45,7 +45,7 @@ namespace MoneyTracker.Infrastructure.Migrations
                     b.ToTable("categories", (string)null);
                 });
 
-            modelBuilder.Entity("MoneyTracker.Domain.Entities.Transaction", b =>
+            modelBuilder.Entity("MoneyTracker.Domain.Entities.Entry", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -79,15 +79,15 @@ namespace MoneyTracker.Infrastructure.Migrations
                         .HasColumnName("user_id");
 
                     b.HasKey("Id")
-                        .HasName("pk_transactions");
+                        .HasName("pk_entries");
 
                     b.HasIndex("CategoryId")
-                        .HasDatabaseName("ix_transactions_category_id");
+                        .HasDatabaseName("ix_entries_category_id");
 
                     b.HasIndex("UserId")
-                        .HasDatabaseName("ix_transactions_user_id");
+                        .HasDatabaseName("ix_entries_user_id");
 
-                    b.ToTable("transactions", (string)null);
+                    b.ToTable("entries", (string)null);
                 });
 
             modelBuilder.Entity("MoneyTracker.Domain.Entities.User", b =>
@@ -122,21 +122,21 @@ namespace MoneyTracker.Infrastructure.Migrations
                     b.ToTable("users", (string)null);
                 });
 
-            modelBuilder.Entity("MoneyTracker.Domain.Entities.Transaction", b =>
+            modelBuilder.Entity("MoneyTracker.Domain.Entities.Entry", b =>
                 {
                     b.HasOne("MoneyTracker.Domain.Entities.Category", "Category")
-                        .WithMany("Transaction")
+                        .WithMany("Entry")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_transactions_categories_category_id");
+                        .HasConstraintName("fk_entries_categories_category_id");
 
                     b.HasOne("MoneyTracker.Domain.Entities.User", "User")
-                        .WithMany("Transactions")
+                        .WithMany("Entries")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_transactions_users_user_id");
+                        .HasConstraintName("fk_entries_users_user_id");
 
                     b.Navigation("Category");
 
@@ -145,12 +145,12 @@ namespace MoneyTracker.Infrastructure.Migrations
 
             modelBuilder.Entity("MoneyTracker.Domain.Entities.Category", b =>
                 {
-                    b.Navigation("Transaction");
+                    b.Navigation("Entry");
                 });
 
             modelBuilder.Entity("MoneyTracker.Domain.Entities.User", b =>
                 {
-                    b.Navigation("Transactions");
+                    b.Navigation("Entries");
                 });
 #pragma warning restore 612, 618
         }

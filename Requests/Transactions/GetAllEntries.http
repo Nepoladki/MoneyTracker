@@ -1,0 +1,4 @@
+
+GET {{baseUrl}}/entries/
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}

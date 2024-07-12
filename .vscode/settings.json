@@ -4,7 +4,7 @@
     "rest-client.environmentVariables": {
         "local": {
             "baseUrl": "http://localhost:5181",
-            "jwtToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0YWE2YjVjMi1kMGY3LTRhNDAtYjFjMi05NjM5NmQ3MTIzYWIiLCJuYW1lIjoiSm9obiIsImp0aSI6IjM3NDE1YjcwLWVkMmMtNDM3OS1iM2Y0LTQyMGQ5OTEyOTQ1ZiIsImV4cCI6MTcyMDY5ODM4NywiaXNzIjoiTW9uZXlUcmFja2VyIiwiYXVkIjoiTW9uZXlUcmFja2VyIn0.C9W7MTZULSJ1Ep9uYRzw7y4pfHHXemQhNoGryx2XMlE"
+            "jwtToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0YWE2YjVjMi1kMGY3LTRhNDAtYjFjMi05NjM5NmQ3MTIzYWIiLCJuYW1lIjoiSm9obiIsImp0aSI6ImJhMGVjMWY1LTQ2OWEtNDg0Yy04YjgwLWFiNWY5NjMxNGQ3YSIsImV4cCI6MTcyMDc5MjQ1NiwiaXNzIjoiTW9uZXlUcmFja2VyIiwiYXVkIjoiTW9uZXlUcmFja2VyIn0.fMmMNzSu_GuPL4RT7fbxYgvzeSa69Z1ce0_EYRH4xEU"
         }
         }
 }
