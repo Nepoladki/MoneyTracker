@@ -16,8 +16,8 @@ public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, ErrorOr
 
     public async Task<ErrorOr<ICollection<User>>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
     {
-        await Task.CompletedTask;
+        var users = await _userRepository.GetAllUsersAsync();
 
-        return _userRepository.GetAllUsers().ToList();
+        return users.ToList();
     }
 }

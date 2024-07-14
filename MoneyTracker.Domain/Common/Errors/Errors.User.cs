@@ -14,12 +14,16 @@ public static partial class Errors
             code: "User.DuplicateUserName",
             description: "UserName is already in use");
 
-        public static Error DifferentPasswords => Error.Validation(
+        public static Error DifferentPasswords => Error.Validation(//ÍÅ ÈÑÏÎËÜÇÓÅÒÑß
             code: "User.DifferentPasswords",
             description: "Password and PasswordCopy are different");
 
         public static Error UserNotFound => Error.NotFound(
             code: "User.NotFound",
             description: "User was not found");
+
+        public static Error UpdatingError => Error.Unexpected(
+            code: "User.SavingUpdatedUserError",
+            description: "Error occured while saving updated user in repository");
     }
 }

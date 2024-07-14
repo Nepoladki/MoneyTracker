@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
     "",
+    "\\MoneyTracker.Api",
+    "\\MoneyTracker.Api\\Controllers",
     "\\MoneyTracker.Application",
     "\\MoneyTracker.Application\\Users",
     "\\MoneyTracker.Application\\Users\\Commands"

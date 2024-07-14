@@ -17,9 +17,7 @@ public class GetUserQueryHandler : IRequestHandler<GetUserQuery, ErrorOr<User>>
 
     public async Task<ErrorOr<User>> Handle(GetUserQuery request, CancellationToken cancellationToken)
     {
-        await Task.CompletedTask;
-
-        if (_userRepository.GetUserById(request.Id) is not User user)
+        if (await _userRepository.GetUserByIdAsync(request.Id) is not User user)
             return Errors.User.UserNotFound;
 
         return user;

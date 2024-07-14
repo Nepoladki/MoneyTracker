@@ -1,7 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using MoneyTracker.Application.Common.Interfaces.Persistence;
 using MoneyTracker.Domain.Entities;
-
-
 
 namespace MoneyTracker.Infrastructure.Persistence;
 
@@ -14,37 +13,37 @@ public class UserRepository : IUserRepository
         _context = dbContext;
     }
     
-    public bool UserExistsById(Guid userId)
+    public async Task<bool> UserExistsByIdAsync(Guid userId)
     {
-        return _context.Users.Any(u => u.Id == userId);
+        return await _context.Users.AnyAsync(u => u.Id == userId);
     }
 
-    public User? GetUserById(Guid id)
+    public async Task<User?> GetUserByIdAsync(Guid id)
     {
-        return _context.Users.FirstOrDefault(u => u.Id == id);
+        return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
     }
 
-    public bool Add(User user)
+    public async Task<bool> AddAsync(User user)
     {
-        _context.Users.Add(user);
-        return Save();
+        await _context.Users.AddAsync(user);
+        return await SaveAsync();
     }
 
-    public User? GetUserByEmail(string email)
+    public async Task<User?> GetUserByEmailAsync(string email)
     {
-        return _context.Users.FirstOrDefault(u => u.Email == email);
+        return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
     }
 
-    public ICollection<User> GetAllUsers()
+    public async Task<ICollection<User>> GetAllUsersAsync()
     {
-        return [.. _context.Users];
+        return await _context.Users.ToListAsync();
     }
 
-    public bool Save() => _context.SaveChanges() > 0;
+    public async Task<bool> SaveAsync() => await _context.SaveChangesAsync() > 0;
 
-    public bool Delete(User user)
+    public async Task<bool> DeleteAsync(User user)
     {
         _context.Users.Remove(user);
-        return Save();
+        return await SaveAsync();
     }
 }

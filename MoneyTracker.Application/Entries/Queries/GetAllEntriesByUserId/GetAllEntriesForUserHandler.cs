@@ -22,12 +22,12 @@ IRequestHandler<GetAllEntriesForUser, ErrorOr<ICollection<Entry>>>
 
     public async Task<ErrorOr<ICollection<Entry>>> Handle(GetAllEntriesForUser query, CancellationToken cancellationToken)
     {
-        await Task.CompletedTask;
-
         //Validate if such user exists
-        if (!_userRepository.UserExistsById(query.UserId))
+        if (!await _userRepository.UserExistsByIdAsync(query.UserId))
             return Errors.User.UserNotFound;
 
-        return _entryRepository.GetAllEntriesByUserId(query.UserId).ToList();
+        var entries = await _entryRepository.GetAllEntriesByUserIdAsync(query.UserId);
+
+        return entries.ToList(); //еякх сапюрэ ToList, кнлюеряъ, ме лнцс онмърэ онвелс
     }
 }

@@ -30,12 +30,12 @@ public class RegisterCommandHandler :
     {
         await Task.CompletedTask;
 
-        //Validate that password equals password copy
-        if (command.Password != command.PasswordCopy)
-            return Errors.User.DifferentPasswords;
+        //Validate that password equals password copy  оепем╗я б VALIDATOR
+        //if (command.Password != command.PasswordCopy)
+        //    return Errors.User.DifferentPasswords;
         
         //Validate the user doen't exists
-        if (_userRepository.GetUserByEmail(command.Email) is not null)
+        if (await _userRepository.GetUserByEmailAsync(command.Email) is not null)
             return Errors.User.DuplicateEmail;
 
         //Hash user's password
@@ -53,7 +53,7 @@ public class RegisterCommandHandler :
         };
 
         //Saving user in database
-        var saveResult = _userRepository.Add(user);
+        var saveResult = await _userRepository.AddAsync(user);
 
         if (saveResult == false)
             return Errors.Authentication.SavingError;

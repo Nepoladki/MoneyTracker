@@ -8,30 +8,30 @@ public class EntryRepository : IEntryRepository
 {
     private readonly DataContext _context;
 
-    public EntryRepository(DataContext entryContext)
+    public EntryRepository(DataContext context)
     {
-        _context = entryContext;
+        _context = context;
     }
 
-    public bool Add(Entry entry)
+    public async Task<bool> AddAsync(Entry entry)
     {
-        _context.Entries.Add(entry);
-        return Save();
+        await _context.Entries.AddAsync(entry);
+        return await SaveAsync();
     }
 
-    public bool EntryExists(Guid id)
+    public async Task<bool> EntryExistsAsync(Guid id)
     {
-        return _context.Entries.Any(t => t.Id == id);
+        return await _context.Entries.AnyAsync(t => t.Id == id);
     }
 
-    public ICollection<Entry> GetAllEntriesByUserId(Guid id)
+    public async Task<ICollection<Entry>> GetAllEntriesByUserIdAsync(Guid id)
     {
-        return _context.Entries.Where(e => e.UserId == id).OrderBy(x => x.DateTime).ToList();
+        return await _context.Entries.Where(e => e.UserId == id).OrderBy(x => x.DateTime).ToListAsync();
     }
 
-    public Entry? GetEntryById(Guid id)
+    public async Task<Entry?> GetEntryByIdAsync(Guid id)
     {
-        return _context.Entries.FirstOrDefault(t => t.Id == id);
+        return await _context.Entries.FirstOrDefaultAsync(t => t.Id == id);
     }
 
     public async Task<ICollection<Entry>> GetAllEntriesAsync()
@@ -39,11 +39,11 @@ public class EntryRepository : IEntryRepository
         return await _context.Entries.ToListAsync();
     }
 
-    public bool Save() => _context.SaveChanges() > 0;
+    public async Task<bool> SaveAsync() => await _context.SaveChangesAsync() > 0;
 
-    public bool Delete(Entry entry)
+    public async Task<bool> DeleteAsync(Entry entry)
     {
         _context.Entries.Remove(entry);
-        return Save();
+        return await SaveAsync();
     }
 }

@@ -19,17 +19,13 @@ public class DeleteEntryCommandHandler :
 
     public async Task<ErrorOr<Guid>> Handle(DeleteEntryCommand request, CancellationToken cancellationToken)
     {
-        await Task.CompletedTask;
-
         //Validate if transaction exists
-        if (_entryRepository.GetEntryById(request.id) is not Entry entry)
+        if (await _entryRepository.GetEntryByIdAsync(request.id) is not Entry entry)
             return Errors.Entries.EntryNotFound;
 
-        if (!_entryRepository.Delete(entry))
+        if (!await _entryRepository.DeleteAsync(entry))
             return Errors.Entries.RepositoryError;
 
         return request.id;
-
-
     }
 }

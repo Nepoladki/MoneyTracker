@@ -74,6 +74,8 @@ public class EntriesController : ApiController
         var command = _mapper.Map<UpdateEntryCommand>(request);
 
         var updateResult = await _mediator.Send(command);
+
+        return updateResult.Match(guid => Ok(guid), Problem);
     }
 
     [HttpDelete("{id}")]

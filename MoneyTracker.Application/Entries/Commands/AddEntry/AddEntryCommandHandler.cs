@@ -11,17 +11,15 @@ namespace MoneyTracker.Application.Entries;
 public class AddEntryCommandHandler
  : IRequestHandler<AddEntryCommand, ErrorOr<Guid>>
 {
-    private readonly IEntryRepository _transactionRepository;
+    private readonly IEntryRepository _entryRepository;
 
-    public AddEntryCommandHandler(IEntryRepository transactionRepository)
+    public AddEntryCommandHandler(IEntryRepository entryRepository)
     {
-        _transactionRepository = transactionRepository;
+        _entryRepository = entryRepository;
     }
 
     public async Task<ErrorOr<Guid>> Handle(AddEntryCommand request, CancellationToken cancellationToken)
     {
-        await Task.CompletedTask;
-
         if (request.Amount <= 0)
             return Errors.Entries.InvalidAmount;
         
@@ -31,17 +29,16 @@ public class AddEntryCommandHandler
         if (request.UserId == Guid.Empty)
             return Errors.Entries.InvalidUserId;
 
-        var transaction = new Entry(
+        var entry = new Entry(
             request.Amount,
             request.CategoryId,
             request.UserId,
             request.Note,
-            request.DateTime
-        );
+            request.DateTime);
         
-        if (_transactionRepository.Add(transaction) == false)
+        if (await _entryRepository.AddAsync(entry) == false)
             return Errors.Entries.RepositoryError;
 
-        return transaction.Id;
+        return entry.Id;
     }
 }

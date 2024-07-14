@@ -4,7 +4,8 @@ using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MoneyTracker.Application.Users.Commands;
+using MoneyTracker.Application.Users.Commands.DeleteUser;
+using MoneyTracker.Application.Users.Commands.UpdateUser;
 using MoneyTracker.Application.Users.Common;
 using MoneyTracker.Application.Users.Queries.GetUser;
 
@@ -21,6 +22,7 @@ public class UsersController : ApiController
         _mediatr = mediatr;
         _mapper = mapper;
     }
+
     [HttpGet]
     public async Task<IActionResult> GetAllUsers()
     {
@@ -30,15 +32,7 @@ public class UsersController : ApiController
 
         return usersResult.Match(u => Ok(u.Adapt<IList<UserDto>>()), Problem);
     }
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteUser(Guid id)
-    {
-        var command = new DeleteUserCommand(id);
 
-        var deleteResult = await _mediatr.Send(command);
-
-        return deleteResult.Match(guid => Ok(guid), Problem);
-    }
     [HttpGet("{id}")]
     public async Task<IActionResult> GetUser(Guid id)
     {
@@ -48,5 +42,27 @@ public class UsersController : ApiController
 
         return getUserResult.Match(u => Ok(u.Adapt<UserDto>()), Problem);
     }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateUser(Guid id, UserDto user)
+    {
+        var command = _mapper.Map<UpdateUserCommand>(user);
+        command.Id = id;
+
+        var updateResult = await _mediatr.Send(command);
+
+        return updateResult.Match(guid => Ok(guid), Problem);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteUser(Guid id)
+    {
+        var command = new DeleteUserCommand(id);
+
+        var deleteResult = await _mediatr.Send(command);
+
+        return deleteResult.Match(guid => Ok(guid), Problem);
+    }
+    
 
 }

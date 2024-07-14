@@ -17,9 +17,7 @@ public class GetEntryQueryHandler : IRequestHandler<GetEntryQuery, ErrorOr<Entry
 
     public async Task<ErrorOr<Entry>> Handle(GetEntryQuery request, CancellationToken cancellationToken)
     {
-        await Task.CompletedTask;
-        
-        if (_repository.GetEntryById(request.id) is not Entry entry)
+        if (await _repository.GetEntryByIdAsync(request.id) is not Entry entry)
             return Errors.Entries.EntryNotFound;
 
         return entry;
