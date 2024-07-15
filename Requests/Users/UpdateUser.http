@@ -1,0 +1,13 @@
+@userId = 8a13700b-2267-43f3-8d90-176a89a80ae5
+PUT {{baseUrl}}/users/{{userId}}
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}
+
+{
+    "Id" : "8a13700b-2267-43f3-8d90-176a89a80ae5",
+    "IsActive": true,
+    "UserName": "UpdatedBenUserName",
+    "FirstName": "Ben",
+    "LastName": "Sand",
+    "Email": "generic2@email.ru"
+}

@@ -1,0 +1,4 @@
+@userId = 4aa6b5c2-d0f7-4a40-b1c2-96396d7123ab
+DELETE {{baseUrl}}/users/{{userId}}
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}

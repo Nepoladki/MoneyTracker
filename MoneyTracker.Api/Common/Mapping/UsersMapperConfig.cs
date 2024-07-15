@@ -7,7 +7,7 @@ public class UsersMapperConfig : IRegister
 {
     public void Register(TypeAdapterConfig config)
     {
-        config.NewConfig<UpdateUser, UpdateUserCommand>();
+        config.NewConfig<UpdateUserRequest, UpdateUserCommand>();
     }
 }
 

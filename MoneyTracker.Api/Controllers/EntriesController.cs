@@ -63,12 +63,10 @@ public class EntriesController : ApiController
 
         ErrorOr<Guid> addingResult = await _mediator.Send(command);
 
-        return addingResult.Match(
-            guid => Ok(guid),
-            Problem);
+        return addingResult.Match(guid => Ok(guid), Problem);
     }
 
-    [HttpPut]
+    [HttpPut("{id}")]
     public async Task<IActionResult> UpdateEntry(UpdateEntryRequest request)
     {
         var command = _mapper.Map<UpdateEntryCommand>(request);

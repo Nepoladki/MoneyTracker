@@ -21,5 +21,9 @@ public static partial class Errors
         public static Error SavingError => Error.Unexpected(
             code: "Auth.DatabaseSavingError",
             description: "Error occured while saving new user in database");
+
+        public static Error InactiveUser => Error.Forbidden(
+            code: "Auth.InactiveUser",
+            description: "Cannot log in, user's account deactivated");
     }
 }

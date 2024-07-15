@@ -4,10 +4,12 @@ using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MoneyTracker.Application.Users.Commands.ChangePassword;
 using MoneyTracker.Application.Users.Commands.DeleteUser;
 using MoneyTracker.Application.Users.Commands.UpdateUser;
 using MoneyTracker.Application.Users.Common;
 using MoneyTracker.Application.Users.Queries.GetUser;
+using MoneyTracker.Contracts.Users;
 
 namespace MoneyTracker.Api.Controllers;
 [Route("/users")]
@@ -44,15 +46,25 @@ public class UsersController : ApiController
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateUser(Guid id, UserDto user)
+    public async Task<IActionResult> UpdateUser(UpdateUserRequest request)
     {
-        var command = _mapper.Map<UpdateUserCommand>(user);
-        command.Id = id;
+        var command = _mapper.Map<UpdateUserCommand>(request);
 
         var updateResult = await _mediatr.Send(command);
 
         return updateResult.Match(guid => Ok(guid), Problem);
     }
+
+    [HttpPut("{id}/change_password")]
+    public async Task<IActionResult> ChangePassword(ChangePasswordRequest request)
+    {
+        var command = _mapper.Map<ChangePasswordCommand>(request);
+
+        var changePasswordResult = await _mediatr.Send(command);
+
+        return changePasswordResult.Match(guid => Ok(guid), Problem);
+    }
+
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteUser(Guid id)

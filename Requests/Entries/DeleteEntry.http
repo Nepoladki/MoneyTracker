@@ -1,4 +1,4 @@
-@id = 309b598b-3bbf-4cfc-92f9-d1e9c12f9dbe
+@id = b7cfeb36-a8a5-4e61-a70e-e07226caf41e
 
 DELETE {{baseUrl}}/entries/{{id}}
 Content-Type: application/json

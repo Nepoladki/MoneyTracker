@@ -1,0 +1,4 @@
+@userId = 8a13700b-2267-43f3-8d90-176a89a80ae5
+GET {{baseUrl}}/users/{{userId}}
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}

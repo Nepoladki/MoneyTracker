@@ -28,6 +28,10 @@ public class LoginQueryHandler :
         if (await _userRepository.GetUserByEmailAsync(query.Email) is not User user)
             return Errors.Authentication.InvalidCredentials;
 
+        //Validate the user is active
+        if (user.IsActive == false)
+            return Errors.Authentication.InactiveUser;
+
         //Validate the password is correct
         var validationResult = _passwordHasher.VerifyPassword(query.Password, user.PasswordHash);
 

@@ -2,8 +2,10 @@ POST {{baseUrl}}/auth/register
 Content-Type: application/json
 
 {
-    "userName": "John",
-    "email": "generic@email.ru",
+    "userName": "MarkUserName",
+    "FirstName": "Mark",
+    "LastName": "Snow",
+    "email": "generic3@email.ru",
     "password": "pass123",
     "passwordCopy": "pass123"
 }

@@ -27,13 +27,7 @@ public class RegisterCommandHandler :
     }
 
     public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
-    {
-        await Task.CompletedTask;
-
-        //Validate that password equals password copy  оепем╗я б VALIDATOR
-        //if (command.Password != command.PasswordCopy)
-        //    return Errors.User.DifferentPasswords;
-        
+    {        
         //Validate the user doen't exists
         if (await _userRepository.GetUserByEmailAsync(command.Email) is not null)
             return Errors.User.DuplicateEmail;
@@ -48,6 +42,8 @@ public class RegisterCommandHandler :
         var user = new User 
         {
             UserName = command.UserName,
+            FirstName = command.FirstName,
+            LastName = command.LastName,
             Email = command.Email,
             PasswordHash = hashResult.Value
         };

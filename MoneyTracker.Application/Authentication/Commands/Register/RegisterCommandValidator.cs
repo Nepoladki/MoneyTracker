@@ -8,7 +8,6 @@ public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
     {
         RuleFor(x => x.Email).EmailAddress();
         RuleFor(x => x.UserName).MinimumLength(6).MaximumLength(35).Matches(@"^\S+$");
-        RuleFor(x => x.Password).NotEmpty().MinimumLength(6).MaximumLength(35);
-        RuleFor(x => x.Password).Equal(x => x.PasswordCopy);
+        RuleFor(x => x.Password).NotEmpty().MinimumLength(6).MaximumLength(35).Equal(x => x.PasswordCopy);
     }
 }

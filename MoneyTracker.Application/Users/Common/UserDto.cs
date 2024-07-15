@@ -4,5 +4,6 @@ public record UserDto(
     Guid Id,
     bool IsActive,
     string UserName,
-    string Email
-);
+    string FirstName,
+    string LastName,
+    string Email);
