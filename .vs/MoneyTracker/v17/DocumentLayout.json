@@ -1,58 +1,62 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\user\\source\\repos\\MoneyTracker\\",
+  "WorkspaceRootPath": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|c:\\users\\user\\source\\repos\\moneytracker\\moneytracker.application\\authentication\\queries\\login\\loginqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|solutionrelative:moneytracker.application\\authentication\\queries\\login\\loginqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3E0F1F06-56E1-4D7E-9CCA-FDAFE5766570}|MoneyTracker.Api\\MoneyTracker.Api.csproj|d:\\it\\git repos\\moneytracker\\moneytracker\\moneytracker.api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E0F1F06-56E1-4D7E-9CCA-FDAFE5766570}|MoneyTracker.Api\\MoneyTracker.Api.csproj|solutionrelative:moneytracker.api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|c:\\users\\user\\source\\repos\\moneytracker\\moneytracker.application\\entries\\commands\\updateentry\\updateentrycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|solutionrelative:moneytracker.application\\entries\\commands\\updateentry\\updateentrycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|d:\\it\\git repos\\moneytracker\\moneytracker\\moneytracker.application\\categories\\queries\\getcategory\\getcategoryqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|solutionrelative:moneytracker.application\\categories\\queries\\getcategory\\getcategoryqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C88E8F96-F6FC-4A8D-8993-1E2DB9A75130}|MoneyTracker.Domain\\MoneyTracker.Domain.csproj|c:\\users\\user\\source\\repos\\moneytracker\\moneytracker.domain\\common\\errors\\errors.user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C88E8F96-F6FC-4A8D-8993-1E2DB9A75130}|MoneyTracker.Domain\\MoneyTracker.Domain.csproj|solutionrelative:moneytracker.domain\\common\\errors\\errors.user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|d:\\it\\git repos\\moneytracker\\moneytracker\\moneytracker.application\\categories\\queries\\getallcategories\\getallcategoriesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|solutionrelative:moneytracker.application\\categories\\queries\\getallcategories\\getallcategoriesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|c:\\users\\user\\source\\repos\\moneytracker\\moneytracker.application\\authentication\\commands\\register\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|solutionrelative:moneytracker.application\\authentication\\commands\\register\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C88E8F96-F6FC-4A8D-8993-1E2DB9A75130}|MoneyTracker.Domain\\MoneyTracker.Domain.csproj|d:\\it\\git repos\\moneytracker\\moneytracker\\moneytracker.domain\\common\\errors\\errors.category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C88E8F96-F6FC-4A8D-8993-1E2DB9A75130}|MoneyTracker.Domain\\MoneyTracker.Domain.csproj|solutionrelative:moneytracker.domain\\common\\errors\\errors.category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E0F1F06-56E1-4D7E-9CCA-FDAFE5766570}|MoneyTracker.Api\\MoneyTracker.Api.csproj|c:\\users\\user\\source\\repos\\moneytracker\\moneytracker.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E0F1F06-56E1-4D7E-9CCA-FDAFE5766570}|MoneyTracker.Api\\MoneyTracker.Api.csproj|solutionrelative:moneytracker.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|d:\\it\\git repos\\moneytracker\\moneytracker\\moneytracker.application\\categories\\queries\\getcategory\\getcategoryquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|solutionrelative:moneytracker.application\\categories\\queries\\getcategory\\getcategoryquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E4C2226-E356-4F66-9803-F6D32CAC0314}|MoneyTracker.Contracts\\MoneyTracker.Contracts.csproj|c:\\users\\user\\source\\repos\\moneytracker\\moneytracker.contracts\\users\\updateuserrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E4C2226-E356-4F66-9803-F6D32CAC0314}|MoneyTracker.Contracts\\MoneyTracker.Contracts.csproj|solutionrelative:moneytracker.contracts\\users\\updateuserrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C88E8F96-F6FC-4A8D-8993-1E2DB9A75130}|MoneyTracker.Domain\\MoneyTracker.Domain.csproj|c:\\users\\user\\source\\repos\\moneytracker\\moneytracker.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C88E8F96-F6FC-4A8D-8993-1E2DB9A75130}|MoneyTracker.Domain\\MoneyTracker.Domain.csproj|solutionrelative:moneytracker.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E4C2226-E356-4F66-9803-F6D32CAC0314}|MoneyTracker.Contracts\\MoneyTracker.Contracts.csproj|c:\\users\\user\\source\\repos\\moneytracker\\moneytracker.contracts\\authentication\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E4C2226-E356-4F66-9803-F6D32CAC0314}|MoneyTracker.Contracts\\MoneyTracker.Contracts.csproj|solutionrelative:moneytracker.contracts\\authentication\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E0F1F06-56E1-4D7E-9CCA-FDAFE5766570}|MoneyTracker.Api\\MoneyTracker.Api.csproj|c:\\users\\user\\source\\repos\\moneytracker\\moneytracker.api\\controllers\\entriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E0F1F06-56E1-4D7E-9CCA-FDAFE5766570}|MoneyTracker.Api\\MoneyTracker.Api.csproj|d:\\it\\git repos\\moneytracker\\moneytracker\\moneytracker.api\\controllers\\entriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E0F1F06-56E1-4D7E-9CCA-FDAFE5766570}|MoneyTracker.Api\\MoneyTracker.Api.csproj|solutionrelative:moneytracker.api\\controllers\\entriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E4C2226-E356-4F66-9803-F6D32CAC0314}|MoneyTracker.Contracts\\MoneyTracker.Contracts.csproj|c:\\users\\user\\source\\repos\\moneytracker\\moneytracker.contracts\\entries\\updateentryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E4C2226-E356-4F66-9803-F6D32CAC0314}|MoneyTracker.Contracts\\MoneyTracker.Contracts.csproj|solutionrelative:moneytracker.contracts\\entries\\updateentryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|d:\\it\\git repos\\moneytracker\\moneytracker\\moneytracker.application\\entries\\queries\\getallentriesforuser\\getallentriesforuserqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|solutionrelative:moneytracker.application\\entries\\queries\\getallentriesforuser\\getallentriesforuserqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|c:\\users\\user\\source\\repos\\moneytracker\\moneytracker.application\\authentication\\commands\\register\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|solutionrelative:moneytracker.application\\authentication\\commands\\register\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|d:\\it\\git repos\\moneytracker\\moneytracker\\moneytracker.application\\entries\\queries\\getallentriesforuser\\getallentriesforuserquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|solutionrelative:moneytracker.application\\entries\\queries\\getallentriesforuser\\getallentriesforuserquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|c:\\users\\user\\source\\repos\\moneytracker\\moneytracker.application\\users\\commands\\changepassword\\changepasswordcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|solutionrelative:moneytracker.application\\users\\commands\\changepassword\\changepasswordcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|d:\\it\\git repos\\moneytracker\\moneytracker\\moneytracker.application\\categories\\queries\\getallcategories\\getallcategoriesquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|solutionrelative:moneytracker.application\\categories\\queries\\getallcategories\\getallcategoriesquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|c:\\users\\user\\source\\repos\\moneytracker\\moneytracker.application\\users\\commands\\changepassword\\changepasswordvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|solutionrelative:moneytracker.application\\users\\commands\\changepassword\\changepasswordvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|d:\\it\\git repos\\moneytracker\\moneytracker\\moneytracker.application\\entries\\queries\\getallentries\\getallentriesquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|solutionrelative:moneytracker.application\\entries\\queries\\getallentries\\getallentriesquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|d:\\it\\git repos\\moneytracker\\moneytracker\\moneytracker.application\\common\\mapping\\categoriesmappingconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|solutionrelative:moneytracker.application\\common\\mapping\\categoriesmappingconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|d:\\it\\git repos\\moneytracker\\moneytracker\\moneytracker.application\\common\\interfaces\\persistence\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|solutionrelative:moneytracker.application\\common\\interfaces\\persistence\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A178DE1-9462-4B9E-B972-01CF750AD36B}|MoneyTracker.Infrastructure\\MoneyTracker.Infrastructure.csproj|d:\\it\\git repos\\moneytracker\\moneytracker\\moneytracker.infrastructure\\persistence\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A178DE1-9462-4B9E-B972-01CF750AD36B}|MoneyTracker.Infrastructure\\MoneyTracker.Infrastructure.csproj|solutionrelative:moneytracker.infrastructure\\persistence\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|d:\\it\\git repos\\moneytracker\\moneytracker\\moneytracker.application\\categories\\common\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0D294F0-86F6-4938-893E-F8B223328725}|MoneyTracker.Application\\MoneyTracker.Application.csproj|solutionrelative:moneytracker.application\\categories\\common\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -61,34 +65,208 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 390,
-          "SelectedChildIndex": -1,
+          "DockedWidth": 1422,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Errors.Category.cs",
+              "DocumentMoniker": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Domain\\Common\\Errors\\Errors.Category.cs",
+              "RelativeDocumentMoniker": "MoneyTracker.Domain\\Common\\Errors\\Errors.Category.cs",
+              "ToolTip": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Domain\\Common\\Errors\\Errors.Category.cs",
+              "RelativeToolTip": "MoneyTracker.Domain\\Common\\Errors\\Errors.Category.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T19:52:55.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GetCategoryQueryHandler.cs",
+              "DocumentMoniker": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Categories\\Queries\\GetCategory\\GetCategoryQueryHandler.cs",
+              "RelativeDocumentMoniker": "MoneyTracker.Application\\Categories\\Queries\\GetCategory\\GetCategoryQueryHandler.cs",
+              "ToolTip": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Categories\\Queries\\GetCategory\\GetCategoryQueryHandler.cs",
+              "RelativeToolTip": "MoneyTracker.Application\\Categories\\Queries\\GetCategory\\GetCategoryQueryHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T19:42:02.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GetCategoryQuery.cs",
+              "DocumentMoniker": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Categories\\Queries\\GetCategory\\GetCategoryQuery.cs",
+              "RelativeDocumentMoniker": "MoneyTracker.Application\\Categories\\Queries\\GetCategory\\GetCategoryQuery.cs",
+              "ToolTip": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Categories\\Queries\\GetCategory\\GetCategoryQuery.cs",
+              "RelativeToolTip": "MoneyTracker.Application\\Categories\\Queries\\GetCategory\\GetCategoryQuery.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T19:40:48.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EntriesController.cs",
+              "DocumentMoniker": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Api\\Controllers\\EntriesController.cs",
+              "RelativeDocumentMoniker": "MoneyTracker.Api\\Controllers\\EntriesController.cs",
+              "ToolTip": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Api\\Controllers\\EntriesController.cs",
+              "RelativeToolTip": "MoneyTracker.Api\\Controllers\\EntriesController.cs",
+              "ViewState": "AQIAADcAAAAAAAAAAAAkwDQAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T19:15:55.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GetAllCategoriesQueryHandler.cs",
+              "DocumentMoniker": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Categories\\Queries\\GetAllCategories\\GetAllCategoriesQueryHandler.cs",
+              "RelativeDocumentMoniker": "MoneyTracker.Application\\Categories\\Queries\\GetAllCategories\\GetAllCategoriesQueryHandler.cs",
+              "ToolTip": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Categories\\Queries\\GetAllCategories\\GetAllCategoriesQueryHandler.cs",
+              "RelativeToolTip": "MoneyTracker.Application\\Categories\\Queries\\GetAllCategories\\GetAllCategoriesQueryHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T17:49:22.995Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CategoriesController.cs",
+              "DocumentMoniker": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Api\\Controllers\\CategoriesController.cs",
+              "RelativeDocumentMoniker": "MoneyTracker.Api\\Controllers\\CategoriesController.cs",
+              "ToolTip": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Api\\Controllers\\CategoriesController.cs",
+              "RelativeToolTip": "MoneyTracker.Api\\Controllers\\CategoriesController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAxwBgAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T17:41:40.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GetAllEntriesForUserQuery.cs",
+              "DocumentMoniker": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Entries\\Queries\\GetAllEntriesForUser\\GetAllEntriesForUserQuery.cs",
+              "RelativeDocumentMoniker": "MoneyTracker.Application\\Entries\\Queries\\GetAllEntriesForUser\\GetAllEntriesForUserQuery.cs",
+              "ToolTip": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Entries\\Queries\\GetAllEntriesForUser\\GetAllEntriesForUserQuery.cs",
+              "RelativeToolTip": "MoneyTracker.Application\\Entries\\Queries\\GetAllEntriesForUser\\GetAllEntriesForUserQuery.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAABHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T17:37:12.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GetAllCategoriesQuery.cs",
+              "DocumentMoniker": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Categories\\Queries\\GetAllCategories\\GetAllCategoriesQuery.cs",
+              "RelativeDocumentMoniker": "MoneyTracker.Application\\Categories\\Queries\\GetAllCategories\\GetAllCategoriesQuery.cs",
+              "ToolTip": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Categories\\Queries\\GetAllCategories\\GetAllCategoriesQuery.cs",
+              "RelativeToolTip": "MoneyTracker.Application\\Categories\\Queries\\GetAllCategories\\GetAllCategoriesQuery.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T17:46:29.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GetAllEntriesForUserQueryHandler.cs",
+              "DocumentMoniker": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Entries\\Queries\\GetAllEntriesForUser\\GetAllEntriesForUserQueryHandler.cs",
+              "RelativeDocumentMoniker": "MoneyTracker.Application\\Entries\\Queries\\GetAllEntriesForUser\\GetAllEntriesForUserQueryHandler.cs",
+              "ToolTip": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Entries\\Queries\\GetAllEntriesForUser\\GetAllEntriesForUserQueryHandler.cs",
+              "RelativeToolTip": "MoneyTracker.Application\\Entries\\Queries\\GetAllEntriesForUser\\GetAllEntriesForUserQueryHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T17:37:21.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GetAllEntriesQuery.cs",
+              "DocumentMoniker": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Entries\\Queries\\GetAllEntries\\GetAllEntriesQuery.cs",
+              "RelativeDocumentMoniker": "MoneyTracker.Application\\Entries\\Queries\\GetAllEntries\\GetAllEntriesQuery.cs",
+              "ToolTip": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Entries\\Queries\\GetAllEntries\\GetAllEntriesQuery.cs",
+              "RelativeToolTip": "MoneyTracker.Application\\Entries\\Queries\\GetAllEntries\\GetAllEntriesQuery.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T17:37:40.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CategoriesMappingConfig.cs",
+              "DocumentMoniker": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Common\\Mapping\\CategoriesMappingConfig.cs",
+              "RelativeDocumentMoniker": "MoneyTracker.Application\\Common\\Mapping\\CategoriesMappingConfig.cs",
+              "ToolTip": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Common\\Mapping\\CategoriesMappingConfig.cs",
+              "RelativeToolTip": "MoneyTracker.Application\\Common\\Mapping\\CategoriesMappingConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T18:36:09.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ICategoryRepository.cs",
+              "DocumentMoniker": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Common\\Interfaces\\Persistence\\ICategoryRepository.cs",
+              "RelativeDocumentMoniker": "MoneyTracker.Application\\Common\\Interfaces\\Persistence\\ICategoryRepository.cs",
+              "ToolTip": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Common\\Interfaces\\Persistence\\ICategoryRepository.cs",
+              "RelativeToolTip": "MoneyTracker.Application\\Common\\Interfaces\\Persistence\\ICategoryRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T18:34:14.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CategoryRepository.cs",
+              "DocumentMoniker": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Infrastructure\\Persistence\\CategoryRepository.cs",
+              "RelativeDocumentMoniker": "MoneyTracker.Infrastructure\\Persistence\\CategoryRepository.cs",
+              "ToolTip": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Infrastructure\\Persistence\\CategoryRepository.cs",
+              "RelativeToolTip": "MoneyTracker.Infrastructure\\Persistence\\CategoryRepository.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABQAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T18:03:00.294Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CategoryDto.cs",
+              "DocumentMoniker": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Categories\\Common\\CategoryDto.cs",
+              "RelativeDocumentMoniker": "MoneyTracker.Application\\Categories\\Common\\CategoryDto.cs",
+              "ToolTip": "D:\\It\\Git repos\\MoneyTracker\\MoneyTracker\\MoneyTracker.Application\\Categories\\Common\\CategoryDto.cs",
+              "RelativeToolTip": "MoneyTracker.Application\\Categories\\Common\\CategoryDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T17:47:57.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             }
           ]
         },
         {
-          "DockedWidth": 1408,
-          "SelectedChildIndex": 12,
+          "DockedWidth": 510,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -101,163 +279,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UpdateEntryCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Application\\Entries\\Commands\\UpdateEntry\\UpdateEntryCommandHandler.cs",
-              "RelativeDocumentMoniker": "MoneyTracker.Application\\Entries\\Commands\\UpdateEntry\\UpdateEntryCommandHandler.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Application\\Entries\\Commands\\UpdateEntry\\UpdateEntryCommandHandler.cs",
-              "RelativeToolTip": "MoneyTracker.Application\\Entries\\Commands\\UpdateEntry\\UpdateEntryCommandHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAABrAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T09:03:04.982Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UpdateEntryRequest.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Contracts\\Entries\\UpdateEntryRequest.cs",
-              "RelativeDocumentMoniker": "MoneyTracker.Contracts\\Entries\\UpdateEntryRequest.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Contracts\\Entries\\UpdateEntryRequest.cs",
-              "RelativeToolTip": "MoneyTracker.Contracts\\Entries\\UpdateEntryRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T08:43:49.909Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UpdateUserRequest.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Contracts\\Users\\UpdateUserRequest.cs",
-              "RelativeDocumentMoniker": "MoneyTracker.Contracts\\Users\\UpdateUserRequest.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Contracts\\Users\\UpdateUserRequest.cs",
-              "RelativeToolTip": "MoneyTracker.Contracts\\Users\\UpdateUserRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T08:24:20.822Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "RegisterRequest.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Contracts\\Authentication\\RegisterRequest.cs",
-              "RelativeDocumentMoniker": "MoneyTracker.Contracts\\Authentication\\RegisterRequest.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Contracts\\Authentication\\RegisterRequest.cs",
-              "RelativeToolTip": "MoneyTracker.Contracts\\Authentication\\RegisterRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T08:24:04.419Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "RegisterCommand.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Application\\Authentication\\Commands\\Register\\RegisterCommand.cs",
-              "RelativeDocumentMoniker": "MoneyTracker.Application\\Authentication\\Commands\\Register\\RegisterCommand.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Application\\Authentication\\Commands\\Register\\RegisterCommand.cs",
-              "RelativeToolTip": "MoneyTracker.Application\\Authentication\\Commands\\Register\\RegisterCommand.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T08:23:46.85Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Domain\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "MoneyTracker.Domain\\Entities\\User.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Domain\\Entities\\User.cs",
-              "RelativeToolTip": "MoneyTracker.Domain\\Entities\\User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T08:21:16.599Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RegisterCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Application\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
-              "RelativeDocumentMoniker": "MoneyTracker.Application\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Application\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
-              "RelativeToolTip": "MoneyTracker.Application\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAgwCkAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T08:17:11.385Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Errors.User.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Domain\\Common\\Errors\\Errors.User.cs",
-              "RelativeDocumentMoniker": "MoneyTracker.Domain\\Common\\Errors\\Errors.User.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Domain\\Common\\Errors\\Errors.User.cs",
-              "RelativeToolTip": "MoneyTracker.Domain\\Common\\Errors\\Errors.User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T08:15:20.322Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ChangePasswordValidator.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Application\\Users\\Commands\\ChangePassword\\ChangePasswordValidator.cs",
-              "RelativeDocumentMoniker": "MoneyTracker.Application\\Users\\Commands\\ChangePassword\\ChangePasswordValidator.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Application\\Users\\Commands\\ChangePassword\\ChangePasswordValidator.cs",
-              "RelativeToolTip": "MoneyTracker.Application\\Users\\Commands\\ChangePassword\\ChangePasswordValidator.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAABwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T07:53:42.524Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LoginQueryHandler.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Application\\Authentication\\Queries\\Login\\LoginQueryHandler.cs",
-              "RelativeDocumentMoniker": "MoneyTracker.Application\\Authentication\\Queries\\Login\\LoginQueryHandler.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Application\\Authentication\\Queries\\Login\\LoginQueryHandler.cs",
-              "RelativeToolTip": "MoneyTracker.Application\\Authentication\\Queries\\Login\\LoginQueryHandler.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAxwCIAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T07:45:14.581Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ChangePasswordCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Application\\Users\\Commands\\ChangePassword\\ChangePasswordCommandHandler.cs",
-              "RelativeDocumentMoniker": "MoneyTracker.Application\\Users\\Commands\\ChangePassword\\ChangePasswordCommandHandler.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Application\\Users\\Commands\\ChangePassword\\ChangePasswordCommandHandler.cs",
-              "RelativeToolTip": "MoneyTracker.Application\\Users\\Commands\\ChangePassword\\ChangePasswordCommandHandler.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAQwDAAAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T06:56:48.282Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "EntriesController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Api\\Controllers\\EntriesController.cs",
-              "RelativeDocumentMoniker": "MoneyTracker.Api\\Controllers\\EntriesController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Api\\Controllers\\EntriesController.cs",
-              "RelativeToolTip": "MoneyTracker.Api\\Controllers\\EntriesController.cs",
-              "ViewState": "AQIAADUAAAAAAAAAAAAIwEwAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T06:29:53.734Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Api\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "MoneyTracker.Api\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MoneyTracker\\MoneyTracker.Api\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "MoneyTracker.Api\\Controllers\\UsersController.cs",
-              "ViewState": "AQIAACgAAAAAAAAAAAAiwDIAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T06:27:54.925Z"
             }
           ]
         }

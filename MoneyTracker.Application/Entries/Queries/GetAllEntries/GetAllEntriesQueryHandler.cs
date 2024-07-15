@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 
 namespace MoneyTracker.Application.Entries.Queries.GetAllEntries
 {
-    public class GetAllEntriesHandler : IRequestHandler<GetAllEntries, ICollection<Entry>>
+    public class GetAllEntriesQueryHandler : IRequestHandler<GetAllEntriesQuery, ICollection<Entry>>
     {
         private readonly IEntryRepository _entryRepository;
 
-        public GetAllEntriesHandler(IEntryRepository entryRepository)
+        public GetAllEntriesQueryHandler(IEntryRepository entryRepository)
         {
             _entryRepository = entryRepository;
         }
 
-        public async Task<ICollection<Entry>> Handle(GetAllEntries request, CancellationToken cancellationToken)
+        public async Task<ICollection<Entry>> Handle(GetAllEntriesQuery request, CancellationToken cancellationToken)
         {
             return await _entryRepository.GetAllEntriesAsync();
         }

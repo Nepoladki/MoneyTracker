@@ -20,5 +20,9 @@
     <ProjectReference Include="..\MoneyTracker.Domain\MoneyTracker.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Categories\Commands\" />
+  </ItemGroup>
+
 
 </Project>

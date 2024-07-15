@@ -4,15 +4,15 @@ using MoneyTracker.Application.Common.Interfaces.Persistence;
 using MoneyTracker.Domain.Common.Errors;
 using MoneyTracker.Domain.Entities;
 
-namespace MoneyTracker.Application.Entries.Queries.GetAllEntriesByUserId;
+namespace MoneyTracker.Application.Entries.Queries.GetAllEntriesForUser;
 
-public class GetAllEntriesForUserHandler : 
-IRequestHandler<GetAllEntriesForUser, ErrorOr<ICollection<Entry>>>
+public class GetAllEntriesForUserQueryHandler : 
+IRequestHandler<GetAllEntriesForUserQuery, ErrorOr<ICollection<Entry>>>
 {
     private readonly IEntryRepository _entryRepository;
     private readonly IUserRepository _userRepository;
 
-    public GetAllEntriesForUserHandler(
+    public GetAllEntriesForUserQueryHandler(
         IEntryRepository entryRepository,
         IUserRepository userRepository)
     {
@@ -20,7 +20,7 @@ IRequestHandler<GetAllEntriesForUser, ErrorOr<ICollection<Entry>>>
         _userRepository = userRepository;
     }
 
-    public async Task<ErrorOr<ICollection<Entry>>> Handle(GetAllEntriesForUser query, CancellationToken cancellationToken)
+    public async Task<ErrorOr<ICollection<Entry>>> Handle(GetAllEntriesForUserQuery query, CancellationToken cancellationToken)
     {
         //Validate if such user exists
         if (!await _userRepository.UserExistsByIdAsync(query.UserId))

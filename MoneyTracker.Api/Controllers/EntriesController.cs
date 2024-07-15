@@ -11,6 +11,7 @@ using MoneyTracker.Application.Entries.Queries.GetAllEntriesByUserId;
 using MoneyTracker.Application.Entries.Queries.GetAllEntries;
 using MoneyTracker.Contracts.Entries;
 using MoneyTracker.Application.Entries.Commands.UpdateEntry;
+using MoneyTracker.Application.Entries.Queries.GetAllEntriesForUser;
 namespace MoneyTracker.Api.Controllers;
 
 [Route("/entries")]
@@ -39,7 +40,7 @@ public class EntriesController : ApiController
     [HttpGet]
     public async Task<IActionResult> GetAllEntries()
     {
-        var query = new GetAllEntries();
+        var query = new GetAllEntriesQuery();
 
         var entries = await _mediator.Send(query);
 
@@ -49,7 +50,7 @@ public class EntriesController : ApiController
     [HttpGet("user/{userId}")]
     public async Task<IActionResult> GetAllEntriesForUser(Guid userId)
     {
-        var query = new GetAllEntriesForUser(userId);
+        var query = new GetAllEntriesForUserQuery(userId);
 
         var entries = await _mediator.Send(query);
 

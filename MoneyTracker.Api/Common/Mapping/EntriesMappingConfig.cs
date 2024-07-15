@@ -13,10 +13,6 @@ public class EntriesMappingConfig : IRegister
     public void Register(TypeAdapterConfig config)
     {
         config.NewConfig<AddEntryRequest, AddEntryCommand>();
-        
-        config.NewConfig<DeleteEntriesRequest, DeleteEntryCommand>().
-            Map(dest => dest.id, src => src.EntryId).
-            RequireDestinationMemberSource(true);
 
         config.NewConfig<Entry, EntryDto>();
 

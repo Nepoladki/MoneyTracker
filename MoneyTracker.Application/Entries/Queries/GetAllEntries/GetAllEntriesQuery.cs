@@ -9,5 +9,5 @@ using System.Threading.Tasks;
 
 namespace MoneyTracker.Application.Entries.Queries.GetAllEntries
 {
-    public record GetAllEntries : IRequest<ICollection<Entry>>;
+    public record GetAllEntriesQuery : IRequest<ICollection<Entry>>;
 }
