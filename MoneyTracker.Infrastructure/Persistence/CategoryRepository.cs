@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MoneyTracker.Application.Common.Interfaces.Persistence;
 using MoneyTracker.Domain.Entities;
 
@@ -10,6 +11,17 @@ public class CategoryRepository : ICategoryRepository
     public CategoryRepository(DataContext context)
     {
         _context = context;
+    }
+
+    public async Task<bool> AddCategoryAsync(Category category)
+    {
+        await _context.Categories.AddAsync(category);
+        return await SaveAsync();
+    }
+
+    public async Task<bool> CategoryExistByNameAsync(string name)
+    {
+        return await _context.Categories.AnyAsync(c => c.CategoryName.Equals(name, StringComparison.OrdinalIgnoreCase));
     }
 
     public async Task<bool> DeleteCategoryAsync(Category category)

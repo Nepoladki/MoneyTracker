@@ -1,19 +1,17 @@
 ﻿using Mapster;
 using MoneyTracker.Application.Entries.Commands.UpdateEntry;
+using MoneyTracker.Application.Entries.Common;
 using MoneyTracker.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MoneyTracker.Application.Common.Mapping
+namespace MoneyTracker.Application.Common.Mapping;
+public class EntriesMappingConfig : IRegister
 {
-    public class EntriesMappingConfig : IRegister
+    public void Register(TypeAdapterConfig config)
     {
-        public void Register(TypeAdapterConfig config)
-        {
-            config.NewConfig<UpdateEntryCommand, Entry>();
-        }
+        config.NewConfig<UpdateEntryCommand, Entry>();
+
+        config.NewConfig<UpdateEntryCommand, EntryDto>();
+
+        config.NewConfig<Entry, EntryDto>();
     }
 }

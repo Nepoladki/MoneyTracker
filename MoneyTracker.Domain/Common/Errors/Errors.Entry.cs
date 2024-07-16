@@ -27,6 +27,10 @@ public static partial class Errors
             code: "Entry.NotFound",
             description: "Entry was not found in database");
 
+        public static Error NoUpdates => Error.Validation(
+            code: "Entry.NoUpdates",
+            description: "Updated entry equals existing one");
+
 
     }
 }

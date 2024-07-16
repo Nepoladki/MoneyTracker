@@ -20,10 +20,18 @@ public static partial class Errors
 
         public static Error UpdatingError => Error.Unexpected(
             code: "User.SavingUpdatedUserError",
-            description: "Error occured while saving updated user in repository");
+            description: "Error occured while saving updated user in database");
 
         public static Error PasswordUpdatingError => Error.Unexpected(
             code: "User.SavingUpdatedPasswordError",
-            description: "Error Occured while saving new password in repository");
+            description: "Error occured while saving new password in database");
+
+        public static Error NoUpdates => Error.Validation(
+            code: "User.NoUpdates",
+            description: "Updated user and existing one are equals, nothing to update");
+
+        public static Error SamePassword => Error.Validation(
+            code: "User.SamePassword",
+            description: "New password equals existing one");
     }
 }

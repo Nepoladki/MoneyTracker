@@ -44,8 +44,13 @@ public class ChangePasswordCommandHandler : IRequestHandler<ChangePasswordComman
         if (hashingResult.IsError)
             return hashingResult.Errors;
 
+        //Validate if new and existing passwords are not equal
+        if (user.PasswordHash == hashingResult.Value)
+            return Errors.User.SamePassword;
+
         user.PasswordHash = hashingResult.Value;
 
+        //Saving new password hash in db
         if (!await _userRepository.SaveAsync())
             return Errors.User.PasswordUpdatingError;
 

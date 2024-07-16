@@ -1,11 +1,11 @@
 namespace MoneyTracker.Application.Entries.Common;
 
 public record EntryDto(
-    Guid id,
-    decimal amount,
-    string currencyAbbr,
-    Guid categoryId,
-    string note,
-    DateTime dateTime,
-    Guid userId
+    Guid Id,
+    decimal Amount,
+    string CurrencyAbbr,
+    Guid CategoryId,
+    string Note,
+    DateTime DateTime,
+    Guid UserId
 );

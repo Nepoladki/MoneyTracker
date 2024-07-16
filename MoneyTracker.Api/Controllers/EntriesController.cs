@@ -30,11 +30,11 @@ public class EntriesController : ApiController
     [HttpGet("{id}")]
     public async Task<IActionResult> GetEntry(Guid id)
     {
-        var query = new GetEntryQuery(id: id);
+        var query = new GetEntryQuery(id);
 
         var getResult = await _mediator.Send(query);
 
-        return getResult.Match(ok => Ok(ok.Adapt<EntryDto>()), Problem);
+        return getResult.Match(Ok, Problem);
     }
 
     [HttpGet]
@@ -54,7 +54,7 @@ public class EntriesController : ApiController
 
         var entries = await _mediator.Send(query);
 
-        return entries.Match(ok => Ok(ok.Adapt<List<EntryDto>>()), Problem);
+        return entries.Match(Ok, Problem);
     }
 
     [HttpPost]

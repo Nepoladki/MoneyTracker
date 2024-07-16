@@ -2,6 +2,7 @@
 using MapsterMapper;
 using MediatR;
 using MoneyTracker.Application.Common.Interfaces.Persistence;
+using MoneyTracker.Application.Users.Common;
 using MoneyTracker.Domain.Common.Errors;
 using MoneyTracker.Domain.Entities;
 
@@ -23,6 +24,13 @@ public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Error
         //Validate if such user exists
         if (await _userRepository.GetUserByIdAsync(request.Id) is not User user)
             return Errors.User.UserNotFound;
+
+        //Validate that updated user doesn't equal existing one
+        var updatedUser = _mapper.Map<UserDto>(request);
+        var existingUser = _mapper.Map<UserDto>(user);
+
+        if (existingUser == updatedUser)
+            return Errors.User.NoUpdates;
 
         _mapper.Map(request, user);
 

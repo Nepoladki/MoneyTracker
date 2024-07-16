@@ -11,6 +11,13 @@ public class GetAllCategoriesQueryHandler : IRequestHandler<GetAllCategoriesQuer
 {
     private readonly ICategoryRepository _categoryRepository;
     private readonly IMapper _mapper;
+
+    public GetAllCategoriesQueryHandler(ICategoryRepository categoryRepository, IMapper mapper)
+    {
+        _categoryRepository = categoryRepository;
+        _mapper = mapper;
+    }
+
     public async Task<ErrorOr<ICollection<CategoryDto>>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
     {
         var categories = await _categoryRepository.GetAllCategoriesAsync();

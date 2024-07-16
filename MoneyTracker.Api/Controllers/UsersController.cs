@@ -65,7 +65,6 @@ public class UsersController : ApiController
         return changePasswordResult.Match(guid => Ok(guid), Problem);
     }
 
-
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteUser(Guid id)
     {
@@ -75,6 +74,4 @@ public class UsersController : ApiController
 
         return deleteResult.Match(guid => Ok(guid), Problem);
     }
-    
-
 }

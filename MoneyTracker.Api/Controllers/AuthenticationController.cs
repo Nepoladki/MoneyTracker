@@ -46,8 +46,7 @@ public class AuthenticationController : ApiController
         {
             return Problem(
                 statusCode: StatusCodes.Status401Unauthorized,
-                title: authResult.FirstError.Description
-            );
+                title: authResult.FirstError.Description);
         }
 
         var response = authResult.Match(
@@ -56,4 +55,13 @@ public class AuthenticationController : ApiController
 
         return response;
     }
+
+    [HttpPost("refresh")]
+    public async Task<IActionResult> Refresh()
+    {
+        var query = new RefreshQuery();
+
+        var refreshResult = await _mediator.Send(query);
+    }
+
 }

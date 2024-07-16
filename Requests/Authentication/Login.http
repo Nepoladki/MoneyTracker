@@ -3,5 +3,5 @@ Content-Type: application/json
 
 {
     "email": "generic@email.ru",
-    "password": "pass123"
+    "password": "pass1234"
 }

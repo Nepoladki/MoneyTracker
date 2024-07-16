@@ -2,6 +2,7 @@
 using MapsterMapper;
 using MediatR;
 using MoneyTracker.Application.Common.Interfaces.Persistence;
+using MoneyTracker.Application.Entries.Common;
 using MoneyTracker.Domain.Common.Errors;
 using MoneyTracker.Domain.Entities;
 
@@ -23,11 +24,16 @@ public class UpdateEntryCommandHandler : IRequestHandler<UpdateEntryCommand, Err
         if (await _entryRepository.GetEntryByIdAsync(request.Id) is not Entry entry)
             return Errors.Entries.EntryNotFound;
 
-        //Обработать ситуацию когда приходит запрос без изменений в данных, сейчас из за этого происходит RepositoryError тк
-        //при вызове метода SaveAsync в базе никаие поля не изменяются, а значит SaveAsync возвращает false
+        //Validate that new entry doesn't equal existing one
+        var updatedEntry = _mapper.Map<EntryDto>(request);
+        var existingEntry = _mapper.Map<EntryDto>(entry);
+
+        if (existingEntry == updatedEntry)
+            return Errors.Entries.NoUpdates;
 
         _mapper.Map(request, entry);
 
+        //Saving changes in db
         if (!await _entryRepository.SaveAsync())
             return Errors.Entries.RepositoryError;
 
