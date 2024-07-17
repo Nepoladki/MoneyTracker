@@ -43,6 +43,9 @@ public class LoginQueryHandler :
 
         //Create JWT token
         var token = _jwtTokenGenerator.GenerateToken(user);
+
+        //Create refresh JWT token
+        var refreshToken = _jwtTokenGenerator.
                 
         return new AuthenticationResult(
             user,

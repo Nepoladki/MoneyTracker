@@ -25,20 +25,43 @@ public class JwtTokenGenerator : IJwtTokenGenerator
             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret)),
             SecurityAlgorithms.HmacSha256);
 
-        var claims = new[]
-        {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-            new Claim(JwtRegisteredClaimNames.Name, user.UserName.ToString()),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-        }; 
+        Claim[] claims = GetClaims(user);
 
         var securityToken = new JwtSecurityToken(
             issuer: _jwtSettings.Issuer,
-            audience:_jwtSettings.Audience,
-            expires: _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes), 
+            audience: _jwtSettings.Audience,
+            expires: _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes),
             claims: claims,
             signingCredentials: credentials);
 
         return new JwtSecurityTokenHandler().WriteToken(securityToken);
+    }
+
+    public string GenerateRefreshToken(User user)
+    {
+        var credentials = new SigningCredentials(
+            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.RefreshSecret)),
+            SecurityAlgorithms.HmacSha256);
+
+        Claim[] claims = GetClaims(user);
+
+        var securityToken = new JwtSecurityToken(
+            issuer: _jwtSettings.Issuer,
+            audience: _jwtSettings.Audience,
+            expires: _dateTimeProvider.UtcNow.AddHours(_jwtSettings.RefreshExpiryHours),
+            claims: claims,
+            signingCredentials: credentials);
+
+        return new JwtSecurityTokenHandler().WriteToken(securityToken);
+    }
+
+    private static Claim[] GetClaims(User user)
+    {
+        return
+        [
+            new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+            new Claim(JwtRegisteredClaimNames.Name, user.UserName.ToString()),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+        ];
     }
 }

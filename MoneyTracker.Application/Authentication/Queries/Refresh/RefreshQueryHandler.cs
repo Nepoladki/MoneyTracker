@@ -8,4 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MoneyTracker.Application.Authentication.Queries.Refresh;
-public record RefreshQuery : IRequest<ErrorOr<AuthenticationResult>>;
+public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<AuthenticationResult>>
+{
+    public Task<ErrorOr<AuthenticationResult>> Handle(RefreshQuery request, CancellationToken cancellationToken)
+    {
+        var refreshToken;
+    }
+}
