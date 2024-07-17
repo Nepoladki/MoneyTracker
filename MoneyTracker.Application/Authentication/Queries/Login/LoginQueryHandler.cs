@@ -42,7 +42,7 @@ public class LoginQueryHandler :
             return Errors.Authentication.InvalidCredentials;
 
         //Create JWT token
-        var token = _jwtTokenGenerator.GenerateToken(user);
+        var token = _jwtTokenGenerator.GenerateAccessToken(user);
 
         //Create refresh JWT token
         var refreshToken = _jwtTokenGenerator.

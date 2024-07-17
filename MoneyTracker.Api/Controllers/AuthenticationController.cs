@@ -8,6 +8,10 @@ using MoneyTracker.Application.Authentication.Common;
 using MoneyTracker.Application.Authentication.Queries.Login;
 using MapsterMapper;
 using Microsoft.AspNetCore.Authorization;
+using MoneyTracker.Application.Authentication.Queries.Refresh;
+using System.Runtime.CompilerServices;
+using Microsoft.Extensions.Options;
+using MoneyTracker.Infrastructure.Authentication;
 
 namespace MoneyTracker.Api.Controllers;
 [Route("auth")]
@@ -16,10 +20,12 @@ public class AuthenticationController : ApiController
 {
     private readonly ISender _mediator;
     private readonly IMapper _mapper;
-    public AuthenticationController(ISender mediator, IMapper mapper)
+    private readonly JwtSettings _jwtOptions;
+    public AuthenticationController(ISender mediator, IMapper mapper, IOptions<JwtSettings> jwtOptions)
     {
         _mediator = mediator;
         _mapper = mapper;
+        _jwtOptions = jwtOptions.Value;
     }
 
     [HttpPost("register")]
