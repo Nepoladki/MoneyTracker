@@ -9,14 +9,16 @@ using MoneyTracker.Domain.Entities;
 
 namespace MoneyTracker.Infrastructure.Authentication;
 
-public class JwtTokenGenerator : IJwtTokenGenerator
+public class JwtTokenService : IJwtTokenService
 {
     private readonly IDateTimeProvider _dateTimeProvider;
     private readonly JwtSettings _jwtSettings;
-    public JwtTokenGenerator(IDateTimeProvider dateTimeProvider, IOptions<JwtSettings> jwtSettings)
+    private readonly JwtSecurityTokenHandler _jwtHandler;
+    public JwtTokenService(IDateTimeProvider dateTimeProvider, IOptions<JwtSettings> jwtSettings)
     {
         _dateTimeProvider = dateTimeProvider;
         _jwtSettings = jwtSettings.Value;
+        _jwtHandler = new JwtSecurityTokenHandler();
     }
 
     public string GenerateAccessToken(User user)
@@ -34,7 +36,7 @@ public class JwtTokenGenerator : IJwtTokenGenerator
             claims: claims,
             signingCredentials: credentials);
 
-        return new JwtSecurityTokenHandler().WriteToken(securityToken);
+        return _jwtHandler.WriteToken(securityToken);
     }
 
     public string GenerateRefreshToken(User user)
@@ -52,7 +54,7 @@ public class JwtTokenGenerator : IJwtTokenGenerator
             claims: claims,
             signingCredentials: credentials);
 
-        return new JwtSecurityTokenHandler().WriteToken(securityToken);
+        return _jwtHandler.WriteToken(securityToken);
     }
 
     private static Claim[] GetClaims(User user)

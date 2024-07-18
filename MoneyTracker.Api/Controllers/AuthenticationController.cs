@@ -65,9 +65,22 @@ public class AuthenticationController : ApiController
     [HttpPost("refresh")]
     public async Task<IActionResult> Refresh()
     {
+        if (Request.Headers.TryGetValue("Authorization", out var authHeaderValues) &&
+        authHeaderValues.FirstOrDefault() is string authHeaderValue &&
+        authHeaderValue.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+        {
+            string token = authHeaderValue["Bearer ".Length..].Trim();
+            if (!string.IsNullOrEmpty(token))
+            {
+                // “окен получен успешно, можно использовать
+                return Ok("Token is valid");
+            }
+        }
+
+        return BadRequest("Invalid Authorization header");
+
         var query = new RefreshQuery();
 
         var refreshResult = await _mediator.Send(query);
     }
-
 }

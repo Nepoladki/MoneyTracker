@@ -25,5 +25,21 @@ public static partial class Errors
         public static Error InactiveUser => Error.Forbidden(
             code: "Auth.InactiveUser",
             description: "Cannot log in, user's account deactivated");
+
+        public static Error RefreshNotFound => Error.Unauthorized(
+            code: "Auth.RefreshTokenNotFound",
+            description: "Refresh token was not found in cookies");
+
+        public static Error InvalidRefresh => Error.Unauthorized(
+            code: "Auth.InvalidRefreshToken",
+            description: "Security system can't validate refresh token");
+
+        public static Error InvalidAccess => Error.Unauthorized(
+            code: "Auth.InvalidAccessToken",
+            description: "Security system can't validate access token");
+
+        public static Error DifferentIds => Error.Unauthorized(
+            code: "Auth.DifferentIds",
+            description: "User's IDs in access and refresh tokens are different");
     }
 }

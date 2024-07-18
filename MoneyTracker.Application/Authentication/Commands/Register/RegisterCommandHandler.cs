@@ -12,13 +12,13 @@ public class RegisterCommandHandler :
     IRequestHandler<RegisterCommand, ErrorOr<AuthenticationResult>>
     
 {
-    private readonly IJwtTokenGenerator _jwtTokenGenerator;
+    private readonly IJwtTokenService _jwtTokenGenerator;
     private readonly IUserRepository _userRepository;
     private readonly IPasswordHasher _passwordHasher;
 
     public RegisterCommandHandler(
         IUserRepository userRepository,
-        IJwtTokenGenerator jwtTokenGenerator,
+        IJwtTokenService jwtTokenGenerator,
         IPasswordHasher passwordHasher)
     {
         _userRepository = userRepository;
@@ -28,17 +28,17 @@ public class RegisterCommandHandler :
 
     public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
     {        
-        //Validate the user doen't exists
+        // Validate the user doen't exists
         if (await _userRepository.GetUserByEmailAsync(command.Email) is not null)
             return Errors.User.DuplicateEmail;
 
-        //Hash user's password
+        // Hash user's password
         var hashResult = _passwordHasher.HashPassword(command.Password);
 
         if (hashResult.IsError)
             return hashResult.Errors;
 
-        //Create user (unique id)
+        // Create user (unique id)
         var user = new User 
         {
             UserName = command.UserName,
@@ -48,17 +48,15 @@ public class RegisterCommandHandler :
             PasswordHash = hashResult.Value
         };
 
-        //Saving user in database
+        // Saving user in database
         var saveResult = await _userRepository.AddAsync(user);
 
         if (saveResult == false)
             return Errors.Authentication.SavingError;
         
-        //Create JWT token
-        var token = _jwtTokenGenerator.GenerateToken(user);
+        // Create JWT token
+        var token = _jwtTokenGenerator.GenerateAccessToken(user);
         
-        return new AuthenticationResult(
-            user,
-            token);
+        return new AuthenticationResult(user, token);
     }
 }

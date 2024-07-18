@@ -33,5 +33,9 @@ public static partial class Errors
         public static Error SamePassword => Error.Validation(
             code: "User.SamePassword",
             description: "New password equals existing one");
+
+        public static Error UserIsInactive => Error.Forbidden(
+            code: "User.InactiveUser",
+            description: "User's account is marked as inactive");
     }
 }

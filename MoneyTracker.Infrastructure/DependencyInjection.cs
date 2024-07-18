@@ -58,7 +58,7 @@ public static class DependencyInjectioin
 
         services.AddSingleton(Options.Create(jwtSettings));
 
-        services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+        services.AddSingleton<IJwtTokenService, JwtTokenService>();
 
         services.AddAuthentication(
             defaultScheme: JwtBearerDefaults.AuthenticationScheme)
