@@ -41,5 +41,9 @@ public static partial class Errors
         public static Error DifferentIds => Error.Unauthorized(
             code: "Auth.DifferentIds",
             description: "User's IDs in access and refresh tokens are different");
+
+        public static Error InvalidAuthHeader => Error.Unauthorized(
+            code: "Auth.InvalidAuthHeader",
+            description: "Error occured while parsing Authorization header");
     }
 }

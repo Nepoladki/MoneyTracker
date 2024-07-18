@@ -8,4 +8,4 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MoneyTracker.Application.Authentication.Queries.Refresh;
-public record RefreshQuery(string AccessToken) : IRequest<ErrorOr<AuthenticationResult>>;
+public record RefreshQuery() : IRequest<ErrorOr<AuthenticationResult>>;

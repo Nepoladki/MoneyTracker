@@ -12,7 +12,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-
 namespace MoneyTracker.Application.Authentication.Queries.Refresh;
 public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<AuthenticationResult>>
 {
@@ -41,20 +40,31 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
         if (!tokenHandler.CanValidateToken)
             return Errors.Authentication.InvalidRefresh;
 
-        var refreshKey = Encoding.UTF8.GetBytes(_configuration["JwtSettings:RefreshSecret"]);
+        var refreshKey = Encoding.UTF8.GetBytes(_configuration["JwtSettings:RefreshSecret"]); // Убрать хардкод
         var accessKey = Encoding.UTF8.GetBytes(_configuration["JwtSettings:Secret"]);
 
-        // Validate Access Token        
+        // Validate that request header contains token
+        if (!_contextAccessor.HttpContext.Request.Headers.TryGetValue("Authorization", out var authHeader))
+            return Errors.Authentication.InvalidAuthHeader;
+
+        if (authHeader.FirstOrDefault() is not string authHeaderValue || 
+            !authHeaderValue.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+            return Errors.Authentication.InvalidAuthHeader;
+
+        var accessToken = authHeaderValue[8..];
+
+        // Validate access token        
         ClaimsPrincipal? accessTokenPrincipal;
 
         try
         {
-             accessTokenPrincipal = tokenHandler.ValidateToken(request.AccessToken, new TokenValidationParameters
+             accessTokenPrincipal = tokenHandler.ValidateToken(accessToken, new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(accessKey),
                 ValidateIssuer = true,
                 ValidateAudience = true,
+                ValidateLifetime = false,
                 ClockSkew = TimeSpan.Zero
             }, out _);
         }
@@ -68,7 +78,7 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
 
         var accessTokenUserId = Guid.Parse(accessTokenPrincipal.FindFirst(JwtRegisteredClaimNames.Sub)?.Value);
 
-        // Validate if threre is a refresh token in cookies
+        // Validate if threre is a refresh token in cookies            убрать хардкод
         if (!_contextAccessor.HttpContext.Request.Cookies.TryGetValue("RefreshToken", out var refreshToken) || string.IsNullOrEmpty(refreshToken))
             return Errors.Authentication.RefreshNotFound;
 
@@ -92,7 +102,7 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
             return Errors.Authentication.InvalidRefresh;
         }
 
-        var refreshTokenUserId = Guid.Parse(refreshTokenPrincipal?.FindFirst(JwtRegisteredClaimNames.Sub)?.Value);
+        var refreshTokenUserId = Guid.Parse(refreshTokenPrincipal.FindFirst(JwtRegisteredClaimNames.Sub)?.Value);
 
         // Validate IDs in tokens
         if (accessTokenUserId != refreshTokenUserId)
@@ -112,7 +122,7 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
 
         // Write new refresh token to cookies
         _contextAccessor.HttpContext.Response.Cookies.Append(
-            "RefreshToken", 
+            "RefreshToken", // убрать хардкод
             newRefreshToken, 
             new CookieOptions
             {
