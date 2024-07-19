@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace MoneyTracker.Api.Controllers;
 public class ErrorsController : ApiController
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     [Route("/error")]
     public IActionResult Error()
     {

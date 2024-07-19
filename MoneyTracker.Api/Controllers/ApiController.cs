@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace MoneyTracker.Api.Controllers;
 [ApiController]
+//[Route("api/")]
 [Authorize]
 public class ApiController : ControllerBase
 {

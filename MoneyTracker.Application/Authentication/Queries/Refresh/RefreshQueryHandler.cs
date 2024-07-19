@@ -51,21 +51,23 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
             !authHeaderValue.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
             return Errors.Authentication.InvalidAuthHeader;
 
-        var accessToken = authHeaderValue[8..];
+        var accessToken = authHeaderValue[7..];
 
         // Validate access token        
         ClaimsPrincipal? accessTokenPrincipal;
 
         try
         {
-             accessTokenPrincipal = tokenHandler.ValidateToken(accessToken, new TokenValidationParameters
+            accessTokenPrincipal = tokenHandler.ValidateToken(accessToken, new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(accessKey),
                 ValidateIssuer = true,
                 ValidateAudience = true,
                 ValidateLifetime = false,
-                ClockSkew = TimeSpan.Zero
+                ClockSkew = TimeSpan.Zero,
+                ValidAudience = _configuration["JwtSettings:Audience"],
+                ValidIssuer = _configuration["JwtSettings:Issuer"]
             }, out _);
         }
         catch
@@ -76,7 +78,7 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
         if (accessTokenPrincipal is null)
             return Errors.Authentication.InvalidAccess;
 
-        var accessTokenUserId = Guid.Parse(accessTokenPrincipal.FindFirst(JwtRegisteredClaimNames.Sub)?.Value);
+        var accessTokenUserId = Guid.Parse(accessTokenPrincipal.Claims.(JwtRegisteredClaimNames.Sub).Value); //Нужно правильно обратиться к клейму
 
         // Validate if threre is a refresh token in cookies            убрать хардкод
         if (!_contextAccessor.HttpContext.Request.Cookies.TryGetValue("RefreshToken", out var refreshToken) || string.IsNullOrEmpty(refreshToken))

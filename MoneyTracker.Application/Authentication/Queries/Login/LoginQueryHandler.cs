@@ -17,11 +17,12 @@ public class LoginQueryHandler :
     private readonly IPasswordHasher _passwordHasher;
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public LoginQueryHandler(IUserRepository userRepository, IJwtTokenService jwtTokenGenerator, IPasswordHasher passwordHasher)
+    public LoginQueryHandler(IUserRepository userRepository, IJwtTokenService jwtTokenGenerator, IPasswordHasher passwordHasher, IHttpContextAccessor httpContextAccessor)
     {
         _userRepository = userRepository;
         _jwtTokenGenerator = jwtTokenGenerator;
         _passwordHasher = passwordHasher;
+        _httpContextAccessor = httpContextAccessor;
     }
 
     public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)

@@ -21,7 +21,7 @@ public class CategoryRepository : ICategoryRepository
 
     public async Task<bool> CategoryExistByNameAsync(string name)
     {
-        return await _context.Categories.AnyAsync(c => c.CategoryName.Equals(name, StringComparison.OrdinalIgnoreCase));
+        return await _context.Categories.AnyAsync(c => c.CategoryName.ToLower().Equals(name.ToLower()));
     }
 
     public async Task<bool> DeleteCategoryAsync(Category category)
