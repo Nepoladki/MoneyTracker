@@ -86,5 +86,4 @@ public class EntriesController : ApiController
 
         return deletingResult.Match(ok => Ok(ok), Problem);
     }
-
 }

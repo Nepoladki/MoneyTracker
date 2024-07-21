@@ -78,7 +78,14 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
         if (accessTokenPrincipal is null)
             return Errors.Authentication.InvalidAccess;
 
-        var accessTokenUserId = Guid.Parse(accessTokenPrincipal.Claims.(JwtRegisteredClaimNames.Sub).Value); //Нужно правильно обратиться к клейму
+        // DEBUG SECTION
+        foreach (var claim in accessTokenPrincipal.Claims)
+        {
+            Console.WriteLine($"Type: {claim.Type},   Value: {claim.Value},   ValueType: {claim.ValueType},    Subject: {claim.Subject}");
+        }
+        // END OF DEBUG SECTION
+
+        var accessTokenUserId = Guid.Parse(accessTokenPrincipal.FindFirst(ClaimTypes.NameIdentifier)?.Value); //Нужно правильно обратиться к клейму
 
         // Validate if threre is a refresh token in cookies            убрать хардкод
         if (!_contextAccessor.HttpContext.Request.Cookies.TryGetValue("RefreshToken", out var refreshToken) || string.IsNullOrEmpty(refreshToken))
@@ -96,7 +103,8 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
                 ValidateIssuer = true,
                 ValidateAudience = true,
                 ValidateLifetime = true,
-                ClockSkew = TimeSpan.Zero
+                ValidAudience = _configuration["JwtSettings:Audience"],
+                ValidIssuer = _configuration["JwtSettings:Issuer"]
             }, out _);
         }
         catch
@@ -104,7 +112,7 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
             return Errors.Authentication.InvalidRefresh;
         }
 
-        var refreshTokenUserId = Guid.Parse(refreshTokenPrincipal.FindFirst(JwtRegisteredClaimNames.Sub)?.Value);
+        var refreshTokenUserId = Guid.Parse(refreshTokenPrincipal.FindFirst(ClaimTypes.NameIdentifier)?.Value);
 
         // Validate IDs in tokens
         if (accessTokenUserId != refreshTokenUserId)
