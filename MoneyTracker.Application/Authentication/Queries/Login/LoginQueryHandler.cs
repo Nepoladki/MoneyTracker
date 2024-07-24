@@ -6,6 +6,7 @@ using MediatR;
 using MoneyTracker.Domain.Entities;
 using MoneyTracker.Application.Authentication.Common;
 using Microsoft.AspNetCore.Http;
+using System.Runtime.CompilerServices;
 
 namespace MoneyTracker.Application.Authentication.Queries.Login;
 public class LoginQueryHandler : 
@@ -16,13 +17,15 @@ public class LoginQueryHandler :
     private readonly IUserRepository _userRepository;
     private readonly IPasswordHasher _passwordHasher;
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly IJwtSettings _jwtSettings;
 
-    public LoginQueryHandler(IUserRepository userRepository, IJwtTokenService jwtTokenGenerator, IPasswordHasher passwordHasher, IHttpContextAccessor httpContextAccessor)
+    public LoginQueryHandler(IUserRepository userRepository, IJwtTokenService jwtTokenGenerator, IPasswordHasher passwordHasher, IHttpContextAccessor httpContextAccessor, IJwtSettings jwtSettings)
     {
         _userRepository = userRepository;
         _jwtTokenGenerator = jwtTokenGenerator;
         _passwordHasher = passwordHasher;
         _httpContextAccessor = httpContextAccessor;
+        _jwtSettings = jwtSettings;
     }
 
     public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
@@ -52,15 +55,8 @@ public class LoginQueryHandler :
 
         // Write refresh token to cookies
         _httpContextAccessor.HttpContext?.Response.Cookies.Append(
-            "RefreshToken",
-            refreshToken,
-            new CookieOptions
-            {
-                HttpOnly = true,
-                Secure = true,
-                SameSite = SameSiteMode.Strict,
-                Expires = DateTime.UtcNow.AddDays(14)
-            });
+            _jwtSettings.RefreshCookieName,
+            refreshToken);
 
         return new AuthenticationResult(user, token);
     }

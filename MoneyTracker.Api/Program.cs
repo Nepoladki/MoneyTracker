@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using MoneyTracker.Api;
@@ -13,8 +14,6 @@ var config = builder.Configuration;
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    //options.UseAllOfForInheritance();
-    //options.UseOneOfForPolymorphism();
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
@@ -39,9 +38,6 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 });
-//builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
-//builder.Logging.AddConsole();
-//builder.Logging.AddDebug();
 
 // CORS setup
 builder.Services.AddCors(options =>
@@ -65,6 +61,13 @@ builder.Services.
 var app = builder.Build();
 
 app.UseExceptionHandler("/error");
+
+app.UseCookiePolicy(new CookiePolicyOptions
+{
+    HttpOnly = HttpOnlyPolicy.Always,
+    MinimumSameSitePolicy = SameSiteMode.Strict,
+    Secure = CookieSecurePolicy.Always
+ });
 
 app.UseCors("defaultPolicy");
 

@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -40,7 +41,7 @@ public static class DependencyInjectioin
 
         services.AddDbContext<DataContext>(options => 
         {
-            options.UseNpgsql("Host=localhost;Port=5432;Database=MoneyTracker;Username=postgres;Password=123"); //configuration.GetConnectionString("PostgresConnection")"Host=localhost;Port=5432;Database=MoneyTracker;Username=postgres;Password=123"
+            options.UseNpgsql(configuration.GetConnectionString("PostgresConnection"));
             options.EnableSensitiveDataLogging(true);
             options.UseSnakeCaseNamingConvention();
         });
@@ -52,11 +53,15 @@ public static class DependencyInjectioin
         this IServiceCollection services,
         ConfigurationManager configuration)
     {
-        var jwtSettings = new JwtSettings();
-        
-        configuration.Bind(JwtSettings.SectionName, jwtSettings);
+        // Настройка конфигурации для JwtSettings
+        services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
 
-        services.AddSingleton(Options.Create(jwtSettings));
+        // Создание экземпляра ServiceProvider для извлечения настроек
+        var serviceProvider = services.BuildServiceProvider();
+        var jwtSettings = serviceProvider.GetRequiredService<IOptions<JwtSettings>>().Value;
+
+        // Регистрируем JwtSettings как синглтон
+        services.AddSingleton<IJwtSettings>(jwtSettings);
 
         services.AddSingleton<IJwtTokenService, JwtTokenService>();
 
@@ -71,7 +76,7 @@ public static class DependencyInjectioin
                 ValidateIssuerSigningKey = true,
                 ValidIssuer = jwtSettings.Issuer,
                 ValidAudience = jwtSettings.Audience,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.AccessSecret))
             });
 
         return services;

@@ -12,6 +12,7 @@ using MoneyTracker.Application.Authentication.Queries.Refresh;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Options;
 using MoneyTracker.Infrastructure.Authentication;
+using MoneyTracker.Application.Common.Interfaces.Authentication;
 
 namespace MoneyTracker.Api.Controllers;
 [Route("auth")]
@@ -20,12 +21,10 @@ public class AuthenticationController : ApiController
 {
     private readonly ISender _mediator;
     private readonly IMapper _mapper;
-    private readonly JwtSettings _jwtOptions;
-    public AuthenticationController(ISender mediator, IMapper mapper, IOptions<JwtSettings> jwtOptions)
+    public AuthenticationController(ISender mediator, IMapper mapper)
     {
         _mediator = mediator;
         _mapper = mapper;
-        _jwtOptions = jwtOptions.Value;
     }
 
     [HttpPost("register")]

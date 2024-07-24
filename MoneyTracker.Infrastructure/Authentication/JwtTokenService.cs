@@ -12,7 +12,7 @@ namespace MoneyTracker.Infrastructure.Authentication;
 public class JwtTokenService : IJwtTokenService
 {
     private readonly IDateTimeProvider _dateTimeProvider;
-    private readonly JwtSettings _jwtSettings;
+    private readonly IJwtSettings _jwtSettings;
     private readonly JwtSecurityTokenHandler _jwtHandler;
     public JwtTokenService(IDateTimeProvider dateTimeProvider, IOptions<JwtSettings> jwtSettings)
     {
@@ -24,7 +24,7 @@ public class JwtTokenService : IJwtTokenService
     public string GenerateAccessToken(User user)
     {
         var credentials = new SigningCredentials(
-            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret)),
+            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.AccessSecret)),
             SecurityAlgorithms.HmacSha256);
 
         Claim[] claims = GetClaims(user);
@@ -32,7 +32,7 @@ public class JwtTokenService : IJwtTokenService
         var securityToken = new JwtSecurityToken(
             issuer: _jwtSettings.Issuer,
             audience: _jwtSettings.Audience,
-            expires: _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes),
+            expires: _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.AccessExpiryMinutes),
             claims: claims,
             signingCredentials: credentials);
 

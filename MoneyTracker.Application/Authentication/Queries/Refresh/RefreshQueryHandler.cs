@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Net.Http.Headers;
 using MoneyTracker.Application.Authentication.Common;
 using MoneyTracker.Application.Common.Interfaces.Authentication;
 using MoneyTracker.Application.Common.Interfaces.Persistence;
@@ -18,18 +19,18 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
     private readonly IUserRepository _userRepository;
     private readonly IJwtTokenService _jwtTokenService;
     private readonly IHttpContextAccessor _contextAccessor;
-    private readonly IConfiguration _configuration;
+    private readonly IJwtSettings _jwtSettings;
 
     public RefreshQueryHandler(
         IUserRepository userRepository,
         IJwtTokenService jwtTokenService,
         IHttpContextAccessor contextAccessor,
-        IConfiguration configuration)
+        IJwtSettings jwtSettings)
     {
         _userRepository = userRepository;
         _jwtTokenService = jwtTokenService;
         _contextAccessor = contextAccessor;
-        _configuration = configuration;
+        _jwtSettings = jwtSettings;
     }
 
     public async Task<ErrorOr<AuthenticationResult>> Handle(RefreshQuery request, CancellationToken cancellationToken)
@@ -40,11 +41,11 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
         if (!tokenHandler.CanValidateToken)
             return Errors.Authentication.InvalidRefresh;
 
-        var refreshKey = Encoding.UTF8.GetBytes(_configuration["JwtSettings:RefreshSecret"]); // Убрать хардкод
-        var accessKey = Encoding.UTF8.GetBytes(_configuration["JwtSettings:Secret"]);
+        var refreshKey = Encoding.UTF8.GetBytes(_jwtSettings.RefreshSecret);
+        var accessKey = Encoding.UTF8.GetBytes(_jwtSettings.AccessSecret);
 
         // Validate that request header contains token
-        if (!_contextAccessor.HttpContext.Request.Headers.TryGetValue("Authorization", out var authHeader))
+        if (!_contextAccessor.HttpContext.Request.Headers.TryGetValue(HeaderNames.Authorization, out var authHeader))
             return Errors.Authentication.InvalidAuthHeader;
 
         if (authHeader.FirstOrDefault() is not string authHeaderValue || 
@@ -66,8 +67,8 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
                 ValidateAudience = true,
                 ValidateLifetime = false,
                 ClockSkew = TimeSpan.Zero,
-                ValidAudience = _configuration["JwtSettings:Audience"],
-                ValidIssuer = _configuration["JwtSettings:Issuer"]
+                ValidAudience = _jwtSettings.Audience,
+                ValidIssuer = _jwtSettings.Issuer
             }, out _);
         }
         catch
@@ -85,10 +86,10 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
         }
         // END OF DEBUG SECTION
 
-        var accessTokenUserId = Guid.Parse(accessTokenPrincipal.FindFirst(ClaimTypes.NameIdentifier)?.Value); //Нужно правильно обратиться к клейму
+        var accessTokenUserId = Guid.Parse(accessTokenPrincipal.FindFirst(ClaimTypes.NameIdentifier)?.Value);
 
-        // Validate if threre is a refresh token in cookies            убрать хардкод
-        if (!_contextAccessor.HttpContext.Request.Cookies.TryGetValue("RefreshToken", out var refreshToken) || string.IsNullOrEmpty(refreshToken))
+        // Validate if threre is a refresh token in cookies
+        if (!_contextAccessor.HttpContext.Request.Cookies.TryGetValue(_jwtSettings.RefreshCookieName, out var refreshToken) || string.IsNullOrEmpty(refreshToken))
             return Errors.Authentication.RefreshNotFound;
 
         // Validate Refresh Token
@@ -103,8 +104,8 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
                 ValidateIssuer = true,
                 ValidateAudience = true,
                 ValidateLifetime = true,
-                ValidAudience = _configuration["JwtSettings:Audience"],
-                ValidIssuer = _configuration["JwtSettings:Issuer"]
+                ValidAudience = _jwtSettings.Audience,
+                ValidIssuer = _jwtSettings.Issuer
             }, out _);
         }
         catch
@@ -132,15 +133,7 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
 
         // Write new refresh token to cookies
         _contextAccessor.HttpContext.Response.Cookies.Append(
-            "RefreshToken", // убрать хардкод
-            newRefreshToken, 
-            new CookieOptions
-            {
-                HttpOnly = true,
-                Secure = true,
-                SameSite = SameSiteMode.Strict,
-                Expires = DateTime.UtcNow.AddDays(14)
-            });
+            _jwtSettings.RefreshCookieName, newRefreshToken);
 
         return new AuthenticationResult(user, newAccesToken);
     }
