@@ -1,5 +1,6 @@
 ﻿using ErrorOr;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using MoneyTracker.Application.Categories.Common;
 using System;
 using System.Collections.Generic;
@@ -11,5 +12,5 @@ namespace MoneyTracker.Application.Categories.Commands.AddCategory;
 
 public record AddCategoryCommand(
     string CategoryName,
-    string Icon) : IRequest<ErrorOr<CategoryDto>>;
+    IFormFile Image) : IRequest<ErrorOr<CategoryDto>>;
 

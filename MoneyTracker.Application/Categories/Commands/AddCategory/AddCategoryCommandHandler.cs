@@ -3,6 +3,7 @@ using MapsterMapper;
 using MediatR;
 using MoneyTracker.Application.Categories.Common;
 using MoneyTracker.Application.Common.Interfaces.Persistence;
+using MoneyTracker.Application.Common.Interfaces.Services;
 using MoneyTracker.Domain.Common.Errors;
 using MoneyTracker.Domain.Entities;
 

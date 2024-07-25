@@ -1,5 +1,6 @@
 ﻿using ErrorOr;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,4 +11,4 @@ namespace MoneyTracker.Application.Categories.Commands.UpdateCategory;
 public record UpdateCategoryCommand(
     Guid Id,
     string CategoryName,
-    string Icon) : IRequest<ErrorOr<Guid>>;
+    IFormFile? Icon) : IRequest<ErrorOr<Guid>>;

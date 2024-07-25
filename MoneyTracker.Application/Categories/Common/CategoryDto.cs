@@ -6,5 +6,4 @@ using System.Threading.Tasks;
 
 namespace MoneyTracker.Application.Categories.Common;
     public record CategoryDto(
-        string CategoryName,
-        string Icon);
+        string CategoryName);

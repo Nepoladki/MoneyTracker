@@ -60,6 +60,8 @@ builder.Services.
 
 var app = builder.Build();
 
+app.UseStaticFiles();
+
 app.UseExceptionHandler("/error");
 
 app.UseCookiePolicy(new CookiePolicyOptions
