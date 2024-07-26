@@ -25,6 +25,8 @@ public static class DependencyInjectioin
 
         services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
+        services.AddSingleton<IFileService, FileService>();
+
         services.AddAuth(configuration);
 
         services.AddPersistance(configuration);
@@ -54,7 +56,7 @@ public static class DependencyInjectioin
         ConfigurationManager configuration)
     {
         // Настройка конфигурации для JwtSettings
-        services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
+        services.Configure<JwtSettings>(configuration.GetSection(IJwtSettings.SectionName));
 
         // Создание экземпляра ServiceProvider для извлечения настроек
         var serviceProvider = services.BuildServiceProvider();
@@ -65,6 +67,7 @@ public static class DependencyInjectioin
 
         services.AddSingleton<IJwtTokenService, JwtTokenService>();
 
+        // Настройка аутентификационного middleware
         services.AddAuthentication(
             defaultScheme: JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options => 
@@ -78,6 +81,10 @@ public static class DependencyInjectioin
                 ValidAudience = jwtSettings.Audience,
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.AccessSecret))
             });
+
+        // Настройка политики администратора
+        services.AddAuthorizationBuilder().AddPolicy("AdminPolicy", policy =>
+            policy.RequireClaim(IJwtSettings.IsAdminClaimName));
 
         return services;
     }

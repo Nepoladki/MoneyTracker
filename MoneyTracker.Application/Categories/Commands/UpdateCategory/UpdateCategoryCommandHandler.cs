@@ -12,13 +12,11 @@ public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryComman
 {
     private readonly ICategoryRepository _categoryRepository;
     private readonly IMapper _mapper;
-    private readonly IFileService _fileService;
 
-    public UpdateCategoryCommandHandler(ICategoryRepository categoryRepository, IMapper mapper, IFileService fileService)
+    public UpdateCategoryCommandHandler(ICategoryRepository categoryRepository, IMapper mapper)
     {
         _categoryRepository = categoryRepository;
         _mapper = mapper;
-        _fileService = fileService;
     }
 
     public async Task<ErrorOr<Guid>> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
@@ -28,9 +26,6 @@ public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryComman
             return Errors.Categories.CategoryNotFound;
 
         // Validate that updated category doesn't equal existing one
-
-        //var existingCategory = _mapper.Map<CategoryDto>(category);
-        //var updatedCategory = _mapper.Map<CategoryDto>(request);
         
         if (request.CategoryName == category.CategoryName)
             return Errors.Categories.NoUpdates;

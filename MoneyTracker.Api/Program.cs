@@ -10,51 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 var config = builder.Configuration;
 
-// Swagger setup
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
-{
-    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        In = ParameterLocation.Header,
-        Description = "Please enter a valid token",
-        Name = "Authorization",
-        Type = SecuritySchemeType.Http,
-        BearerFormat = "JWT",
-        Scheme = "Bearer"
-    });
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = JwtBearerDefaults.AuthenticationScheme
-                }
-            },
-            Array.Empty<string>()
-        }
-    });
-});
-
-// CORS setup
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("defaultPolicy", policyBuilder =>
-    {
-        policyBuilder.WithOrigins(builder.Configuration.GetSection("CorsOptions:Origins").Get<string[]>());
-        policyBuilder.AllowAnyHeader();
-        policyBuilder.AllowAnyMethod();
-        policyBuilder.AllowCredentials();
-    });
-});
-
-
-// Other DI
+// Other layers DI
 builder.Services.
-    AddPresentation().
+    AddPresentation(config).
     AddApplication().
     AddInfrastructure(config);
 

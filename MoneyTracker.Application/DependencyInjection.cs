@@ -8,6 +8,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using MoneyTracker.Api.Common.Mapping;
 using MoneyTracker.Application.Common.Validation.Behaviors;
+using MoneyTracker.Application.Common.Interfaces.Services;
 
 namespace MoneyTracker.Application;
 

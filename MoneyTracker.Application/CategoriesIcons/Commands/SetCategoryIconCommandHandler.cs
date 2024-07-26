@@ -29,9 +29,6 @@ public class SetCategoryIconCommandHandler : IRequestHandler<SetCategoryIconComm
         if (setResult.IsError)
             return setResult.Errors;
 
-        // Set icon path in category entity
-        category.IconPath = setResult.Value;
-
         if (!await _categoryRepository.SaveAsync())
             return Errors.Categories.SavingError;
 

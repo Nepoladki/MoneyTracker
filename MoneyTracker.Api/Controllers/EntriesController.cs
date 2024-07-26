@@ -38,6 +38,7 @@ public class EntriesController : ApiController
     }
 
     [HttpGet]
+    [Authorize(Policy = "AdminPolicy")]
     public async Task<IActionResult> GetAllEntries()
     {
         var query = new GetAllEntriesQuery();

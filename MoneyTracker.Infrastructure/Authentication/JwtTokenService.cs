@@ -59,11 +59,13 @@ public class JwtTokenService : IJwtTokenService
 
     private static Claim[] GetClaims(User user)
     {
-        return
-        [
-            new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-            new Claim(JwtRegisteredClaimNames.Name, user.UserName.ToString()),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-        ];
+        var claims = new Claim[2];
+
+        claims[0] = new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString());
+
+        if (user.IsAdmin)
+            claims[1] = new Claim(IJwtSettings.IsAdminClaimName, user.IsAdmin.ToString());
+
+        return claims;
     }
 }

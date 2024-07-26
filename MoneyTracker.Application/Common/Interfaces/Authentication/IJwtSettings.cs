@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 namespace MoneyTracker.Application.Common.Interfaces.Authentication;
 public interface IJwtSettings
 {
+
     public const string SectionName = "JwtSettings";
+    public const string IsAdminClaimName = "adm";
     public string AccessSecret { get; }
     public int AccessExpiryMinutes { get; }
     public string RefreshSecret { get; }

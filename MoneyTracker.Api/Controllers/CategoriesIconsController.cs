@@ -18,6 +18,7 @@ public class CategoriesIconsController : ApiController
     [HttpPost("{id}/icon")]
     public async Task<IActionResult> SetCategoryIcon(IFormFile file)
     {
-        var command = new SetCategoryIconCommand();
+        throw new NotImplementedException();
+        //var command = new SetCategoryIconCommand();
     }
 }

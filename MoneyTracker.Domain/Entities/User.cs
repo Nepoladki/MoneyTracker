@@ -9,5 +9,6 @@ public class User
     public string LastName { get; set; } = null!;
     public string Email { get; set; } = null!;
     public string PasswordHash { get; set; } = null!;
+    public bool IsAdmin { get; set; } = false;
     public ICollection<Entry> Entries { get; set; } = null!;
 }

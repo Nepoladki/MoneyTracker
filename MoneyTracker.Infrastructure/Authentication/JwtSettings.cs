@@ -4,7 +4,6 @@ namespace MoneyTracker.Infrastructure.Authentication;
 
 public class JwtSettings : IJwtSettings
 {
-    public const string SectionName = "JwtSettings";
     public string AccessSecret { get; init; } = null!;
     public int AccessExpiryMinutes { get; init; }
     public string RefreshSecret { get; init; } = null!;
