@@ -44,6 +44,9 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
         var refreshKey = Encoding.UTF8.GetBytes(_jwtSettings.RefreshSecret);
         var accessKey = Encoding.UTF8.GetBytes(_jwtSettings.AccessSecret);
 
+        if (_contextAccessor.HttpContext is null)
+            return Errors.Authentication.HttpContextIsNull;
+
         // Validate that request header contains token
         if (!_contextAccessor.HttpContext.Request.Headers.TryGetValue(HeaderNames.Authorization, out var authHeader))
             return Errors.Authentication.InvalidAuthHeader;
@@ -86,7 +89,12 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
         }
         // END OF DEBUG SECTION
 
-        var accessTokenUserId = Guid.Parse(accessTokenPrincipal.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+        var foundedAccessClaim = accessTokenPrincipal.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        if (foundedAccessClaim is null)
+            return Errors.Authentication.AccessClaimWasNotFound;
+
+        var accessTokenUserId = Guid.Parse(foundedAccessClaim);
 
         // Validate if threre is a refresh token in cookies
         if (!_contextAccessor.HttpContext.Request.Cookies.TryGetValue(_jwtSettings.RefreshCookieName, out var refreshToken) || string.IsNullOrEmpty(refreshToken))
@@ -113,7 +121,12 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
             return Errors.Authentication.InvalidRefresh;
         }
 
-        var refreshTokenUserId = Guid.Parse(refreshTokenPrincipal.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+        var foundedRefreshClaim = refreshTokenPrincipal.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        if (foundedRefreshClaim is null)
+            return Errors.Authentication.RefreshClaimWasNotFound;
+
+        var refreshTokenUserId = Guid.Parse(foundedRefreshClaim);
 
         // Validate IDs in tokens
         if (accessTokenUserId != refreshTokenUserId)

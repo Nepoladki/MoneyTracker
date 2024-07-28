@@ -45,5 +45,18 @@ public static partial class Errors
         public static Error InvalidAuthHeader => Error.Unauthorized(
             code: "Auth.InvalidAuthHeader",
             description: "Error occured while parsing Authorization header");
+
+        public static Error AccessClaimWasNotFound => Error.Unauthorized(
+            code: "Auth.AccessIdClaimNotFound",
+            description: "Identifing claim was not found in access token");
+
+        public static Error RefreshClaimWasNotFound => Error.Unauthorized(
+            code: "Auth.RefreshIdClaimNotFound",
+            description: "Identifing claim was not found in refresh token");
+
+        public static Error HttpContextIsNull => Error.Unexpected(
+            code: "Auth.HttpContextIsNull",
+            description: "HttpContext is Null, refresh token is unreachable");
+
     }
 }

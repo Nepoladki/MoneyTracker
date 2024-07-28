@@ -30,7 +30,7 @@ public class CategoryRepository : ICategoryRepository
         return await SaveAsync();
     }
 
-    public async Task<ICollection<Category>?> GetAllCategoriesAsync()
+    public async Task<ICollection<Category>> GetAllCategoriesAsync()
     {
         return await _context.Categories.ToListAsync();
     }

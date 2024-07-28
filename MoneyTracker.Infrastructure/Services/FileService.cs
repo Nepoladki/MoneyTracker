@@ -22,7 +22,7 @@ public class FileService : IFileService
 
     public ErrorOr<bool> DeleteImage(string filePath)
     {
-        if (filePath.IsNullOrEmpty())
+        if (string.IsNullOrEmpty(filePath))
             return Errors.Categories.CategoryIconPathError;
 
         var fullPath = Path.Combine(_uploadsFolder, Path.GetFileName(filePath));
