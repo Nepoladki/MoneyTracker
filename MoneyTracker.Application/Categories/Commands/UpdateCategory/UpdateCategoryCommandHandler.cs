@@ -26,7 +26,6 @@ public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryComman
             return Errors.Categories.CategoryNotFound;
 
         // Validate that updated category doesn't equal existing one
-        
         if (request.CategoryName == category.CategoryName)
             return Errors.Categories.NoUpdates;
 

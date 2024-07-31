@@ -3,7 +3,7 @@ using MoneyTracker.Api.Common.Mapping;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 namespace MoneyTracker.Api;
 
 public static class DependencyInjection
@@ -61,7 +61,9 @@ public static class DependencyInjection
         {
             options.AddPolicy("defaultPolicy", policyBuilder =>
             {
-                policyBuilder.WithOrigins(config.GetSection("CorsOptions:Origins").Get<string[]>());
+                var origins = config.GetSection("CorsOptions:Origins").Get<string[]>();
+
+                policyBuilder.WithOrigins(origins);
                 policyBuilder.AllowAnyHeader();
                 policyBuilder.AllowAnyMethod();
                 policyBuilder.AllowCredentials();

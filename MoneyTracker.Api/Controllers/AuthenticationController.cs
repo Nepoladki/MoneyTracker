@@ -9,10 +9,6 @@ using MoneyTracker.Application.Authentication.Queries.Login;
 using MapsterMapper;
 using Microsoft.AspNetCore.Authorization;
 using MoneyTracker.Application.Authentication.Queries.Refresh;
-using System.Runtime.CompilerServices;
-using Microsoft.Extensions.Options;
-using MoneyTracker.Infrastructure.Authentication;
-using MoneyTracker.Application.Common.Interfaces.Authentication;
 
 namespace MoneyTracker.Api.Controllers;
 [Route("auth")]
