@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MoneyTracker.Application.Common.Interfaces.Persistence;
+using MoneyTracker.Application.Entries.Common;
 using MoneyTracker.Domain.Entities;
 
 namespace MoneyTracker.Infrastructure.Persistence;
@@ -27,6 +28,25 @@ public class EntryRepository : IEntryRepository
     public async Task<ICollection<Entry>> GetAllEntriesByUserIdAsync(Guid id)
     {
         return await _context.Entries.Where(e => e.UserId == id).OrderBy(x => x.DateTime).ToListAsync();
+    }
+
+    public async Task<List<EntriesByCategoriesOuterDto>> GetAllEntriesByUserIdGroupedByCategoryAsync(Guid id)
+    {
+        return await _context.Categories
+            .Include(c => c.Entries)
+            .Select(c => new EntriesByCategoriesOuterDto
+            {
+                CategoryId = c.Id,
+                CategoryName = c.CategoryName,
+                Entries = c.Entries.Select(e => new EntriesByCategoriesInnerDto
+                {
+                    Id = e.Id,
+                    Amount = e.Amount,
+                    CurrencyAbbr = e.CurrencyAbbr,
+                    Note = e.Note,
+                    DateTime = e.DateTime
+                }).ToList()
+            }).ToListAsync();
     }
 
     public async Task<Entry?> GetEntryByIdAsync(Guid id)

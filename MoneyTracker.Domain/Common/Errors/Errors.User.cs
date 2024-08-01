@@ -37,5 +37,9 @@ public static partial class Errors
         public static Error UserIsInactive => Error.Forbidden(
             code: "User.InactiveUser",
             description: "User's account is marked as inactive");
+
+        public static Error AccessDenied => Error.Forbidden(
+            code: "User.AccessDenied",
+            description: "User's id is different from owner's id of requested resources");
     }
 }

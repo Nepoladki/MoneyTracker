@@ -1,20 +1,18 @@
 using ErrorOr;
-using Mapster;
 using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MoneyTracker.Application.Entries.Commands.AddEntry;
 using MoneyTracker.Application.Entries.Commands.DeleteEntry;
-using MoneyTracker.Application.Entries.Common;
 using MoneyTracker.Application.Entries.Queries.GetAllEntriesByUserId;
-using MoneyTracker.Application.Entries.Queries.GetAllEntries;
 using MoneyTracker.Contracts.Entries;
 using MoneyTracker.Application.Entries.Commands.UpdateEntry;
 using MoneyTracker.Application.Entries.Queries.GetAllEntriesForUser;
+using MoneyTracker.Application.Entries.Queries.GetAllEntriesForUserGroupedByCategory;
 namespace MoneyTracker.Api.Controllers;
 
-[Route("/entries")]
+[Route("api/users/{userId}/entries/")]
 [Authorize]
 public class EntriesController : ApiController
 {
@@ -37,18 +35,17 @@ public class EntriesController : ApiController
         return getResult.Match(Ok, Problem);
     }
 
+    //[HttpGet]
+    //public async Task<IActionResult> GetAllEntries()
+    //{
+    //    var query = new GetAllEntriesQuery();
+
+    //    var entries = await _mediator.Send(query);
+
+    //    return Ok(entries.Adapt<List<EntryDto>>());
+    //}
+
     [HttpGet]
-    [Authorize(Policy = "AdminPolicy")]
-    public async Task<IActionResult> GetAllEntries()
-    {
-        var query = new GetAllEntriesQuery();
-
-        var entries = await _mediator.Send(query);
-
-        return Ok(entries.Adapt<List<EntryDto>>());
-    }
-
-    [HttpGet("user/{userId}")]
     public async Task<IActionResult> GetAllEntriesForUser(Guid userId)
     {
         var query = new GetAllEntriesForUserQuery(userId);
@@ -58,8 +55,18 @@ public class EntriesController : ApiController
         return entries.Match(Ok, Problem);
     }
 
+    [HttpGet("group-by-cat")]
+    public async Task<IActionResult> GetAllEntriesForUserGroupedByCategory(Guid userId)
+    {
+        var query = new GetAllEntriesForUserGroupedByCategoryQuery(userId);
+
+        var entries = await _mediator.Send(query);
+
+        return entries.Match(Ok, Problem);
+    }
+
     [HttpPost]
-    public async Task<IActionResult> AddTransaction(AddEntryRequest request)
+    public async Task<IActionResult> AddEntry(AddEntryRequest request)
     {
         var command = _mapper.Map<AddEntryCommand>(request);
 

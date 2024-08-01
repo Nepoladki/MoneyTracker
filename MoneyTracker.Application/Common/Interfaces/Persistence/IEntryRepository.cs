@@ -1,3 +1,4 @@
+using MoneyTracker.Application.Entries.Common;
 using MoneyTracker.Domain.Entities;
 
 namespace MoneyTracker.Application.Common.Interfaces.Persistence;
@@ -5,6 +6,7 @@ namespace MoneyTracker.Application.Common.Interfaces.Persistence;
 public interface IEntryRepository
 {
     public Task<ICollection<Entry>> GetAllEntriesByUserIdAsync(Guid id);
+    public Task<List<EntriesByCategoriesOuterDto>> GetAllEntriesByUserIdGroupedByCategoryAsync(Guid id);
     public Task<Entry?> GetEntryByIdAsync(Guid id);
     public Task<bool> EntryExistsAsync(Guid id);
     public Task<ICollection<Entry>> GetAllEntriesAsync();
