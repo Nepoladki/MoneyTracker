@@ -8,10 +8,11 @@ using MoneyTracker.Application.Categories.Commands.UpdateCategory;
 using MoneyTracker.Application.Categories.Queries.GetAllCategories;
 using MoneyTracker.Application.Categories.Queries.GetCategory;
 using MoneyTracker.Contracts.Categories;
-using System.Runtime.CompilerServices;
+using MoneyTracker.Application.Categories.Queries.GetAllPublicCategories;
+using MoneyTracker.Application.Categories.Queries.GetAllCategoriesForUser;
 
 namespace MoneyTracker.Api.Controllers;
-[Route("/categories")]
+[Route("api/categories")]
 [Authorize]
 public class CategoriesController : ApiController
 {
@@ -22,6 +23,28 @@ public class CategoriesController : ApiController
     {
         _sender = sender;
         _mapper = mapper;
+    }
+
+    [HttpGet]
+    [Route("public")]
+    public async Task<IActionResult> GetPublicCategories()
+    {
+        var query = new GetAllPublicCategoriesQuery();
+
+        var queryResult = await _sender.Send(query);
+
+        return queryResult.Match(Ok, Problem);
+    }
+
+    [HttpGet]
+    [Route("users/{userId}")]
+    public async Task<IActionResult> GetAllCategoriesForUser(Guid userId)
+    {
+        var query = new GetAllCategoriesForUserQuery(userId);
+
+        var queryResult = await _sender.Send(query);
+
+        return queryResult.Match(Ok, Problem);
     }
 
     [HttpGet]

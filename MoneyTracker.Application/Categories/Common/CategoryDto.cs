@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MoneyTracker.Application.Categories.Common;
-    public record CategoryDto(
-        Guid categoryId,
-        string CategoryName);
+public record CategoryDto(
+    Guid CategoryId,
+    bool IsPublic,
+    Guid CreatedByUserId,
+    string CategoryName);

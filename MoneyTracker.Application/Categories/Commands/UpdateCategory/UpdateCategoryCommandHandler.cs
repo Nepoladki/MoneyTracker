@@ -4,8 +4,6 @@ using MoneyTracker.Application.Common.Interfaces.Persistence;
 using MoneyTracker.Domain.Entities;
 using MoneyTracker.Domain.Common.Errors;
 using MapsterMapper;
-using MoneyTracker.Application.Categories.Common;
-using MoneyTracker.Application.Common.Interfaces.Services;
 
 namespace MoneyTracker.Application.Categories.Commands.UpdateCategory;
 public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryCommand, ErrorOr<Guid>>
@@ -26,7 +24,7 @@ public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryComman
             return Errors.Categories.CategoryNotFound;
 
         // Validate that updated category doesn't equal existing one
-        if (request.CategoryName == category.CategoryName)
+        if (request.CategoryName == category.CategoryName && request.IsPublic == category.IsPublic)
             return Errors.Categories.NoUpdates;
 
         _mapper.Map(request, category);

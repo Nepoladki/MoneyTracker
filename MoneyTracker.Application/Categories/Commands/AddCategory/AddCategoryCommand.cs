@@ -12,5 +12,7 @@ namespace MoneyTracker.Application.Categories.Commands.AddCategory;
 
 public record AddCategoryCommand(
     string CategoryName,
+    bool IsPublic,
+    Guid CreatedByUserId,
     IFormFile Image) : IRequest<ErrorOr<CategoryDto>>;
 

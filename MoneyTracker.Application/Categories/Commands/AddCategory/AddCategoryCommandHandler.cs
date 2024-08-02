@@ -1,6 +1,8 @@
 ﻿using ErrorOr;
 using MapsterMapper;
 using MediatR;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using MoneyTracker.Application.Categories.Common;
 using MoneyTracker.Application.Common.Interfaces.Persistence;
 using MoneyTracker.Application.Common.Interfaces.Services;
@@ -21,13 +23,21 @@ public class AddCategoryCommandHandler : IRequestHandler<AddCategoryCommand, Err
 
     public async Task<ErrorOr<CategoryDto>> Handle(AddCategoryCommand request, CancellationToken cancellationToken)
     {
-        if (await _categoryRepository.CategoryExistByNameAsync(request.CategoryName))
-            return Errors.Categories.CategoryAlreadyExists;
-
         var category = _mapper.Map<Category>(request);
 
-        if (!await _categoryRepository.AddCategoryAsync(category))
-            return Errors.Categories.AddingError;
+        // Validate if category is unique in private or public category names
+        try
+        {
+            await _categoryRepository.AddCategoryAsync(category);
+        }
+        catch (DbUpdateException ex) when (ex.InnerException is SqlException sqlEx && sqlEx.Number == 2601) 
+        {
+            return Errors.Categories.CategoryAlreadyExists;
+        }
+        catch (Exception)
+        {
+            return Errors.Categories.SavingError;
+        }
 
         return _mapper.Map<CategoryDto>(category);
     }

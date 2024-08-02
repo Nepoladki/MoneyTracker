@@ -10,5 +10,6 @@ public class User
     public string Email { get; set; } = null!;
     public string PasswordHash { get; set; } = null!;
     public bool IsAdmin { get; set; } = false;
+    public ICollection<Category> Categories { get; set; } = null!;
     public ICollection<Entry> Entries { get; set; } = null!;
 }
