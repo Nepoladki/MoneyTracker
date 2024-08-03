@@ -11,7 +11,6 @@ public class FileUploadOperationFilter : IOperationFilter
 
         if (fileParameters.Any())
         {
-            operation.Parameters.Clear();
             operation.RequestBody = new OpenApiRequestBody
             {
                 Content = new Dictionary<string, OpenApiMediaType>

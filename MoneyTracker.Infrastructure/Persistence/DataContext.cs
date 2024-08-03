@@ -9,7 +9,7 @@ public class DataContext : DbContext
     public DbSet<User> Users { get; set; } = null!;
     public DbSet<Entry> Entries { get; set; } = null!;
     public DbSet<Category> Categories { get; set; } = null!;
-    public DbSet<CategoryIcon> CategoriesIcons { get; set; } = null!;
+    public DbSet<CategoryUserIcon> CategoriesUsersIcons { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

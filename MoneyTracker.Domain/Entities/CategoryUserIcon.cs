@@ -1,5 +1,5 @@
 ﻿namespace MoneyTracker.Domain.Entities;
-public class CategoryIcon
+public class CategoryUserIcon
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public Guid CategoryId { get; set; }

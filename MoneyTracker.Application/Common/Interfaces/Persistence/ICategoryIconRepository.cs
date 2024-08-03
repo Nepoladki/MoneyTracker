@@ -1,6 +1,10 @@
-﻿namespace MoneyTracker.Application.Common.Interfaces.Persistence;
-public interface ICategoryIconRepository
+﻿using MoneyTracker.Domain.Entities;
+
+namespace MoneyTracker.Application.Common.Interfaces.Persistence;
+public interface ICategoryUserIconRepository
 {
-    bool CategoryIconExists(Guid categoryId, Guid userId);
+    Task<bool> AddCategoryIconAsync(CategoryUserIcon icon);
+    Task<bool> CategoryIconExistsAsync(Guid categoryId, Guid userId);
     string GetCategoryIcon(Guid categoryId, Guid userId);
+    bool Save();
 }

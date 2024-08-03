@@ -8,5 +8,5 @@ namespace MoneyTracker.Application.Categories.Common;
 public record CategoryDto(
     Guid CategoryId,
     bool IsPublic,
-    Guid CreatedByUserId,
+    Guid? CreatedByUserId,
     string CategoryName);

@@ -27,6 +27,8 @@ public static class DependencyInjectioin
 
         services.AddSingleton<IFileService, FileService>();
 
+        services.AddScoped<IDataAccessCheckService, DataAccessCheckService>();
+
         services.AddAuth(configuration);
 
         services.AddPersistance(configuration);

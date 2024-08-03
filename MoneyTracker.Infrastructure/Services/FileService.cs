@@ -17,7 +17,7 @@ public class FileService : IFileService
 
     public ErrorOr<byte[]> GetImage(string filePath)
     {
-            throw new NotImplementedException();
+        throw new NotImplementedException();
     }
 
     public ErrorOr<bool> DeleteImage(string filePath)

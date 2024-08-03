@@ -4,17 +4,20 @@ using MoneyTracker.Application.Common.Interfaces.Persistence;
 using MoneyTracker.Application.Common.Interfaces.Services;
 using MoneyTracker.Domain.Entities;
 using MoneyTracker.Domain.Common.Errors;
+using MoneyTracker.Application.Common.Interfaces.UnitOfWork;
 
 namespace MoneyTracker.Application.CategoriesIcons.Commands;
 public class SetCategoryIconCommandHandler : IRequestHandler<SetCategoryIconCommand, ErrorOr<bool>>
 {
     private readonly IFileService _fileService;
     private readonly ICategoryRepository _categoryRepository;
+    private readonly ICategoryIconUnitOfWork _unitOfWork;
 
-    public SetCategoryIconCommandHandler(IFileService fileService, ICategoryRepository categoryRepository)
+    public SetCategoryIconCommandHandler(IFileService fileService, ICategoryRepository categoryRepository, ICategoryIconUnitOfWork unitOfWork)
     {
         _fileService = fileService;
         _categoryRepository = categoryRepository;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<ErrorOr<bool>> Handle(SetCategoryIconCommand request, CancellationToken cancellationToken)
@@ -23,14 +26,8 @@ public class SetCategoryIconCommandHandler : IRequestHandler<SetCategoryIconComm
         if (await _categoryRepository.GetCategoryByIdAsync(request.CategoryId) is not Category category)
             return Errors.Categories.CategoryNotFound;
 
-        // Save icon in server filesystem
-        var setResult = await _fileService.SaveImageAsync(request.Icon);
-
-        if (setResult.IsError)
-            return setResult.Errors;
-
-        if (!await _categoryRepository.SaveAsync())
-            return Errors.Categories.SavingError;
+        // Save icon in server filesystem and filepath in database
+        await _unitOfWork.AddCategoryIconAsync(request.Icon);
 
         return true;
     }

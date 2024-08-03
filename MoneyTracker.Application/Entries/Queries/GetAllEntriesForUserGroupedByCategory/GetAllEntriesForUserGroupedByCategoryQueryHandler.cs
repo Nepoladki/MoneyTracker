@@ -3,6 +3,7 @@ using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using MoneyTracker.Application.Common.Interfaces.Persistence;
+using MoneyTracker.Application.Common.Interfaces.Services;
 using MoneyTracker.Application.Entries.Common;
 using MoneyTracker.Domain.Common.Errors;
 using System.Security.Claims;
@@ -12,14 +13,14 @@ public class GetAllEntriesForUserGroupedByCategoryQueryHandler :
     IRequestHandler<GetAllEntriesForUserGroupedByCategoryQuery, ErrorOr<ICollection<EntriesByCategoriesOuterDto>>>
 {
     private readonly IEntryRepository _entryRepository;
-    private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly IDataAccessCheckService _dataAccessCheck;
 
     public GetAllEntriesForUserGroupedByCategoryQueryHandler(
         IEntryRepository entryRepository,
-        IHttpContextAccessor httpContextAccessor)
+        IDataAccessCheckService dataAccessCheck)
     {
         _entryRepository = entryRepository;
-        _httpContextAccessor = httpContextAccessor;
+        _dataAccessCheck = dataAccessCheck;
     }
 
     public async Task<ErrorOr<ICollection<EntriesByCategoriesOuterDto>>> Handle(
@@ -27,14 +28,7 @@ public class GetAllEntriesForUserGroupedByCategoryQueryHandler :
         CancellationToken cancellationToken)
     {
         // Validate that user requests his own data
-        var idFromToken =
-            _httpContextAccessor.HttpContext?.User?.Claims?
-            .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
-
-        if (idFromToken is null)
-            return Errors.User.AccessDenied;
-
-        if (Guid.Parse(idFromToken) != request.userId)
+        if (!_dataAccessCheck.CheckUserAccessToData(request.userId))
             return Errors.User.AccessDenied;
 
         return await _entryRepository.GetAllEntriesByUserIdGroupedByCategoryAsync(request.userId);
