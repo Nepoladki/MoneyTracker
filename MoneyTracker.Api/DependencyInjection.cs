@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using MoneyTracker.Api.Common.Swagger;
 namespace MoneyTracker.Api;
 
 public static class DependencyInjection
@@ -50,6 +51,7 @@ public static class DependencyInjection
                     Array.Empty<string>()
                 }
             });
+            options.OperationFilter<FileUploadOperationFilter>();
         });
 
         return services;

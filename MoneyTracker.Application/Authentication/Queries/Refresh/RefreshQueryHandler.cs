@@ -38,8 +38,8 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
         var tokenHandler = new JwtSecurityTokenHandler();
 
         // Validate that refresh token is readable
-        if (!tokenHandler.CanValidateToken)
-            return Errors.Authentication.InvalidRefresh;
+        //if (!tokenHandler.CanValidateToken)
+        //    return Errors.Authentication.InvalidRefresh;
 
         var refreshKey = Encoding.UTF8.GetBytes(_jwtSettings.RefreshSecret);
         var accessKey = Encoding.UTF8.GetBytes(_jwtSettings.AccessSecret);

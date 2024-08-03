@@ -19,6 +19,17 @@ public class CategoryRepository : ICategoryRepository
         return await SaveAsync();
     }
 
+    public async Task<bool> PrivateCategoryExistsAsync(string categoryName, Guid? userId)
+    {
+        return await _context.Categories
+            .AnyAsync(c => c.CategoryName == categoryName && c.IsPublic == false && c.CreatedByUserId == userId);
+    }
+
+    public async Task<bool> PublicCategoryExistsAsync(string catgoryName)
+    {
+        return await _context.Categories.AnyAsync(c => c.CategoryName == catgoryName && c.IsPublic == true);
+    }
+
     public async Task<bool> CategoryExistByNameAsync(string name)
     {
         return await _context.Categories.AnyAsync(c => c.CategoryName.ToLower().Equals(name.ToLower()));
@@ -33,6 +44,11 @@ public class CategoryRepository : ICategoryRepository
     public async Task<ICollection<Category>> GetAllPublicCategoriesAsync()
     {
         return await _context.Categories.Where(c => c.IsPublic == true).ToListAsync();
+    }
+
+    public async Task<ICollection<Category>> GetAllCategoriesForUser(Guid userId)
+    {
+        return await _context.Categories.Where(c => c.CreatedByUserId == userId).ToListAsync();
     }
 
     public async Task<ICollection<Category>> GetAllCategoriesAsync()

@@ -47,7 +47,21 @@ public static partial class Errors
             code: "Category.IconIsNull",
             description: "Error occured while trying to save category icon, the submitted file is empty");
 
+        public static Error PrivateCategoryWithoutUserId => Error.Validation(
+            code: "Category.CreatedByUserIdIsNull",
+            description: "Error occured while creating private category, CreatedByUserId property is null");
 
+        public static Error PublicCategoryAlreadyExist => Error.Validation(
+            code: "Category.PublicCategoryAlreadyExist",
+            description: "Public category with such name already exists");
+
+        public static Error PrivateCategoryAlreadyExist => Error.Validation(
+            code: "Category.PrivateCategoryAlreadyExist",
+            description: "Private category with such name already exists for this user");
+
+        public static Error CantUpdatePublicCategory => Error.Validation(
+            code: "Category.CannotChangePublicCategory",
+            description: "Users cannot change public category names");
     }
 }
 

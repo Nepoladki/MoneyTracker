@@ -5,7 +5,7 @@ public class Category
     public Guid Id { get; set; } = Guid.NewGuid();
     public string CategoryName { get; set; } = string.Empty;
     public bool IsPublic { get; set; } = false;
-    public Guid CreatedByUserId { get; set; } = Guid.Empty;
+    public Guid? CreatedByUserId { get; set; } = Guid.Empty;
     public User User { get; set; } = null!;
     public ICollection<Entry> Entries { get; set; } = null!;
 }

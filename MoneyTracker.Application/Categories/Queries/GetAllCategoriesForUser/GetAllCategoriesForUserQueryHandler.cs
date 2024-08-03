@@ -24,7 +24,9 @@ public class GetAllCategoriesForUserQueryHandler : IRequestHandler<GetAllCategor
         _categoryRepository = categoryRepository;
     }
 
-    public async Task<ErrorOr<ICollection<CategoryDto>>> Handle(GetAllCategoriesForUserQuery request, CancellationToken cancellationToken)
+    public async Task<ErrorOr<ICollection<CategoryDto>>> Handle(
+        GetAllCategoriesForUserQuery request,
+        CancellationToken cancellationToken)
     {
         // Validate that user requests his own data
         var idFromToken =
@@ -37,7 +39,9 @@ public class GetAllCategoriesForUserQueryHandler : IRequestHandler<GetAllCategor
         if (Guid.Parse(idFromToken) != request.UserId)
             return Errors.User.AccessDenied;
 
-        throw new NotImplementedException(); //_mapper.Map<List<CategoryDto>>()
+        var categories = await _categoryRepository.GetAllCategoriesForUser(request.UserId);
+
+        return _mapper.Map<List<CategoryDto>>(categories);
 
     }
 }

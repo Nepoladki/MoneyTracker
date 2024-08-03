@@ -22,7 +22,9 @@ public class GetAllEntriesForUserGroupedByCategoryQueryHandler :
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public async Task<ErrorOr<ICollection<EntriesByCategoriesOuterDto>>> Handle(GetAllEntriesForUserGroupedByCategoryQuery request, CancellationToken cancellationToken)
+    public async Task<ErrorOr<ICollection<EntriesByCategoriesOuterDto>>> Handle(
+        GetAllEntriesForUserGroupedByCategoryQuery request,
+        CancellationToken cancellationToken)
     {
         // Validate that user requests his own data
         var idFromToken =
