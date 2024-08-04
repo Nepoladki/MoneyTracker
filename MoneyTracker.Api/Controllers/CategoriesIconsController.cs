@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MoneyTracker.Application.CategoriesIcons.Commands;
+using MoneyTracker.Contracts.CategoryIcon;
 
 namespace MoneyTracker.Api.Controllers;
 
@@ -15,10 +17,13 @@ public class CategoriesIconsController : ApiController
         _mediatr = mediatr;
     }
 
-    [HttpPost("{id}/icon")]
-    public async Task<IActionResult> SetCategoryIcon(IFormFile file)
+    [HttpPost("{catId}/icon")]
+    public async Task<IActionResult> SetCategoryIcon(SetCategoryIconRequest request)
     {
-        throw new NotImplementedException();
-        //var command = new SetCategoryIconCommand();
+        var command = new SetCategoryIconCommand(request.CategoryId, request.UserId, request.File);
+
+        var setResult = await _mediatr.Send(command);
+
+        return setResult.Match(res => Ok(), Problem);
     }
 }

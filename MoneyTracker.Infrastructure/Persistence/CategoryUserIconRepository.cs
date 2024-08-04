@@ -13,7 +13,7 @@ public class CategoryUserIconRepository : ICategoryUserIconRepository
 
     public Task<bool> AddCategoryIconAsync(CategoryUserIcon icon)
     {
-        _context.CategoriesUsersIcons.
+        throw new NotImplementedException();
     }
 
     public Task<bool> CategoryIconExistsAsync(Guid categoryId, Guid userId)
@@ -22,6 +22,11 @@ public class CategoryUserIconRepository : ICategoryUserIconRepository
     }
 
     public string GetCategoryIcon(Guid categoryId, Guid userId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Save()
     {
         throw new NotImplementedException();
     }

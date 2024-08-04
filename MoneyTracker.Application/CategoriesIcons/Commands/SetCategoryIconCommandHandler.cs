@@ -12,23 +12,27 @@ public class SetCategoryIconCommandHandler : IRequestHandler<SetCategoryIconComm
     private readonly IFileService _fileService;
     private readonly ICategoryRepository _categoryRepository;
     private readonly ICategoryIconUnitOfWork _unitOfWork;
+    private readonly IDataAccessCheckService _dataAccessCheck;
 
-    public SetCategoryIconCommandHandler(IFileService fileService, ICategoryRepository categoryRepository, ICategoryIconUnitOfWork unitOfWork)
+    public SetCategoryIconCommandHandler(IFileService fileService, ICategoryRepository categoryRepository, ICategoryIconUnitOfWork unitOfWork, IDataAccessCheckService dataAccessCheck)
     {
         _fileService = fileService;
         _categoryRepository = categoryRepository;
         _unitOfWork = unitOfWork;
+        _dataAccessCheck = dataAccessCheck;
     }
 
     public async Task<ErrorOr<bool>> Handle(SetCategoryIconCommand request, CancellationToken cancellationToken)
     {
-        // Validate if such category Exists
+        // Validate that such category Exists
         if (await _categoryRepository.GetCategoryByIdAsync(request.CategoryId) is not Category category)
             return Errors.Categories.CategoryNotFound;
 
-        // Save icon in server filesystem and filepath in database
-        await _unitOfWork.AddCategoryIconAsync(request.Icon);
+        // Validate that user setting icon of his own category
+        if (!_dataAccessCheck.CheckUserAccessToData(request.UserId))
+            return Errors.User.AccessDenied;
 
-        return true;
+        // Save icon in server filesystem and filepath in database
+        return await _unitOfWork.SetCategoryIconAsync(request);
     }
 }

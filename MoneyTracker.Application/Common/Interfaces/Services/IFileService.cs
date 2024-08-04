@@ -6,5 +6,6 @@ public interface IFileService
 {
     Task<ErrorOr<string>> SaveImageAsync(IFormFile file);
     ErrorOr<bool> DeleteImage(string filePath);
+    Task<ErrorOr<byte[]>> GetIcon();
 }
 

@@ -9,9 +9,11 @@ using Microsoft.IdentityModel.Tokens;
 using MoneyTracker.Application.Common.Interfaces.Authentication;
 using MoneyTracker.Application.Common.Interfaces.Persistence;
 using MoneyTracker.Application.Common.Interfaces.Services;
+using MoneyTracker.Application.Common.Interfaces.UnitOfWork;
 using MoneyTracker.Infrastructure.Authentication;
 using MoneyTracker.Infrastructure.Persistence;
 using MoneyTracker.Infrastructure.Services;
+using MoneyTracker.Infrastructure.UnitOfWork;
 
 namespace MoneyTracker.Infrastructure;
 
@@ -28,6 +30,8 @@ public static class DependencyInjectioin
         services.AddSingleton<IFileService, FileService>();
 
         services.AddScoped<IDataAccessCheckService, DataAccessCheckService>();
+
+        services.AddScoped<ICategoryIconUnitOfWork, CategoryIconUnitOfWork>();
 
         services.AddAuth(configuration);
 

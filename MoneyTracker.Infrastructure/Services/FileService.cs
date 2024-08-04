@@ -15,7 +15,7 @@ public class FileService : IFileService
         _uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "uploads");
     }
 
-    public ErrorOr<byte[]> GetImage(string filePath)
+    public Task<ErrorOr<byte[]>> GetIcon()
     {
         throw new NotImplementedException();
     }

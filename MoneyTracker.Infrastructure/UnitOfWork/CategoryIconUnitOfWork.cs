@@ -1,6 +1,7 @@
 ﻿using Azure.Core;
 using ErrorOr;
 using Microsoft.AspNetCore.Http;
+using MoneyTracker.Application.CategoriesIcons.Commands;
 using MoneyTracker.Application.Common.Interfaces.Persistence;
 using MoneyTracker.Application.Common.Interfaces.Services;
 using MoneyTracker.Application.Common.Interfaces.UnitOfWork;
@@ -20,17 +21,26 @@ public class CategoryIconUnitOfWork : ICategoryIconUnitOfWork, IDisposable
         _dataContext = dataContext;
     }
 
-    public async Task<ErrorOr<bool>> AddCategoryIconAsync(IFormFile file)
+    public async Task<ErrorOr<bool>> SetCategoryIconAsync(SetCategoryIconCommand request)
     {
-        var errorOrFilePath = await _fileService.SaveImageAsync(file);
+        var errorOrFilePath = await _fileService.SaveImageAsync(request.Icon);
 
         if (errorOrFilePath.IsError)
             return errorOrFilePath.Errors;
 
-        _dataContext.CategoriesUsersIcons.
+        var categoryUserIcon = new CategoryUserIcon
+        {
+            CategoryId = request.CategoryId,
+            UserId = request.UserId,
+            FilePath = errorOrFilePath.Value
+        };
+
+        _dataContext.CategoriesUsersIcons.Add(categoryUserIcon);
+
+        return true;
     }
 
-    public string GetCategoryIcon(Guid categoryId, Guid userId)
+    public string GetCategoryIcon()
     {
         throw new NotImplementedException();
     }
