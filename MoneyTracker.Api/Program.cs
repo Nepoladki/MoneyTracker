@@ -1,8 +1,4 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.CookiePolicy;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
-using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
 using MoneyTracker.Api;
 using MoneyTracker.Application;
 using MoneyTracker.Infrastructure;
@@ -30,7 +26,7 @@ app.UseCookiePolicy(new CookiePolicyOptions
     Secure = CookieSecurePolicy.Always
  });
 
-app.UseCors("defaultPolicy");
+app.UseCors("AllowAll");
 
 if (app.Environment.IsDevelopment())
 {

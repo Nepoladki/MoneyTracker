@@ -61,7 +61,7 @@ public static class DependencyInjection
     {
         services.AddCors(options =>
         {
-            options.AddPolicy("defaultPolicy", policyBuilder =>
+            options.AddPolicy("AllowAll", policyBuilder =>
             {
                 var origins = config.GetSection("CorsOptions:Origins").Get<string[]>();
 
