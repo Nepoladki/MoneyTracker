@@ -6,7 +6,7 @@ using MoneyTracker.Contracts.CategoryIcon;
 
 namespace MoneyTracker.Api.Controllers;
 
-[Route("categories/")]
+[Route("api/categories/")]
 [Authorize]
 public class CategoriesIconsController : ApiController
 {

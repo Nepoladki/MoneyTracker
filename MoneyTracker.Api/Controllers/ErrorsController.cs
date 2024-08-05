@@ -6,7 +6,7 @@ namespace MoneyTracker.Api.Controllers;
 public class ErrorsController : ApiController
 {
     [ApiExplorerSettings(IgnoreApi = true)]
-    [Route("/error")]
+    [Route("api/error")]
     public IActionResult Error()
     {
         Exception? exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;

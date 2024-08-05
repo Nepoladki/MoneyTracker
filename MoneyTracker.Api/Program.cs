@@ -17,7 +17,7 @@ var app = builder.Build();
 
 app.UseStaticFiles();
 
-app.UseExceptionHandler("/error");
+app.UseExceptionHandler("/api/error");
 
 app.UseCookiePolicy(new CookiePolicyOptions
 {

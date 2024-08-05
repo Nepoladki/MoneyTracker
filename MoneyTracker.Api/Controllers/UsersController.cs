@@ -12,7 +12,7 @@ using MoneyTracker.Application.Users.Queries.GetUser;
 using MoneyTracker.Contracts.Users;
 
 namespace MoneyTracker.Api.Controllers;
-[Route("/users")]
+[Route("api/users")]
 [Authorize]
 public class UsersController : ApiController
 {

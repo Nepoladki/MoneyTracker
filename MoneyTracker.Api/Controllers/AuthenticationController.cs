@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using MoneyTracker.Application.Authentication.Queries.Refresh;
 
 namespace MoneyTracker.Api.Controllers;
-[Route("auth")]
+[Route("api/auth")]
 [AllowAnonymous]
 public class AuthenticationController : ApiController
 {
