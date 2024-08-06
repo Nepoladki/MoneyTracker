@@ -5,6 +5,9 @@ using MoneyTracker.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Adding folder for static files such as category icons
+builder.Environment.WebRootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+
 var config = builder.Configuration;
 
 // Other layers DI
@@ -33,7 +36,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 
 app.UseHttpsRedirection();
 app.UseAuthentication();

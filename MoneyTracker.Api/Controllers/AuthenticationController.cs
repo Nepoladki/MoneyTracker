@@ -9,6 +9,7 @@ using MoneyTracker.Application.Authentication.Queries.Login;
 using MapsterMapper;
 using Microsoft.AspNetCore.Authorization;
 using MoneyTracker.Application.Authentication.Queries.Refresh;
+using MoneyTracker.Application.Common.Interfaces.Authentication;
 
 namespace MoneyTracker.Api.Controllers;
 [Route("api/auth")]
@@ -17,10 +18,12 @@ public class AuthenticationController : ApiController
 {
     private readonly ISender _mediator;
     private readonly IMapper _mapper;
-    public AuthenticationController(ISender mediator, IMapper mapper)
+    private readonly IJwtSettings _jwtSettings;
+    public AuthenticationController(ISender mediator, IMapper mapper, IJwtSettings jwtSettings)
     {
         _mediator = mediator;
         _mapper = mapper;
+        _jwtSettings = jwtSettings;
     }
 
     [HttpPost("register")]
@@ -65,5 +68,12 @@ public class AuthenticationController : ApiController
         var refreshResult = await _mediator.Send(query);
 
         return refreshResult.Match(refreshResult => Ok(_mapper.Map<AuthenticationResponse>(refreshResult)), Problem);
+    }
+
+    [HttpDelete("logout")]
+    public IActionResult Logout()
+    {
+        Response.Cookies.Delete(_jwtSettings.RefreshCookieName);
+        return Ok();
     }
 }

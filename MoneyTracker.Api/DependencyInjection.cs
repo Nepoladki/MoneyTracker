@@ -5,6 +5,8 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using MoneyTracker.Api.Common.Swagger;
+using MoneyTracker.Application.Common.Interfaces.Authentication;
+using MoneyTracker.Infrastructure.Authentication;
 namespace MoneyTracker.Api;
 
 public static class DependencyInjection
@@ -17,6 +19,8 @@ public static class DependencyInjection
         services.AddControllers();
 
         services.AddSwagger();
+
+        services.Configure<JwtSettings>(configuration.GetSection(IJwtSettings.SectionName));
 
         services.AddSingleton<ProblemDetailsFactory, MoneyTrackerProblemDetailsFactory>();
 

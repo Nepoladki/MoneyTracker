@@ -9,14 +9,15 @@ using MoneyTracker.Application.Common.Interfaces.UnitOfWork;
 namespace MoneyTracker.Application.CategoriesIcons.Commands;
 public class SetCategoryIconCommandHandler : IRequestHandler<SetCategoryIconCommand, ErrorOr<bool>>
 {
-    private readonly IFileService _fileService;
     private readonly ICategoryRepository _categoryRepository;
     private readonly ICategoryIconUnitOfWork _unitOfWork;
     private readonly IDataAccessCheckService _dataAccessCheck;
 
-    public SetCategoryIconCommandHandler(IFileService fileService, ICategoryRepository categoryRepository, ICategoryIconUnitOfWork unitOfWork, IDataAccessCheckService dataAccessCheck)
+    public SetCategoryIconCommandHandler(
+        ICategoryRepository categoryRepository, 
+        ICategoryIconUnitOfWork unitOfWork,
+        IDataAccessCheckService dataAccessCheck)
     {
-        _fileService = fileService;
         _categoryRepository = categoryRepository;
         _unitOfWork = unitOfWork;
         _dataAccessCheck = dataAccessCheck;

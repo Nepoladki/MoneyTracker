@@ -18,9 +18,9 @@ public class CategoriesIconsController : ApiController
     }
 
     [HttpPost("{catId}/icon")]
-    public async Task<IActionResult> SetCategoryIcon(SetCategoryIconRequest request)
+    public async Task<IActionResult> SetCategoryIcon(SetCategoryIconRequest request, Guid catId)
     {
-        var command = new SetCategoryIconCommand(request.CategoryId, request.UserId, request.File);
+        var command = new SetCategoryIconCommand(catId, request.UserId, request.File);
 
         var setResult = await _mediatr.Send(command);
 
