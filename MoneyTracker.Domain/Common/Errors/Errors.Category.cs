@@ -41,7 +41,7 @@ public static partial class Errors
 
         public static Error CategoryIconDoesntExist => Error.Validation(
             code: "Category.IconDoesn'tExist",
-            description: "Error occured while deleting category icon, icon at the specified path does not exist");
+            description: "Error occured while accesing category icon, icon does not exist");
 
         public static Error CategoryIconSavingError => Error.Validation(
             code: "Category.IconIsNull",

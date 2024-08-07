@@ -7,5 +7,4 @@ namespace MoneyTracker.Application.Common.Interfaces.UnitOfWork;
 public interface ICategoryIconUnitOfWork
 {
     Task<ErrorOr<bool>> SetCategoryIconAsync(SetCategoryIconCommand request);
-    string GetCategoryIcon();
 }

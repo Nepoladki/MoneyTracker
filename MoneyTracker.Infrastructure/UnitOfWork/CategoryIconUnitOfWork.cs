@@ -1,10 +1,12 @@
 ﻿using Azure.Core;
 using ErrorOr;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using MoneyTracker.Application.CategoriesIcons.Commands;
 using MoneyTracker.Application.Common.Interfaces.Persistence;
 using MoneyTracker.Application.Common.Interfaces.Services;
 using MoneyTracker.Application.Common.Interfaces.UnitOfWork;
+using MoneyTracker.Domain.Common.Errors;
 using MoneyTracker.Domain.Entities;
 using MoneyTracker.Infrastructure.Persistence;
 
@@ -23,26 +25,29 @@ public class CategoryIconUnitOfWork : ICategoryIconUnitOfWork, IDisposable
 
     public async Task<ErrorOr<bool>> SetCategoryIconAsync(SetCategoryIconCommand request)
     {
-        var errorOrFilePath = await _fileService.SaveImageAsync(request.Icon);
+        var errorOrFileName = await _fileService.SaveImageAsync(request.Icon);
 
-        if (errorOrFilePath.IsError)
-            return errorOrFilePath.Errors;
+        if (errorOrFileName.IsError)
+            return errorOrFileName.Errors;
+
+        if (await _dataContext.CategoriesUsersIcons
+            .FirstOrDefaultAsync(x => x.UserId == request.UserId && x.CategoryId == request.CategoryId)
+            is CategoryUserIcon existingIcon)
+        {
+            _dataContext.Remove(existingIcon);
+            await _dataContext.SaveChangesAsync();
+        }
 
         var categoryUserIcon = new CategoryUserIcon
         {
             CategoryId = request.CategoryId,
             UserId = request.UserId,
-            FilePath = errorOrFilePath.Value
+            FileName = errorOrFileName.Value
         };
 
         _dataContext.CategoriesUsersIcons.Add(categoryUserIcon);
 
         return true;
-    }
-
-    public string GetCategoryIcon()
-    {
-        throw new NotImplementedException();
     }
 
     public void Dispose()

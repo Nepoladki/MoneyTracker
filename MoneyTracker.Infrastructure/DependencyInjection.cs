@@ -46,6 +46,7 @@ public static class DependencyInjectioin
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IEntryRepository, EntryRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<ICategoryUserIconRepository, CategoryUserIconRepository>();
 
         services.AddDbContext<DataContext>(options => 
         {

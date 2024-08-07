@@ -15,17 +15,24 @@ public class FileService : IFileService
         _uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "uploads");
     }
 
-    public Task<ErrorOr<byte[]>> GetIcon()
+    public ErrorOr<byte[]> GetIcon(string fileName)
     {
-        throw new NotImplementedException();
+        var fullPath = Path.Combine(_uploadsFolder, fileName);
+
+        if (!File.Exists(fullPath))
+            return Errors.Categories.CategoryIconDoesntExist;
+
+        byte[] fileBytes = File.ReadAllBytes(fullPath);
+
+        return fileBytes;
     }
 
-    public ErrorOr<bool> DeleteImage(string filePath)
+    public ErrorOr<bool> DeleteImage(string fileName)
     {
-        if (string.IsNullOrEmpty(filePath))
+        if (string.IsNullOrEmpty(fileName))
             return Errors.Categories.CategoryIconPathError;
 
-        var fullPath = Path.Combine(_uploadsFolder, Path.GetFileName(filePath));
+        var fullPath = Path.Combine(_uploadsFolder, Path.GetFileName(fileName));
 
         if (!File.Exists(fullPath))
             return Errors.Categories.CategoryIconDoesntExist;
@@ -51,8 +58,7 @@ public class FileService : IFileService
             await file.CopyToAsync(stream);
         }
 
-        // Возвращаем относительный путь
-        return "/uploads/" + fileName;
+        return fileName;
     }
 }
 

@@ -26,14 +26,14 @@ public class SetCategoryIconCommandHandler : IRequestHandler<SetCategoryIconComm
     public async Task<ErrorOr<bool>> Handle(SetCategoryIconCommand request, CancellationToken cancellationToken)
     {
         // Validate that such category Exists
-        if (await _categoryRepository.GetCategoryByIdAsync(request.CategoryId) is not Category category)
+        if (await _categoryRepository.GetCategoryByIdAsync(request.CategoryId) is null)
             return Errors.Categories.CategoryNotFound;
 
         // Validate that user setting icon of his own category
         if (!_dataAccessCheck.CheckUserAccessToData(request.UserId))
             return Errors.User.AccessDenied;
 
-        // Save icon in server filesystem and filepath in database
+        // Save icon in server filesystem and filename in database
         return await _unitOfWork.SetCategoryIconAsync(request);
     }
 }
