@@ -66,19 +66,30 @@ public class EntriesController : ApiController
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddEntry(AddEntryRequest request)
+    public async Task<IActionResult> AddEntry(AddEntryRequest request, Guid userId)
     {
-        var command = _mapper.Map<AddEntryCommand>(request);
+        var command = new AddEntryCommand(
+            request.Amount,
+            request.CategoryId,
+            request.Note,
+            userId);
 
         ErrorOr<Guid> addingResult = await _mediator.Send(command);
 
         return addingResult.Match(guid => Ok(guid), Problem);
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateEntry(UpdateEntryRequest request)
+    [HttpPut("{entryId}")]
+    public async Task<IActionResult> UpdateEntry(UpdateEntryRequest request, Guid entryId, Guid userId)
     {
-        var command = _mapper.Map<UpdateEntryCommand>(request);
+        var command = new UpdateEntryCommand(
+            entryId,
+            request.Amount,
+            request.CurrencyAbbr,
+            request.CategoryId,
+            request.Note,
+            request.DateTime,
+            userId);
 
         var updateResult = await _mediator.Send(command);
 

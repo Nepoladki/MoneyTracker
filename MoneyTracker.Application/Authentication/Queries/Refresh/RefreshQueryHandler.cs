@@ -37,67 +37,14 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
     {
         var tokenHandler = new JwtSecurityTokenHandler();
 
-        // Validate that refresh token is readable
-        //if (!tokenHandler.CanValidateToken)
-        //    return Errors.Authentication.InvalidRefresh;
-
         var refreshKey = Encoding.UTF8.GetBytes(_jwtSettings.RefreshSecret);
-        var accessKey = Encoding.UTF8.GetBytes(_jwtSettings.AccessSecret);
 
         if (_contextAccessor.HttpContext is null)
             return Errors.Authentication.HttpContextIsNull;
 
-        // Validate that request header contains token
-        if (!_contextAccessor.HttpContext.Request.Headers.TryGetValue(HeaderNames.Authorization, out var authHeader))
-            return Errors.Authentication.InvalidAuthHeader;
-
-        if (authHeader.FirstOrDefault() is not string authHeaderValue || 
-            !authHeaderValue.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
-            return Errors.Authentication.InvalidAuthHeader;
-
-        var accessToken = authHeaderValue[7..];
-
-        // Validate access token        
-        ClaimsPrincipal? accessTokenPrincipal;
-
-        try
-        {
-            accessTokenPrincipal = tokenHandler.ValidateToken(accessToken, new TokenValidationParameters
-            {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(accessKey),
-                ValidateIssuer = true,
-                ValidateAudience = true,
-                ValidateLifetime = false,
-                ClockSkew = TimeSpan.Zero,
-                ValidAudience = _jwtSettings.Audience,
-                ValidIssuer = _jwtSettings.Issuer
-            }, out _);
-        }
-        catch
-        {
-            return Errors.Authentication.InvalidAccess;
-        }
-
-        if (accessTokenPrincipal is null)
-            return Errors.Authentication.InvalidAccess;
-
-        // DEBUG SECTION
-        foreach (var claim in accessTokenPrincipal.Claims)
-        {
-            Console.WriteLine($"Type: {claim.Type},   Value: {claim.Value},   ValueType: {claim.ValueType},    Subject: {claim.Subject}");
-        }
-        // END OF DEBUG SECTION
-
-        var foundedAccessClaim = accessTokenPrincipal.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-        if (foundedAccessClaim is null)
-            return Errors.Authentication.AccessClaimWasNotFound;
-
-        var accessTokenUserId = Guid.Parse(foundedAccessClaim);
-
         // Validate if threre is a refresh token in cookies
-        if (!_contextAccessor.HttpContext.Request.Cookies.TryGetValue(_jwtSettings.RefreshCookieName, out var refreshToken) || string.IsNullOrEmpty(refreshToken))
+        if (!_contextAccessor.HttpContext.Request.Cookies
+            .TryGetValue(_jwtSettings.RefreshCookieName, out var refreshToken) || string.IsNullOrEmpty(refreshToken))
             return Errors.Authentication.RefreshNotFound;
 
         // Validate Refresh Token
@@ -128,12 +75,8 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
 
         var refreshTokenUserId = Guid.Parse(foundedRefreshClaim);
 
-        // Validate IDs in tokens
-        if (accessTokenUserId != refreshTokenUserId)
-            return Errors.Authentication.DifferentIds;
-
         // Validate that user exists
-        if (await _userRepository.GetUserByIdAsync(accessTokenUserId) is not User user)
+        if (await _userRepository.GetUserByIdAsync(refreshTokenUserId) is not User user)
             return Errors.User.UserNotFound;
 
         // Validate if user's account is inactive
@@ -148,6 +91,6 @@ public class RefreshQueryHandler : IRequestHandler<RefreshQuery, ErrorOr<Authent
         _contextAccessor.HttpContext.Response.Cookies.Append(
             _jwtSettings.RefreshCookieName, newRefreshToken);
 
-        return new AuthenticationResult(user, newAccesToken);
+        return new AuthenticationResult(newAccesToken);
     }
 }

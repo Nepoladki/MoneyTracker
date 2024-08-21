@@ -53,11 +53,14 @@ public class LoginQueryHandler :
         // Create refresh token
         var refreshToken = _jwtTokenGenerator.GenerateRefreshToken(user);
 
+        if (_httpContextAccessor.HttpContext is null)
+            return Errors.Authentication.HttpContextIsNull;
+
         // Write refresh token to cookies
         _httpContextAccessor.HttpContext?.Response.Cookies.Append(
             _jwtSettings.RefreshCookieName,
             refreshToken);
 
-        return new AuthenticationResult(user, token);
+        return new AuthenticationResult(token);
     }
 }

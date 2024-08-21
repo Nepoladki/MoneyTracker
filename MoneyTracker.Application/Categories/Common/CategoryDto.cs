@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MoneyTracker.Domain.Enums;
 
 namespace MoneyTracker.Application.Categories.Common;
 public record CategoryDto(
     Guid CategoryId,
     bool IsPublic,
+    string CategoryType,
     Guid? CreatedByUserId,
     string CategoryName);

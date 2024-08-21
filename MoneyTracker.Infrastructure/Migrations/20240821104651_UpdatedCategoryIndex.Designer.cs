@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MoneyTracker.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240803073730_Nullable CreatedByUserId")]
-    partial class NullableCreatedByUserId
+    [Migration("20240821104651_UpdatedCategoryIndex")]
+    partial class UpdatedCategoryIndex
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,6 +37,10 @@ namespace MoneyTracker.Infrastructure.Migrations
                         .HasColumnType("text")
                         .HasColumnName("category_name");
 
+                    b.Property<int>("CategoryType")
+                        .HasColumnType("integer")
+                        .HasColumnName("category_type");
+
                     b.Property<Guid?>("CreatedByUserId")
                         .HasColumnType("uuid")
                         .HasColumnName("created_by_user_id");
@@ -51,48 +55,51 @@ namespace MoneyTracker.Infrastructure.Migrations
                     b.HasIndex("CreatedByUserId")
                         .HasDatabaseName("ix_categories_created_by_user_id");
 
-                    b.HasIndex("CategoryName", "CreatedByUserId")
+                    b.HasIndex("CategoryName", "CreatedByUserId", "CategoryType")
                         .IsUnique()
-                        .HasDatabaseName("ix_categories_category_name_created_by_user_id")
+                        .HasDatabaseName("ix_categories_category_name_created_by_user_id_category_type")
                         .HasFilter("is_public = FALSE");
 
-                    b.HasIndex("CategoryName", "IsPublic")
+                    b.HasIndex("CategoryName", "IsPublic", "CategoryType")
                         .IsUnique()
-                        .HasDatabaseName("ix_categories_category_name_is_public")
+                        .HasDatabaseName("ix_categories_category_name_is_public_category_type")
                         .HasFilter("is_public = TRUE");
 
                     b.ToTable("categories", (string)null);
                 });
 
-            modelBuilder.Entity("MoneyTracker.Domain.Entities.CategoryIcon", b =>
+            modelBuilder.Entity("MoneyTracker.Domain.Entities.CategoryUserIcon", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("integer")
                         .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uuid")
                         .HasColumnName("category_id");
 
-                    b.Property<string>("FilePath")
+                    b.Property<string>("FileName")
+                        .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("file_path");
+                        .HasColumnName("file_name");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid")
                         .HasColumnName("user_id");
 
                     b.HasKey("Id")
-                        .HasName("pk_categories_icons");
+                        .HasName("pk_categories_users_icons");
 
                     b.HasIndex("CategoryId")
-                        .HasDatabaseName("ix_categories_icons_category_id");
+                        .HasDatabaseName("ix_categories_users_icons_category_id");
 
                     b.HasIndex("UserId")
-                        .HasDatabaseName("ix_categories_icons_user_id");
+                        .HasDatabaseName("ix_categories_users_icons_user_id");
 
-                    b.ToTable("categories_icons", (string)null);
+                    b.ToTable("categories_users_icons", (string)null);
                 });
 
             modelBuilder.Entity("MoneyTracker.Domain.Entities.Entry", b =>
@@ -197,21 +204,21 @@ namespace MoneyTracker.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MoneyTracker.Domain.Entities.CategoryIcon", b =>
+            modelBuilder.Entity("MoneyTracker.Domain.Entities.CategoryUserIcon", b =>
                 {
                     b.HasOne("MoneyTracker.Domain.Entities.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_categories_icons_categories_category_id");
+                        .HasConstraintName("fk_categories_users_icons_categories_category_id");
 
                     b.HasOne("MoneyTracker.Domain.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_categories_icons_users_user_id");
+                        .HasConstraintName("fk_categories_users_icons_users_user_id");
 
                     b.Navigation("Category");
 

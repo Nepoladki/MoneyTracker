@@ -1,9 +1,3 @@
 namespace MoneyTracker.Contracts.Authentication;
 
-public record AuthenticationResponse
-(
-    Guid Id,
-    string UserName,
-    string Email,
-    string Token
-);
+public record AuthenticationResponse(string AccessToken);

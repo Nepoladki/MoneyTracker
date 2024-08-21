@@ -2,4 +2,5 @@
 
 namespace MoneyTracker.Contracts.Categories;
 public record UpdateCategoryRequest(
-        string CategoryName);
+    string CategoryType,
+    string CategoryName);

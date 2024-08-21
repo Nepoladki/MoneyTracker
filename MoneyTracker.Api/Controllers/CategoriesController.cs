@@ -78,9 +78,12 @@ public class CategoriesController : ApiController
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateCategory(UpdateCategoryRequest request)
+    public async Task<IActionResult> UpdateCategory(UpdateCategoryRequest request, Guid id)
     {
-        var command = _mapper.Map<UpdateCategoryCommand>(request);
+        var command = new UpdateCategoryCommand(
+            id,
+            request.CategoryName,
+            request.CategoryType);
 
         var updateResult = await _sender.Send(command);
 

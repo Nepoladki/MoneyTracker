@@ -6,5 +6,4 @@ public record UpdateEntryRequest(
     string CurrencyAbbr,
     DateTime DateTime,
     Guid CategoryId,
-    string Note,
-    Guid UserId);
+    string Note);

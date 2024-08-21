@@ -8,7 +8,9 @@ public class CategoriesMappingConfig : IRegister
 {
     public void Register(TypeAdapterConfig config)
     {
-        config.NewConfig<Category, CategoryDto>().Map(d => d.CategoryId, s => s.Id);
+        config.NewConfig<Category, CategoryDto>()
+            .Map(d => d.CategoryId, s => s.Id)
+            .Map(d => d.CategoryType, s => s.CategoryType.ToString());
 
         config.NewConfig<UpdateCategoryCommand, CategoryDto>();
 

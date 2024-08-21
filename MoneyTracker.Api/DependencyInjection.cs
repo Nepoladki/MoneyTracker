@@ -14,6 +14,8 @@ public static class DependencyInjection
     public static IServiceCollection AddPresentation(
         this IServiceCollection services, ConfigurationManager configuration)
     {
+        services.AddCors(configuration);
+
         services.AddApiMappings();
 
         services.AddControllers();
@@ -23,7 +25,7 @@ public static class DependencyInjection
         services.Configure<JwtSettings>(configuration.GetSection(IJwtSettings.SectionName));
 
         services.AddSingleton<ProblemDetailsFactory, MoneyTrackerProblemDetailsFactory>();
-
+        
         return services;
     }
 
@@ -68,6 +70,9 @@ public static class DependencyInjection
             options.AddPolicy("AllowAll", policyBuilder =>
             {
                 var origins = config.GetSection("CorsOptions:Origins").Get<string[]>();
+
+                if (origins is null)
+                    throw new ArgumentNullException(nameof(origins));
 
                 policyBuilder.WithOrigins(origins);
                 policyBuilder.AllowAnyHeader();

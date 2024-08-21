@@ -34,6 +34,10 @@ namespace MoneyTracker.Infrastructure.Migrations
                         .HasColumnType("text")
                         .HasColumnName("category_name");
 
+                    b.Property<int>("CategoryType")
+                        .HasColumnType("integer")
+                        .HasColumnName("category_type");
+
                     b.Property<Guid?>("CreatedByUserId")
                         .HasColumnType("uuid")
                         .HasColumnName("created_by_user_id");
@@ -48,14 +52,14 @@ namespace MoneyTracker.Infrastructure.Migrations
                     b.HasIndex("CreatedByUserId")
                         .HasDatabaseName("ix_categories_created_by_user_id");
 
-                    b.HasIndex("CategoryName", "CreatedByUserId")
+                    b.HasIndex("CategoryName", "CreatedByUserId", "CategoryType")
                         .IsUnique()
-                        .HasDatabaseName("ix_categories_category_name_created_by_user_id")
+                        .HasDatabaseName("ix_categories_category_name_created_by_user_id_category_type")
                         .HasFilter("is_public = FALSE");
 
-                    b.HasIndex("CategoryName", "IsPublic")
+                    b.HasIndex("CategoryName", "IsPublic", "CategoryType")
                         .IsUnique()
-                        .HasDatabaseName("ix_categories_category_name_is_public")
+                        .HasDatabaseName("ix_categories_category_name_is_public_category_type")
                         .HasFilter("is_public = TRUE");
 
                     b.ToTable("categories", (string)null);
@@ -63,10 +67,12 @@ namespace MoneyTracker.Infrastructure.Migrations
 
             modelBuilder.Entity("MoneyTracker.Domain.Entities.CategoryUserIcon", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("integer")
                         .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uuid")

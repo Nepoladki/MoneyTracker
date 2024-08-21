@@ -20,12 +20,12 @@ public class DataContext : DbContext
             .OnDelete(DeleteBehavior.Restrict);
 
         modelBuilder.Entity<Category>()
-            .HasIndex(c => new { c.CategoryName, c.IsPublic })
+            .HasIndex(c => new { c.CategoryName, c.IsPublic, c.CategoryType })
             .IsUnique()
             .HasFilter("is_public = TRUE");
 
         modelBuilder.Entity<Category>()
-            .HasIndex(c => new { c.CategoryName, c.CreatedByUserId })
+            .HasIndex(c => new { c.CategoryName, c.CreatedByUserId, c.CategoryType })
             .IsUnique()
             .HasFilter("is_public = FALSE");
     }

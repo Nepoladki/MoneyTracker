@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MoneyTracker.Application.Common.Interfaces.Persistence;
 using MoneyTracker.Domain.Entities;
+using MoneyTracker.Domain.Enums;
 
 namespace MoneyTracker.Infrastructure.Persistence;
 public class CategoryRepository : ICategoryRepository
@@ -19,15 +20,21 @@ public class CategoryRepository : ICategoryRepository
         return await SaveAsync();
     }
 
-    public async Task<bool> PrivateCategoryExistsAsync(string categoryName, Guid? userId)
+    public async Task<bool> PrivateCategoryExistsAsync(string categoryName, Guid? userId, CategoryType categoryType)
     {
-        return await _context.Categories
-            .AnyAsync(c => c.CategoryName == categoryName && c.IsPublic == false && c.CreatedByUserId == userId);
+        return await _context.Categories.AnyAsync(
+            c => c.CategoryName.ToLower() == categoryName.ToLower() 
+            && c.IsPublic == false
+            && c.CreatedByUserId == userId
+            && c.CategoryType == categoryType);
     }
 
-    public async Task<bool> PublicCategoryExistsAsync(string catgoryName)
+    public async Task<bool> PublicCategoryExistsAsync(string categoryName, CategoryType categoryType)
     {
-        return await _context.Categories.AnyAsync(c => c.CategoryName == catgoryName && c.IsPublic == true);
+        return await _context.Categories.AnyAsync(
+            c => c.CategoryName.ToLower() == categoryName.ToLower()
+            && c.IsPublic == true
+            && c.CategoryType == categoryType);
     }
 
     public async Task<bool> CategoryExistByNameAsync(string name)

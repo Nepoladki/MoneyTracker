@@ -5,6 +5,7 @@ using MoneyTracker.Application.Categories.Common;
 using MoneyTracker.Application.Common.Interfaces.Persistence;
 using MoneyTracker.Domain.Common.Errors;
 using MoneyTracker.Domain.Entities;
+using MoneyTracker.Domain.Enums;
 using System.Globalization;
 
 namespace MoneyTracker.Application.Categories.Commands.AddCategory;
@@ -21,6 +22,8 @@ public class AddCategoryCommandHandler : IRequestHandler<AddCategoryCommand, Err
 
     public async Task<ErrorOr<CategoryDto>> Handle(AddCategoryCommand request, CancellationToken cancellationToken)
     {
+        var categoryType = (CategoryType)Enum.Parse(typeof(CategoryType), request.CategoryType);
+
         switch (request.IsPublic)
         {
             case false:
@@ -31,13 +34,16 @@ public class AddCategoryCommandHandler : IRequestHandler<AddCategoryCommand, Err
                 // Validate that new private category is unique
                 if (await _categoryRepository.PrivateCategoryExistsAsync(
                     request.CategoryName,
-                    request.CreatedByUserId))
+                    request.CreatedByUserId,
+                    categoryType))
                     return Errors.Categories.PrivateCategoryAlreadyExist;
                 break;
 
             case true:
                 // Validate that public category is unique
-                if (await _categoryRepository.PublicCategoryExistsAsync(request.CategoryName))
+                if (await _categoryRepository.PublicCategoryExistsAsync(
+                    request.CategoryName,
+                    categoryType))
                     return Errors.Categories.PublicCategoryAlreadyExist;
                 break;
         }

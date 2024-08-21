@@ -5,6 +5,7 @@ using MediatR;
 using MoneyTracker.Domain.Entities;
 using MoneyTracker.Application.Authentication.Common;
 using MoneyTracker.Application.Common.Interfaces.Authentication;
+using Microsoft.AspNetCore.Http;
 
 namespace MoneyTracker.Application.Authentication.Commands.Register;
 
@@ -15,15 +16,21 @@ public class RegisterCommandHandler :
     private readonly IJwtTokenService _jwtTokenGenerator;
     private readonly IUserRepository _userRepository;
     private readonly IPasswordHasher _passwordHasher;
+    private readonly IHttpContextAccessor _contextAccessor;
+    private readonly IJwtSettings _jwtSettings;
 
     public RegisterCommandHandler(
         IUserRepository userRepository,
         IJwtTokenService jwtTokenGenerator,
-        IPasswordHasher passwordHasher)
+        IPasswordHasher passwordHasher,
+        IHttpContextAccessor contextAccessor,
+        IJwtSettings jwtSettings)
     {
         _userRepository = userRepository;
         _jwtTokenGenerator = jwtTokenGenerator;
         _passwordHasher = passwordHasher;
+        _contextAccessor = contextAccessor;
+        _jwtSettings = jwtSettings;
     }
 
     public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
@@ -54,9 +61,18 @@ public class RegisterCommandHandler :
         if (saveResult == false)
             return Errors.Authentication.SavingError;
         
-        // Create JWT token
-        var token = _jwtTokenGenerator.GenerateAccessToken(user);
-        
-        return new AuthenticationResult(user, token);
+        // Create JWT tokens
+        var accessToken = _jwtTokenGenerator.GenerateAccessToken(user);
+        var refreshToken = _jwtTokenGenerator.GenerateRefreshToken(user);
+
+        if (_contextAccessor.HttpContext is null)
+            return Errors.Authentication.HttpContextIsNull;
+
+        // Write RefreshToken to Cookies
+        _contextAccessor.HttpContext.Response.Cookies.Append(
+            _jwtSettings.RefreshCookieName,
+            refreshToken);
+
+        return new AuthenticationResult(accessToken);
     }
 }
